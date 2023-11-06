@@ -1,0 +1,788 @@
+
+const mongoose = require('mongoose');
+mongoose
+    .connect(process.env.DATABASE_CLOUD, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true ,useFindAndModify:false})
+    .then(() => console.log('DB connected'))
+    .catch(err => console.log(err));
+
+
+
+
+
+db.users.insertOne({
+    name:'Dhananjay Kumar',
+    age: 25,
+    gender: 'male',
+    role:'admin'
+})
+
+//Insert multiple users
+db.users.insertMany([
+    {
+        name: 'John',
+        age: 20,
+        gender: 'male',
+        role:'manager'
+    },
+    {
+        name: 'Doe',
+        age: 35,
+        gender: 'female',
+        role:'manager'
+    }
+])
+
+
+//Find all users
+db.users.find()
+
+//Get user by id
+db.users.find({ _id : new ObjectId('6360f4603d6f8b887fbf50b2')})
+db.records.find({ deletedBy : new ObjectId('6360be78b04f336289bedfb2')}).pretty()
+
+//Get users by their role
+db.users.find({ role : 'manager' })
+
+//Assending order by name or Descending -1
+db.users.find().sort({ name :  1 })
+db.users.find().sort({ name : -1 })
+
+//Count Document
+db.users.find().count()  //4 
+db.users.find({ role : 'manager' }).count() //2
+
+//Limit Document
+db.users.find().limit(2) 
+db.users.find().limit(2).sort({ name : 1 })
+
+//Find one document
+db.users.find({ age : {  $gt :  30 }})
+db.users.find({ age : {  $lt : 20 }})
+db.users.find({ age : {  $lte : 20 }})
+
+
+//Update Document 
+db.users.update({ name : 'Dhananjay Kumar' },{
+    $set : { age : 66, role : 'admin plus' } 
+})
+
+//Update Document or insert if not found
+db.users.updateOne({ name : 'Dhananjay Kumar' },
+{
+    $set : { age : 24}
+},
+{
+    upsert : true
+})
+
+//Delete Document
+db.users.deleteOne({ name : 'John' })
+
+//Geo location Query
+{ location : {
+    $nearSphere: {
+        $geometry: {
+            type: "Point",
+            coordinates: [
+                    -73.856077,
+                    40.848447
+                ]
+            },
+        $maxDistance: 100000,
+        $minDistance: 100
+        }
+    }
+}
+
+//Indexing - Enhanced Query Faster & Performance
+db.users.createIndex({ name : 1})
+
+//Compound Indexing
+db.users.createIndexes({ name : 1, age : 1 })
+
+//Returns an array of documents that describe the existing indexes on a collection.
+db.users.getIndexes()
+
+db.scores.find(
+  { results : { 
+    $elemMatch: { $gte : 80, $lt : 85
+        }
+    }
+}
+)
+
+
+//Aggregate Pipeline
+db.orders.aggregate([
+    {  $match: { status : "A"
+        }
+    },
+    {  $group: { _id: "$cust_id",  total: { $sum: "$amount"
+            }
+        }
+    }
+])
+
+
+//Aggregate stages are $project, $match, $group, $sort, $skip, $limit, and $unwind.
+db.glocation.aggregate([
+    { 
+    $project : { name: true, _id: false
+        }
+    },
+    {
+         $sort : {name : -1
+        }
+    },
+    { 
+            $limit : 10
+    },
+    {
+                $skip: 1
+    }
+])
+
+
+/* 
+
+The stages that occur during aggregation are $project, $match, $group, $sort, $skip, $limit, and $unwind. Let’s take a look at what each one does starting with our focus $project.
+$project − Selects specific fields
+$match − Filters documents by some criteria
+$group − Performs the actual aggregation
+$sort − Sorts the documents by some criteria
+$skip − Used to skip ahead in the array of documents
+$limit − Limits the amount of documents returned
+$unwind − This is a stage that deals with array fields and is a little hard to explain without visually seeing it, so please refer to the documentation if you’re curious about this field.
+
+ */
+
+
+
+
+
+//  [ $push ] --> [ $push ] --> [ $cond ]  --> [ $eq ] --> [ $elemMatch ] --> [ $group ] --> [ $set ]  --> [ $unset]  --> [ $lookup]
+
+
+
+
+
+
+
+ //<-------------------------------------------------------------------Mongo Functions [ $pull ]---------------------------------------------------------------->
+
+ /* 
+ [$pull]
+
+ The $pull operator removes from an existing array all instances of a value or values that match a specified condition.
+
+     The following operation removes
+        "apples" and "oranges" from the fruits array
+        "carrots" from the vegetables array
+        
+ */
+
+ db.stores.insertMany( [ 
+    {
+       _id: 1,
+       fruits: [ "apples", "pears", "oranges", "grapes", "bananas" ],
+       vegetables: [ "carrots", "celery", "squash", "carrots" ]
+    },
+    {
+       _id: 2,
+       fruits: [ "plums", "kiwis", "oranges", "bananas", "apples" ],
+       vegetables: [ "broccoli", "zucchini", "carrots", "onions" ]
+    }
+ ] )
+
+ db.stores.updateMany(
+ {},
+{ $pull: { fruits: { $in: [
+            "apples",
+            "oranges"
+        ]
+    }, vegetables: "carrots"
+}
+}
+)
+
+db.stores.updateOne(
+    {}, //{_id:1}
+    {
+   $pull : {fruits: {$in : ["apples","oranges" ]
+            }, vegetables:"carrots"
+        }
+    }
+
+)
+
+
+
+
+
+ //<-------------------------------------------------------------------Mongo Functions [ $push ]---------------------------------------------------------------->
+
+
+/* 
+  The operator appends(Add) a specified value to an array. You can use the $push operator with the following modifiers:
+            $each :
+                   Appends multiple values to the array field.
+            $slice :
+                   Limits the number of array elements. Requires the use of the $each modifier.
+            $sort  :
+                   Orders elements of the array. Requires the use of the $each modifier.
+            $position :
+                   Specifies the location in the array at which to insert the new elements. Requires the use of the $each modifier. Without the $position modifier, 
+                   the  $push appends the elements to the end of the array.
+
+*/
+
+db.students.insertOne( { _id: 1, scores: [ 44, 78, 38, 80 ] } )   // { _id: 1, scores: [ 44, 78, 38, 80, 89 ] }
+
+
+//Level-1 
+db.students.updateOne(
+   { _id: 1
+},
+{ $push: { scores: 89
+    }
+})
+
+
+//Level-2
+db.students.insertMany( [
+    { _id: 2, scores: [ 45, 78, 38, 80, 89 ] } ,
+    { _id: 3, scores: [ 46, 78, 38, 80, 89 ] } ,
+    { _id: 4, scores: [ 47, 78, 38, 80, 89 ] }
+ ] )
+
+ db.students.updateMany(
+ {},
+{ $push: { scores: 95
+    }
+})
+
+//Level-3 
+//Use $push with the $each modifier to append multiple values to the array field. 
+//The following example appends each element of [ 90, 92, 85 ] to the scores array for the document where the name field equals joe:
+
+db.students.updateOne(
+   { name: "joe"
+},
+{ $push: { scores: { $each: [  90 , 92, 85 ]
+        }
+    }
+})
+
+
+//Level-4
+db.students.insertOne(
+   {
+      "_id" : 5,
+      "quizzes" : [
+         { "wk": 1, "score" : 10 },
+         { "wk": 2, "score" : 8 },
+         { "wk": 3, "score" : 5 },
+         { "wk": 4, "score" : 6 }
+      ]
+   })
+
+
+   db.students.updateOne(
+   { _id: 5 },
+   {
+     $push: {
+       quizzes: {
+          $each: [ { wk: 5, score: 8 }, { wk: 6, score: 7 }, { wk: 7, score: 6 } ],
+          $sort: { score: -1 },
+          $slice: 3  //the $slice modifier to keep only the first three sorted elements of the quizzes array.
+       }
+     }
+   }
+)
+
+//After the operation only the three highest scoring quizzes are in the array:
+//{   "_id" : 5, "quizzes" : [ { "wk" : 1, "score" : 10 },{ "wk" : 2, "score" : 8 },{ "wk" : 5, "score" : 8 }]} 
+
+
+
+
+
+ //<-------------------------------------------------------------------Mongo Functions [ $cond ] ---------------------------------------------------------------->
+
+ /* 
+ [$cond]  :  
+ Evaluates a boolean expression to return one of the two specified return expressions.
+
+ The following aggregation operation uses the $cond expression to set the discount value to 30 if qty value is greater than or equal to 250 and to 20 if qty value is less than 250:
+
+ The operation returns the following results:
+       { "_id" : 1, "item" : "abc1", "discount" : 30 }
+       { "_id" : 2, "item" : "abc2", "discount" : 20 }
+       { "_id" : 3, "item" : "xyz1", "discount" : 30 }
+ */
+
+ db.inventory.insertMany([
+    {
+        "_id": 1,  "item": "abc1", qty: 300
+    },
+    {
+        "_id": 2,  "item": "abc2", qty: 200
+    },
+    {
+        "_id": 3,  "item": "xyz1", qty: 250
+    }
+])
+
+
+
+{ "_id" : 1, "item" : "abc1", "discount" : 30 }
+{ "_id" : 2, "item" : "abc2", "discount" : 20 }
+{ "_id" : 3, "item" : "xyz1", "discount" : 30 }
+
+db.inventory.aggregate(
+   [
+      {
+         $project:
+           {
+             item: 1,
+             discount:
+               {
+                 $cond: [ { $gte: [ "$qty", 250 ] }, 30, 20 ]
+               }
+           }
+      }
+   ]
+)
+
+
+
+
+ //<-------------------------------------------------------------------Mongo Functions [ $eq ] ---------------------------------------------------------------->
+
+
+
+/* 
+[$eq]
+ Specifies equality condition. The operator matches documents where the value of a field equals the specified value.
+
+
+ The following example queries the inventory collection to select all documents where the tags array equals exactly the specified array or the tags array contains an element that equals the array
+
+ The operation returns the following results:
+ {
+	"_id" : 5,
+	"item" : {
+		"name" : "mn",
+		"code" : "000"
+	},
+	"qty" : 20,
+	"tags" : [
+		[
+			"A",
+			"B"
+		],
+		"C"
+	]
+}
+ */
+
+ db.inventory.insertMany([
+    { _id: 2, item: { name: "cd", code: "123"
+        }, qty: 20, tags: [ "B" ]
+    },
+    { _id: 5, item: { name: "mn", code: "000"
+        }, qty: 20, tags:
+         [ [  "A", "B"  ], "C"  ]
+    }
+])
+
+
+db.inventory.find( { tags: { $eq: [
+    "A",
+    "B"
+]
+}
+} )
+
+
+ //<-------------------------------------------------------------------Mongo Functions [ $elemMatch ] ---------------------------------------------------------------->
+/* 
+ [$elemMatch]
+ The operator matches documents that contain an array field with at least one element that matches all the specified query criteria.
+
+ The operation returns the following results:
+ { "_id" : 1, "results" : [ { "product" : "abc", "score" : 10 }, { "product" : "xyz", "score" : 5 } ] }
+ { "_id" : 2, "results" : [ { "product" : "abc", "score" : 8 }, { "product" : "xyz", "score" : 7 } ] }
+ { "_id" : 3, "results" : [ { "product" : "abc", "score" : 7 }, { "product" : "xyz", "score" : 8 } ] }
+
+*/
+db.survey.insertMany( [
+    { "_id": 1, "results": [ { "product": "abc", "score": 10 },
+                             { "product": "xyz", "score": 5 } ] },
+    { "_id": 2, "results": [ { "product": "abc", "score": 8 },
+                             { "product": "xyz", "score": 7 } ] },
+    { "_id": 3, "results": [ { "product": "abc", "score": 7 },
+                             { "product": "xyz", "score": 8 } ] },
+    { "_id": 4, "results": [ { "product": "abc", "score": 7 },
+                             { "product": "def", "score": 8 } ] }
+ ] )
+
+ db.survey.find(
+   { results: { $elemMatch: { product: "xyz", score: { $gte: 5
+            }
+        }
+    }
+}
+)
+
+//or without @elemMatch
+db.survey.find(
+   {
+    "results.product": "xyz"  //list all products which contain "xyz"
+}
+   )
+ //<-------------------------------------------------------------------Mongo Functions [ $group ] ---------------------------------------------------------------->
+/* 
+     The $group stage separates documents into groups according to a "group key". The output is one document for each unique group key.
+     (A group key is often a field, or group of fields. Use the _id field in the $group pipeline stage to set the group key)
+
+
+    db.sales.insertMany([
+  { "_id" : 1, "item" : "abc", "price" : NumberDecimal("10"), "quantity" : NumberInt("2"), "date" : ISODate("2014-03-01T08:00:00Z") },
+  { "_id" : 2, "item" : "jkl", "price" : NumberDecimal("20"), "quantity" : NumberInt("1"), "date" : ISODate("2014-03-01T09:00:00Z") },
+  { "_id" : 3, "item" : "xyz", "price" : NumberDecimal("5"), "quantity" : NumberInt( "10"), "date" : ISODate("2014-03-15T09:00:00Z") },
+  { "_id" : 4, "item" : "xyz", "price" : NumberDecimal("5"), "quantity" :  NumberInt("20") , "date" : ISODate("2014-04-04T11:21:39.736Z") },
+  { "_id" : 5, "item" : "abc", "price" : NumberDecimal("10"), "quantity" : NumberInt("10") , "date" : ISODate("2014-04-04T21:23:13.331Z") },
+  { "_id" : 6, "item" : "def", "price" : NumberDecimal("7.5"), "quantity": NumberInt("5" ) , "date" : ISODate("2015-06-04T05:08:13Z") },
+  { "_id" : 7, "item" : "def", "price" : NumberDecimal("7.5"), "quantity": NumberInt("10") , "date" : ISODate("2015-09-10T08:43:00Z") },
+  { "_id" : 8, "item" : "abc", "price" : NumberDecimal("10"), "quantity" : NumberInt("5" ) , "date" : ISODate("2016-02-06T20:20:13Z") },
+])
+
+The operation returns the following result:
+
+{ "_id" : null, "count" : 8 }
+
+*/
+db.sales.aggregate( 
+    {
+      $group: {
+         _id: null,
+         count: { $count: {}
+        }
+    }
+}
+   )
+/* 
+Retrieve Distinct Values  -> The following aggregation operation uses the  $group stage to retrieve the distinct item values from the sales collection:
+{ "_id" : "abc" } { "_id" : "def" } { "_id" : "xyz" } { "_id" : "jkl" }
+
+         query :-  db.sales.aggregate( [ { $group : { _id : "$item" } } ] )  
+
+*/
+
+db.sales.aggregate(
+  [
+    // First Stage
+    {
+      $group :
+        {
+          _id : "$item",
+          totalSaleAmount: { $sum: { $multiply: [ "$price", "$quantity" ] } }
+        }
+     },
+     // Second Stage
+     {
+       $match: { "totalSaleAmount": { $gte: 100 } }
+     }
+   ]
+ )
+
+ /* 
+ { "_id" : "def", "totalSaleAmount" : NumberDecimal("112.5") }
+ { "_id" : "abc", "totalSaleAmount" : NumberDecimal("170") }
+ { "_id" : "xyz", "totalSaleAmount" : NumberDecimal("150") }
+ */
+
+
+
+
+
+
+ //<-------------------------------------------------------------------Mongo Functions [ $set] ---------------------------------------------------------------->
+
+
+ /* 
+ The $set operator replaces the value of a field with the specified value.
+
+ db.products.insertOne(
+   {
+     _id: 100,
+     quantity: 250,
+     instock: true,
+     reorder: false,
+     details: { model: "14QQ", make: "Clothes Corp" },
+     tags: [ "apparel", "clothing" ],
+     ratings: [ { by: "Customer007", rating: 4 } ]
+   }
+)
+ 
+
+The operation updates the:
+{
+  _id: 100,
+  quantity: 500,
+  instock: true,
+  reorder: false,
+  details: { model: '2600', make: 'Fashionaires' },
+  tags: [ 'coats', 'outerwear', 'clothing' ],
+  ratings: [ { by: 'Customer007', rating: 4 } ]
+}
+ */
+
+ db.products.updateOne(
+ { _id: 100
+},
+{ $set: {
+      quantity: 500,
+      details: { model: "2600", make: "Fashionaires"
+      },
+      tags: [
+          "coats",
+          "outerwear",
+          "clothing"
+      ]
+  }
+}
+)
+//Set Fields in Embedded Documents
+
+db.products.updateOne(
+   { _id: 100 },
+   { $set: { "details.make": "Kustom Kidz" } }
+)
+
+
+
+ //<-------------------------------------------------------------------Mongo Functions [ $unset] ---------------------------------------------------------------->
+/*  
+db.products.insertMany( [
+   { "item": "chisel", "sku": "C001", "quantity": 4, "instock": true },
+   { "item": "hammer", "sku": "unknown", "quantity": 3, "instock": true },
+   { "item": "nails", "sku": "unknown", "quantity": 100, "instock": true }
+] )
+
+
+Update the first document in the products collection where the value of sku is unknown:
+
+updateOne() uses the $unset operator to:
+
+remove the quantity field
+remove the instock field
+*/
+
+db.products.updateOne(
+   { sku: "unknown"},
+   { $unset: { quantity: "", instock: "" }
+   }
+)
+
+
+
+
+
+ //<-------------------------------------------------------------------Mongo Functions [ $lookup ] ---------------------------------------------------------------->
+
+
+ /* Use $lookup with an Array
+ 
+   db.classes.insertMany( [
+                 { _id: 1, title: "Reading is ...", enrollmentlist: [ "giraffe2", "pandabear", "artie" ], days: ["M", "W", "F"] },
+                 { _id: 2, title: "But Writing ...", enrollmentlist: [ "giraffe1", "artie" ], days: ["T", "F"] }
+                        ] )
+      
+  
+  
+  Create another collection members with these documents:
+   db.members.insertMany( [
+   { _id: 1, name: "artie", joined: new Date("2016-05-01"), status: "A" },
+   { _id: 2, name: "giraffe", joined: new Date("2017-05-01"), status: "D" },
+   { _id: 3, name: "giraffe1", joined: new Date("2017-10-01"), status: "A" },
+   { _id: 4, name: "panda", joined: new Date("2018-10-11"), status: "A" },
+   { _id: 5, name: "pandabear", joined: new Date("2018-12-01"), status: "A" },
+   { _id: 6, name: "giraffe2", joined: new Date("2018-12-01"), status: "D" }
+                        ] )
+
+    The operation returns the following:
+
+       {
+   "_id" : 1,
+   "title" : "Reading is ...",
+   "enrollmentlist" : [ "giraffe2", "pandabear", "artie" ],
+   "days" : [ "M", "W", "F" ],
+   "enrollee_info" : [
+      { "_id" : 1, "name" : "artie", "joined" : ISODate("2016-05-01T00:00:00Z"), "status" : "A" },
+      { "_id" : 5, "name" : "pandabear", "joined" : ISODate("2018-12-01T00:00:00Z"), "status" : "A" },
+      { "_id" : 6, "name" : "giraffe2", "joined" : ISODate("2018-12-01T00:00:00Z"), "status" : "D" }
+   ]
+}
+{
+   "_id" : 2,
+   "title" : "But Writing ...",
+   "enrollmentlist" : [ "giraffe1", "artie" ],
+   "days" : [ "T", "F" ],
+   "enrollee_info" : [
+      { "_id" : 1, "name" : "artie", "joined" : ISODate("2016-05-01T00:00:00Z"), "status" : "A" },
+      { "_id" : 3, "name" : "giraffe1", "joined" : ISODate("2017-10-01T00:00:00Z"), "status" : "A" }
+   ]
+}
+
+  The following aggregation operation joins documents in the classes collection with the members collection, matching on the enrollmentlist field to the name field:
+
+ */
+ db.classes.aggregate( [
+  {
+     $lookup:
+        {
+           from: "members",
+           localField: "enrollmentlist",
+           foreignField: "name",
+           as: "enrollee_info"
+       }
+  }
+] )
+
+
+
+//The $mergeObjects operator combines multiple documents into a single document.[Use $lookup with $mergeObjects]
+
+
+
+
+
+
+
+//<-------------------------------------------------------------------Mongo Functions [  $search : Text Search Operators  ] ---------------------------------------------------------------->
+
+/*  
+  Use the $text query operator to perform text searches on a collection with a text index.
+  $text will tokenize the search string using whitespace and most punctuation as delimiters, and perform a logical OR of all such tokens in the search string.
+
+
+  [
+    For example, you could use the following query to find all stores containing any terms from the list "coffee", "shop", and "java" in the stores collection:
+ 
+                                         
+
+  ]
+*/
+db.stores.find( { $text: { $search: "java coffee shop" } } )
+
+
+/* 
+Use the $meta query operator to obtain and sort by the relevance score of each matching document. 
+For example, to order a list of coffee shops in order of relevance, run the following:
+ */
+
+ db.stores.find(
+   { $text: { $search: "coffee shop cake" } },
+   { score: { $meta: "textScore" } }
+).sort( { score: { $meta: "textScore" } } )
+
+
+//The score determines the relevance of a document to a given search query .A relevance score is a numerical value assigned to a document that indicates how relevant that document is for a given query
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //////////////////////////////////////////////////////////////////////// Miscellaneous
+
+/*  
+Calculate Count, Sum, and Average
+ db.sales.insertMany([
+  { "_id" : 1, "item" : "abc", "price" : NumberDecimal("10"), "quantity" : NumberInt("2"), "date" : ISODate("2014-03-01T08:00:00Z") },
+  { "_id" : 2, "item" : "jkl", "price" : NumberDecimal("20"), "quantity" : NumberInt("1"), "date" : ISODate("2014-03-01T09:00:00Z") },
+  { "_id" : 3, "item" : "xyz", "price" : NumberDecimal("5"), "quantity" : NumberInt( "10"), "date" : ISODate("2014-03-15T09:00:00Z") },
+  { "_id" : 4, "item" : "xyz", "price" : NumberDecimal("5"), "quantity" :  NumberInt("20") , "date" : ISODate("2014-04-04T11:21:39.736Z") },
+  { "_id" : 5, "item" : "abc", "price" : NumberDecimal("10"), "quantity" : NumberInt("10") , "date" : ISODate("2014-04-04T21:23:13.331Z") },
+  { "_id" : 6, "item" : "def", "price" : NumberDecimal("7.5"), "quantity": NumberInt("5" ) , "date" : ISODate("2015-06-04T05:08:13Z") },
+  { "_id" : 7, "item" : "def", "price" : NumberDecimal("7.5"), "quantity": NumberInt("10") , "date" : ISODate("2015-09-10T08:43:00Z") },
+  { "_id" : 8, "item" : "abc", "price" : NumberDecimal("10"), "quantity" : NumberInt("5" ) , "date" : ISODate("2016-02-06T20:20:13Z") },
+ ])
+                       
+ */
+
+ db.sales.aggregate([
+    // First Stage
+    {
+      $match : { "date": { $gte: new ISODate("2014-01-01"), $lt: new ISODate("2015-01-01") } }
+    },
+    // Second Stage
+    {
+      $group : {
+         _id : { $dateToString: { format: "%Y-%m-%d", date: "$date" } },
+         totalSaleAmount: { $sum: { $multiply: [ "$price", "$quantity" ] } },
+         averageQuantity: { $avg: "$quantity" },
+         count: { $sum: 1 }
+      }
+    },
+    // Third Stage
+    {
+      $sort : { totalSaleAmount: -1 }
+    }
+   ])
+
+
+
+/*  
+First Stage:
+The $match stage filters the documents to only pass documents from the year 2014 to the next stage.
+
+Second Stage:
+The $group stage groups the documents by date and calculates the total sale amount, average quantity, and total count of the documents in each group.
+
+Third Stage:
+The $sort stage sorts the results by the total sale amount for each group in descending order.
+
+
+The operation returns the following results:
+
+{ "_id" : "2014-04-04", "totalSaleAmount" : NumberDecimal("200"), "averageQuantity" : 15, "count" : 2 }
+{ "_id" : "2014-03-15", "totalSaleAmount" : NumberDecimal("50"), "averageQuantity" : 10, "count" : 1 }
+{ "_id" : "2014-03-01", "totalSaleAmount" : NumberDecimal("40"), "averageQuantity" : 1.5, "count" : 2 }
+
+*/
+
+
+
+/* 
+
+This aggregation operation is equivalent to the following SQL statement:
+
+SELECT date,
+       Sum(( price * quantity )) AS totalSaleAmount,
+       Avg(quantity)             AS averageQuantity,
+       Count(*)                  AS Count
+FROM   sales
+GROUP  BY Date(date)
+ORDER  BY totalSaleAmount DESC
+
+*/
+
+
+
+
+
+
