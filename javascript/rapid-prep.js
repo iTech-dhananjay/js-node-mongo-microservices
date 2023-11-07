@@ -31,6 +31,20 @@ promise.then((result) => {
 });
 
 
+//--------------------------> Function setTimeout(function() {}, 10);
+
+let flag = 0;
+
+let intervalId = setInterval(function () {
+    console.log('Inside Interval');
+    console.log(flag++);
+
+    if (flag > 3) {
+        clearInterval(intervalId); // Stop the interval when flag is greater than 3
+    }
+}, 1000);
+
+
 // 1.FizzBuzz Implementation -----------------------------------------------------------------------------------------------$$$$$
 function fizzBuzz(n) {
     const FIZZ = 3;
