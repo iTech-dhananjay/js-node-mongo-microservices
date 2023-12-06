@@ -352,3 +352,52 @@ function rotateArr(arr, k) {
 }
 
 console.log(rotateArr(arr, k));
+
+
+// //Sorting
+const arr = [4, 2, 8, 5, 1, 20, 9]
+
+const sortedArr = (arr) => {
+    let temp
+    for (let i = 0; i <= arr.length; i++) {
+        for (let j = i; j <= arr.length; j++) {
+            if (arr[i] > arr[j]) {
+                temp = arr[i]
+                arr[i] = arr[j]
+                arr[j] = temp
+            }
+        }
+    }
+    return arr
+}
+
+console.log(sortedArr(arr))
+
+
+const data = [1, 2, 3, 4, 5]
+
+data.slice(2)
+//console.log(data)
+
+//data.splice(1,1,'Hello') //[ 1, 'Hello', 3, 4 ]
+data.splice(2, 2, 'World')//[ 1, 2, 'World', 5 ]
+console.log(data)
+
+
+console.log(typeof NaN)
+
+
+function outer() {
+    let a = 5;
+    return function inner() {
+        let b = 10;
+        return a + b;
+    };
+}
+
+// When the outer function is called, it returns a function,
+// which is stored in innerFun variable.
+// Then, we need to call the returned function.
+// The inner function retains access to the variable 'a' due to closure.
+const innerFun = outer();
+console.log(innerFun());
