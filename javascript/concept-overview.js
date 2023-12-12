@@ -206,6 +206,7 @@ function validateCart(cart) {
 }
 
 // <<--------------------------- 5. [[  EVENT LOOP  [ Microtask Queue has higher priority that Callback Queue or Task Queue ]]] -------------------------->>>>
+
 /* 
     1. Javascript is synchronous single threaded language and it has one call stack [Present in JS Engine] and it can do one thing at a time. 
        & all the code of javascript is executed in the call stack (quickly executed whatever code comes in call stack)
@@ -223,8 +224,6 @@ function validateCart(cart) {
     7. Microtask Queue 
                  - Promises
                  - Mutation Observer
-
-
 */
 
 console.log('Start');
