@@ -12,5 +12,5 @@ for (let key of fruits) {
 
 // Iterate over the indices of the 'fruits' array
 for (let key in fruits) {
-    console.log(key); // Log each index (0, 1, 2) of the 'fruits' array
+    console.log(key); // Log each index (0, 1, 2) of the 'fruits' arr
 }
