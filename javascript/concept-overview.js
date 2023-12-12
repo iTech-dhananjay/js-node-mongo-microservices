@@ -642,6 +642,7 @@ console.log(z);
 
 // Interview questions with setTimout and Closures
 // Q.1
+//Q.2
 
 function x() {
     var i = 1;
