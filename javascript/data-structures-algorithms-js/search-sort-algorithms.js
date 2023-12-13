@@ -42,25 +42,23 @@ console.log('The elements found at index:' + result);
 //The Worst Case Time Complexity : O(logN)
 //Space Complexity : O(1) for iterative, O(logN) for recursive.
 
-function binarySrch(nums, target) {
-    let left = 0;
-    let right = nums.length - 1;
-
-    while (left <= right) {
-        let mid = Math.floor((left + right) / 2);
-        if (nums[mid] === target) return mid;
-
-        if (target < nums[mid]) {
-            right = mid - 1;
-        } else {
-            left = mid + 1;
-        }
+const binarySearchRecursive = (arr, index, left = 0, right = arr.length - 1) => {
+    if (left > right) {
+        return -1; // Element not found
     }
-    return -1;
-}
+    
+    let mid = Math.floor((left + right) / 2);
 
-console.log(binarySrch([1, 2, 3, 4, 5, 6], 4));
+    if (arr[mid] === index) {
+        return `Found the element ${index} at index ${mid}`;
+    } else if (arr[mid] < index) {
+        return binarySearchRecursive(arr, index, mid + 1, right);
+    } else {
+        return binarySearchRecursive(arr, index, left, mid - 1);
+    }
+};
 
+console.log(binarySearchRecursive(arr, 9));
 // <<<<<<<<<<<<<<<----------------------------------------------- 2. [[  Linear Search  ]] ---------------------------------------------------------->>>>>>>>>>>
 
 const number = [2, 4, 67, 8, 44, 6, 12];
