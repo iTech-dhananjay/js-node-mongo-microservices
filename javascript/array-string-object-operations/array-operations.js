@@ -9,14 +9,18 @@
 
 */
 
-// Comparison of null and undefined
+
+//Tricky
 null == undefined; // true
 null === undefined; // false
 typeof null; // 'object'
 typeof undefined; // 'undefined'
 
-// Slice and Splice Methods
+
+//--------------------------------------------------------------------------------------------> Type-1
 /*
+=> Slice and Splice Methods
+
 1. The slice() method of Array instances returns a shallow copy of a portion of an array into a new array object
    selected from start to end (end not included) where start and end represent the index of items in that array.
    The original array will not be modified.
@@ -25,12 +29,12 @@ typeof undefined; // 'undefined'
    splice(start, deleteCount, item1, item2,itemN  )
 */
 
+//=> SLICE
 
 const data = [1, 2, 3, 4, 5]
 
 data.slice(2) //[ 1, 2, 3, 4, 5 ]- slice returns a shallow copy , won't change the original array
 console.log(data)
-
 
 const result = data.slice(2)
 console.log(result) //[ 3, 4, 5 ]
@@ -43,6 +47,18 @@ console.log(result2) //[ 5 ]
 
 const result3 = data.slice(2, -1)
 console.log(result3) // [3,4]
+
+
+//=> SPLICE
+const months = ['Jan', 'March', 'April', 'May'];
+months.splice(3)
+console.log(months) //[ 'Jan', 'March', 'April' ]
+
+months.splice(1, 1, 'Feb', 'March')
+console.log(months) //[ 'Jan', 'Feb', 'March', 'April' ]
+
+
+//--------------------------------------------------------------------------------------------> Type-2
 
 // Create an Array
 const arrayA = ['a', 'b', 'c'];
@@ -101,12 +117,6 @@ const abcc = ['a', 'b', 'c'];
 abcc.length = 0;
 console.log(abcc); // [] - it will return an empty array
 
-// Using slice to create subsets of an array
-const cities = ['Tokyo', 'Cairo', 'Los Angeles', 'Paris', 'Seattle'];
-const newCities = cities.slice(2); // [ 'Los Angeles', 'Paris', 'Seattle' ]
-console.log(newCities);
-const newCity = cities.slice(-2);
-console.log(newCity); // [ 'Paris', 'Seattle' ]
 
 // Using flat to flatten nested arrays
 let arr = [1, 2, 10, 3, 4, 5, 6, [7, 8, [6, [7, 9]]]];
@@ -116,29 +126,5 @@ console.log(outputOne); // [1, 2, 10, 3, 4, 5, 6, 7, 8, 6, 7, 9];
 
 let outputTwo = arr.flat(2); // [1, 2, 10, 3, 4, 5, 6, 7, 8, 6, [7, 9]];
 
-//-------------SLICE AND SPLICE OPERATIONS
-const data = [1, 2, 3, 4, 5]
 
-data.slice(2) //[ 1, 2, 3, 4, 5 ]- slice returns a shallow copy , won't change the original array
-console.log(data)
-
-
-const result = data.slice(2)
-console.log(result) //[ 3, 4, 5 ]
-
-const result1 = data.slice(2, 4)
-console.log(result1) //[ 3, 4 ]
-
-const result2 = data.slice(-1)
-console.log(result2) //[ 5 ]
-
-const result3 = data.slice(2, -1)
-console.log(result3) // [3,4]
-
-
-const months = ['Jan', 'March', 'April', 'May'];
-months.splice(3)
-console.log(months) //[ 'Jan', 'March', 'April' ]
-
-months.splice(1, 1, 'Feb', 'March')
-console.log(months) //[ 'Jan', 'Feb', 'March', 'April' ]
+//--------------------------------------------------------------------------------------------> Type-3

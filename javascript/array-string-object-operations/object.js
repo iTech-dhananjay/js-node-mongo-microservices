@@ -56,9 +56,3 @@ console.log(industryArray);
 //changed email address
 
 
-const months = ['Jan', 'March', 'April', 'May'];
-months.splice(3)
-console.log(months) //[ 'Jan', 'March', 'April' ]
-
-months.splice(1, 1, 'Feb', 'March')
-console.log(months) //[ 'Jan', 'Feb', 'March', 'April' ]
