@@ -18,7 +18,8 @@ O(n^2), O(2^n) and O(n!) - Horrible/Worst
 
 */
 
-// <<<<<<<<<<<<<<<---------------------------------------------- 1. [[   Binary Search  ]] ---------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<<<---------------------------------------------- 1. [[   Binary Search   ]] ---------------------------------------------------------->>>>>>>>>>>
+// Only we can apply on sorted array
 function binarySearch(nums, target) {
     let left = 0;
     let right = nums.length - 1;
@@ -46,7 +47,7 @@ const binarySearchRecursive = (arr, index, left = 0, right = arr.length - 1) => 
     if (left > right) {
         return -1; // Element not found
     }
-    
+
     let mid = Math.floor((left + right) / 2);
 
     if (arr[mid] === index) {
