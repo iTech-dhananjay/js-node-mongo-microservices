@@ -1,4 +1,35 @@
 /*
+  1. Functions
+  2. Objects
+*/
+
+
+// <<<<<<<<<<<<<<<------------------------------------------------- 1. [[  Functions () ]] --------------------------------------------------------->>>>>>>>>>>
+
+
+// ==>>>> Q1. Function Expression
+// after const square = it is called anonymous function which has no name - this function can be assigned as variable or pass as callback function
+const squareOne = function (nums) {
+    return nums * nums;
+};
+console.log(squareOne(5));
+
+// ==>>>>  Q2.  First class function - function that is treated as variable it can do everything same as variable do .. pass as variable
+
+function squareTwo(num) {
+    return num * num;
+}
+
+function displaySquareTwo(fn) {
+    console.log('Square is', fn(5));
+}
+
+displaySquareTwo(squareTwo);
+
+
+// <<<<<<<<<<<<<<<------------------------------------------------- 2. [[  Objects  ]] --------------------------------------------------------->>>>>>>>>>>
+
+/*
 1.  An object is a collection of properties, and a property is an association between a name (or key) and a value.
       A property's value can be a function, in which case the property is known as a method.
 */
