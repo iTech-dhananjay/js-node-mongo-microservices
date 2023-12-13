@@ -1,3 +1,17 @@
+// <<<<<<<<<<<<<<<-----------------------------------------------  [[ List of All Problem]] ------------------------------------------------>>>>>>>>>>>
+
+/*
+
+  1. Array of Object [ Problem 1 || Problem -2 || Problem-3]
+  2.
+  3.
+  4.
+  5.
+
+*/
+
+
+//--------------------------------------------------------------------------------------------> Problem-1
 const hardcodedData = {
     assets: [
         {
@@ -7,7 +21,6 @@ const hardcodedData = {
             ownershipDetails: {
                 formStepId: '65573e803e40d89735e0d31c'
             },
-            // Add more sections with formStepId as needed
         },
         // Add more assets as needed
     ]
@@ -22,7 +35,6 @@ const formStepDetails = {
         updatedAt: new Date(),
         __v: 0
     },
-    // Add more form step details as needed
 };
 
 const createNestedObject = async (assets, details) => {
@@ -47,8 +59,6 @@ const createNestedObject = async (assets, details) => {
     }
 };
 
-// Call the function
-
 
 createNestedObject(hardcodedData, formStepDetails)
     .then(result => {
@@ -61,6 +71,7 @@ createNestedObject(hardcodedData, formStepDetails)
     .catch(error => console.error(error));
 
 
+//--------------------------------------------------------------------------------------------> Problem-2
 const arr1 = [1, 2, 3, 4, 5];
 const arr2 = [2, 3];
 
@@ -73,6 +84,7 @@ const result = arrIntersection(arr1, arr2);
 console.log(result);
 
 
+//--------------------------------------------------------------------------------------------> Problem-3
 // Sample data representing your groups
 const assetFormManagements = {
     assetFormManagements: [
@@ -121,3 +133,5 @@ console.log(result2);
 //
 // console.log(result2);
 
+
+//--------------------------------------------------------------------------------------------> Problem-4

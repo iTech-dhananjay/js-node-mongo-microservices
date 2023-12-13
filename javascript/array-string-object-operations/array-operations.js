@@ -1,3 +1,14 @@
+// <<<<<<<<<<<<<<<-----------------------------------------------  [[ Array Operations ]] ------------------------------------------------>>>>>>>>>>>
+
+/*
+=> indexOf()
+  1. slice() || splice() || toString() || shift() || unshift() || includes() || isArray()
+  2. JSON.parse() ||  JSON.stringify() || typeof || Grouping Operator () ||
+  3. findIndex() || indexOf() || flatMap()
+  4.
+
+*/
+
 // Comparison of null and undefined
 null == undefined; // true
 null === undefined; // false
@@ -13,6 +24,25 @@ typeof undefined; // 'undefined'
 2. The splice() method of Array instances changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
    splice(start, deleteCount, item1, item2,itemN  )
 */
+
+
+const data = [1, 2, 3, 4, 5]
+
+data.slice(2) //[ 1, 2, 3, 4, 5 ]- slice returns a shallow copy , won't change the original array
+console.log(data)
+
+
+const result = data.slice(2)
+console.log(result) //[ 3, 4, 5 ]
+
+const result1 = data.slice(2, 4)
+console.log(result1) //[ 3, 4 ]
+
+const result2 = data.slice(-1)
+console.log(result2) //[ 5 ]
+
+const result3 = data.slice(2, -1)
+console.log(result3) // [3,4]
 
 // Create an Array
 const arrayA = ['a', 'b', 'c'];
