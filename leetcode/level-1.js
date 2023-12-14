@@ -51,19 +51,19 @@
  */
 
 var twoSum = function (nums, target) {
-     let hash = {};
+    let hash = {};
 
-     for (let i = 0; i < nums.length; i++) {
-          let value = nums[i];
-          hash[value] = i;
-     }
+    for (let i = 0; i < nums.length; i++) {
+        let value = nums[i];
+        hash[value] = i;
+    }
 
-     for (let i = 0; i < nums.length; i++) {
-          let potentialValue = target - nums[i];
-          if (hash[potentialValue] && hash[potentialValue] !== i) {
-               return [i, hash[potentialValue]];
-          }
-     }
+    for (let i = 0; i < nums.length; i++) {
+        let potentialValue = target - nums[i];
+        if (hash[potentialValue] && hash[potentialValue] !== i) {
+            return [i, hash[potentialValue]];
+        }
+    }
 };
 
 console.log(twoSum([2, 7, 11, 15], 9));
@@ -71,13 +71,13 @@ console.log(twoSum([2, 7, 11, 15], 9));
 // <<<<<<<<<<<<<<<--------------------------------------------  [[   Two Sum : Way - 2  ]] --------------------------------------------------------->>>>>>>>>>>
 
 var twoSum = function (nums, target) {
-     for (let i = 0; i < nums.length; i++) {
-          for (j = i + 1; j < nums.length; j++) {
-               if (nums[i] + nums[j] === target) {
-                    return [i, j];
-               }
-          }
-     }
+    for (let i = 0; i < nums.length; i++) {
+        for (j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] === target) {
+                return [i, j];
+            }
+        }
+    }
 }; // TC : O(n)^2
 
 // <<<<<<<<<<<<------------------------------------------------- 2. [[   Add Two Numbers  ]] -------------------------------------------------------->>>>>>>>>>>
@@ -90,7 +90,8 @@ var twoSum = function (nums, target) {
 
  */
 
-var addTwoNumbers = function (l1, l2) {};
+var addTwoNumbers = function (l1, l2) {
+};
 
 // <<<<<<<<<<<<---------------------------------------------------- 13. [[ Roman to Integer ]] ------------------------------------------------------>>>>>>>>>>>
 
@@ -110,29 +111,29 @@ var addTwoNumbers = function (l1, l2) {};
  */
 
 var romanToInt = function (s) {
-     let result = 0;
-     let hash = {
-          I: 1,
-          V: 5,
-          X: 10,
-          L: 50,
-          C: 100,
-          D: 500,
-          M: 1000,
-     };
+    let result = 0;
+    let hash = {
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000,
+    };
 
-     for (let i = 0; i < s.length; i++) {
-          let curr = hash[s[i]];
-          let next = hash[s[i + 1]];
-          //IV
-          if (curr < next) {
-               result += next - curr;
-               i++;
-          } else {
-               result += curr;
-          }
-     }
-     return result;
+    for (let i = 0; i < s.length; i++) {
+        let curr = hash[s[i]];
+        let next = hash[s[i + 1]];
+        //IV
+        if (curr < next) {
+            result += next - curr;
+            i++;
+        } else {
+            result += curr;
+        }
+    }
+    return result;
 };
 console.log(romanToInt('IV')); //4
 
@@ -153,18 +154,18 @@ console.log(romanToInt('IV')); //4
  */
 
 var longestCommonPrefix = function (strs) {
-     if (strs.length === 0) {
-          return '';
-     }
+    if (strs.length === 0) {
+        return '';
+    }
 
-     for (let i = 0; i < strs[0].length; i++) {
-          for (let j = 1; j < strs.length; j++) {
-               if (strs[0][i] != strs[j][i]) {
-                    return strs[0].slice(0, i);
-               }
-          }
-     }
-     return strs[0];
+    for (let i = 0; i < strs[0].length; i++) {
+        for (let j = 1; j < strs.length; j++) {
+            if (strs[0][i] != strs[j][i]) {
+                return strs[0].slice(0, i);
+            }
+        }
+    }
+    return strs[0];
 };
 
 console.log(longestCommonPrefix(['flower', 'flow', 'flight']));
@@ -190,22 +191,22 @@ console.log(longestCommonPrefix(['flower', 'flow', 'flight']));
  */
 
 var isValid = function (s) {
-     let stack = [];
+    let stack = [];
 
-     for (let i = 0; i < s.length; i++) {
-          let top = stack[stack.length - 1];
+    for (let i = 0; i < s.length; i++) {
+        let top = stack[stack.length - 1];
 
-          if (s[i] == '(' || s[i] == '{' || s[i] == '[') {
-               stack.push(s[i]);
-          } else if (
-               (s[i] == ')' && top == '(') ||
-               (s[i] == '}' && top == '{') ||
-               (s[i] == ']' && top == '[')
-          ) {
-               stack.pop();
-          } else return false;
-     }
-     return stack.length === 0;
+        if (s[i] == '(' || s[i] == '{' || s[i] == '[') {
+            stack.push(s[i]);
+        } else if (
+            (s[i] == ')' && top == '(') ||
+            (s[i] == '}' && top == '{') ||
+            (s[i] == ']' && top == '[')
+        ) {
+            stack.pop();
+        } else return false;
+    }
+    return stack.length === 0;
 };
 
 console.log(isValid('()[]{}'));
@@ -233,26 +234,26 @@ console.log(isValid('()[]{}'));
  */
 
 var mergeTwoLists = function (l1, l2) {
-     let dummyHead = new ListNode(0);
-     let currentNode = dummyHead; // it will itterate through this list
+    let dummyHead = new ListNode(0);
+    let currentNode = dummyHead; // it will itterate through this list
 
-     while (l1 != null && l2 != null) {
-          if (l1.val < l2.val) {
-               currentNode.next = l1;
-               l1 = l1.next;
-          } else {
-               currentNode.next = l2;
-               l2 = l2.next;
-          }
-          currentNode = currentNode.next;
-     }
-     if (l1 !== null) {
-          currentNode.next = l1;
-     }
-     if (l2 !== null) {
-          currentNode.next = l2;
-     }
-     return dummyHead.next;
+    while (l1 != null && l2 != null) {
+        if (l1.val < l2.val) {
+            currentNode.next = l1;
+            l1 = l1.next;
+        } else {
+            currentNode.next = l2;
+            l2 = l2.next;
+        }
+        currentNode = currentNode.next;
+    }
+    if (l1 !== null) {
+        currentNode.next = l1;
+    }
+    if (l2 !== null) {
+        currentNode.next = l2;
+    }
+    return dummyHead.next;
 };
 
 // <<<<<<<<<<<<<<<----------------------------------------------- 189. [[  Rotate Array    ]] ----------------------------------------------------->>>>>>>>>>>
@@ -292,31 +293,33 @@ var rotate = function (nums, k) {
  */
 
 let reverseNums = (nums, start, end) => {
-     while (start < end) {
-          [nums[start], nums[end]] = [nums[end], nums[start]];
-          start++;
-          end--;
-     }
+    while (start < end) {
+        [nums[start], nums[end]] = [nums[end], nums[start]];
+        start++;
+        end--;
+    }
 };
 
 var rotate = function (nums, k) {
-     k = k % nums.length;
-     reverseNums(nums, 0, nums.length - 1);
-     reverseNums(nums, 0, k - 1);
-     reverseNums(nums, k, nums.length - 1);
+    k = k % nums.length;
+    reverseNums(nums, 0, nums.length - 1);  // Reverse the entire array
+    reverseNums(nums, 0, k - 1); // Reverse the subarray from the beginning to index k-1
+    reverseNums(nums, k, nums.length - 1); // Reverse the subarray from index k to the end
+
+    return nums; // Return the rotated array
 };
 
 // <<<<<<<<<<<--------------------------------------- 189. [[ Remove Duplicates from Sorted Array   ]] -------------------------------------------->>>>>>>>>>>
 
 // splice will not modify arr and remove element form specific position  nums.splice(i, 1); i -> position and 1 -> one element should be deleted
 var removeDuplicates = function (nums) {
-     for (let i = 0; i < nums.length; i++) {
-          for (let j = nums.length; j >= i + 1; j--) {
-               if (nums[i] === nums[j]) {
-                    nums.splice(i, 1);
-               }
-          }
-     }
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = nums.length; j >= i + 1; j--) {
+            if (nums[i] === nums[j]) {
+                nums.splice(i, 1);
+            }
+        }
+    }
 }; /* 
 
 
@@ -334,9 +337,9 @@ var removeDuplicates = function (nums) {
  * @return {number}
  */
 var lengthOfLastWord = function (s) {
-     if (s.length === 0) return 0;
-     let arr = s.trim().split(' ');
-     return arr[arr.length - 1].length;
+    if (s.length === 0) return 0;
+    let arr = s.trim().split(' ');
+    return arr[arr.length - 1].length;
 };
 
 // <<<<<<<<<<<<<<<---------------------------------------------- 27. [[  Remove Element  ]] -------------------------------------------------------->>>>>>>>>>>
@@ -346,11 +349,11 @@ var lengthOfLastWord = function (s) {
  * @return {number}
  */
 var removeElement = function (nums, val) {
-     for (let i = nums.length; i >= 0; i--) {
-          if (nums[i] === val) {
-               nums.splice(i, 1); // splice will remove elements form specific position of an original array
-          }
-     }
+    for (let i = nums.length; i >= 0; i--) {
+        if (nums[i] === val) {
+            nums.splice(i, 1); // splice will remove elements form specific position of an original array
+        }
+    }
 };
 
 // <<<<<<<<<<<<---------------------------------------------------- 88. [[   Merge Sorted Array ]] ------------------------------------------------>>>>>>>>>>>
@@ -361,7 +364,8 @@ var removeElement = function (nums, val) {
         Output: [1,2,2,3,5,6]
 */
 
-var merge = function (nums1, m, nums2, n) {};
+var merge = function (nums1, m, nums2, n) {
+};
 
 /* 
 
@@ -385,25 +389,26 @@ var merge = function (nums1, m, nums2, n) {};
 
 */
 
-var search = function (nums, target) {};
+var search = function (nums, target) {
+};
 
 // <<<<<<<<<<<------------------------------------------ 151.  [[   Reverse Words in a String ]] --------------------------------------------------->>>>>>>>>>>
 var reverseWordss = function (s) {
-     const string = s.split(' ');
-     let revStr = '';
+    const string = s.split(' ');
+    let revStr = '';
 
-     for (let i = string.length - 1; i >= 0; i--) {
-          if (string[i] == '') continue;
-          if (revStr.length > 0) revStr = revStr + ' ';
-          revStr = revStr + string[i];
-     }
+    for (let i = string.length - 1; i >= 0; i--) {
+        if (string[i] == '') continue;
+        if (revStr.length > 0) revStr = revStr + ' ';
+        revStr = revStr + string[i];
+    }
 
-     return revStr;
+    return revStr;
 };
 console.log(
-     reverseWordss(
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry'
-     )
+    reverseWordss(
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry'
+    )
 );
 
 // <<<<<<<<<<<------------------------------------------ 442.  [[  Find All Duplicates in an Array ]] ------------------------------------------------>>>>>>>>>>>
@@ -422,19 +427,19 @@ console.log(
  */
 
 var findDuplicates = function (nums) {
-     let result = [];
+    let result = [];
 
-     for (let i = 0; i < nums.length; i++) {
-          let index = Math.abs(nums[i]) - 1;
-          let value = nums[index];
+    for (let i = 0; i < nums.length; i++) {
+        let index = Math.abs(nums[i]) - 1;
+        let value = nums[index];
 
-          if (value < 0) {
-               result.push(Math.abs(nums[i]));
-          } else {
-               nums[index] = -nums[index];
-          }
-     }
-     return result;
+        if (value < 0) {
+            result.push(Math.abs(nums[i]));
+        } else {
+            nums[index] = -nums[index];
+        }
+    }
+    return result;
 };
 
 console.log(findDuplicates([4, 3, 2, 7, 8, 2, 3, 1]));
@@ -454,73 +459,73 @@ console.log(findDuplicates([4, 3, 2, 7, 8, 2, 3, 1]));
 
 */
 var plusOne = function (digits) {
-     for (let i = digits.length - 1; i >= 0; i--) {
-          if (digits[i] < 9) {
-               digits[i] = digits[i] + 1;
-               return digits;
-          } else {
-               digits[i] = 0;
-          }
-     }
+    for (let i = digits.length - 1; i >= 0; i--) {
+        if (digits[i] < 9) {
+            digits[i] = digits[i] + 1;
+            return digits;
+        } else {
+            digits[i] = 0;
+        }
+    }
 
-     digits.unshift(1);
-     return digits;
+    digits.unshift(1);
+    return digits;
 };
 
 // <<<<<<<<<<<<<<<------------------------------------------------- 412. [[  Fizz Buzz ]] ------------------------------------------------------------->>>>>>>>>>>
 
 function fizzBuzz(n) {
-     let result = [];
-     for (let i = 1; i <= n; i++) {
-          if (i % 3 === 0 && i % 5 === 0) {
-               result.push('FizzBuzz');
-          } else if (i % 3 === 0) {
-               result.push('Fizz');
-          } else if (i % 5 === 0) {
-               result.push('Buzz');
-          } else {
-               result.push(i.toString());
-          }
-     }
-     return result;
+    let result = [];
+    for (let i = 1; i <= n; i++) {
+        if (i % 3 === 0 && i % 5 === 0) {
+            result.push('FizzBuzz');
+        } else if (i % 3 === 0) {
+            result.push('Fizz');
+        } else if (i % 5 === 0) {
+            result.push('Buzz');
+        } else {
+            result.push(i.toString());
+        }
+    }
+    return result;
 }
 
 // <<<<<<<<<<<<<<<------------------------------------------------- VVI. [[  Fizz Buzz ]] ------------------------------------------------------------->>>>>>>>>>>
 const arr = [
-     { name: 'Krishna', score: 34 },
-     { name: 'Aditi', score: 27 },
-     { name: 'Aditya', score: 27 },
-     { name: 'Chaman', score: 32 },
-     { name: 'Dhananjay', score: 32 },
+    {name: 'Krishna', score: 34},
+    {name: 'Aditi', score: 27},
+    {name: 'Aditya', score: 27},
+    {name: 'Chaman', score: 32},
+    {name: 'Dhananjay', score: 32},
 ];
 // Bubble sort implementation
 for (let i = 0; i < arr.length - 1; i++) {
-     for (let j = 0; j < arr.length - i - 1; j++) {
-          // Compare scores
-          if (arr[j].score < arr[j + 1].score) {
-               // Swap objects
-               let temp = arr[j];
-               arr[j] = arr[j + 1];
-               arr[j + 1] = temp;
-          } else if (arr[j].score === arr[j + 1].score) {
-               // If scores are equal, compare names alphabetically
-               if (arr[j].name > arr[j + 1].name) {
-                    // Swap objects
-                    let temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-               }
-          }
-     }
+    for (let j = 0; j < arr.length - i - 1; j++) {
+        // Compare scores
+        if (arr[j].score < arr[j + 1].score) {
+            // Swap objects
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+        } else if (arr[j].score === arr[j + 1].score) {
+            // If scores are equal, compare names alphabetically
+            if (arr[j].name > arr[j + 1].name) {
+                // Swap objects
+                let temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
 }
 
 arr.sort((a, b) => {
-     // Compare scores
-     if (a.score !== b.score) {
-          return b.score - a.score; // Sort in descending order based on score
-     }
-     // If scores are equal, compare names alphabetically
-     return b.name.localeCompare(a.name);
+    // Compare scores
+    if (a.score !== b.score) {
+        return b.score - a.score; // Sort in descending order based on score
+    }
+    // If scores are equal, compare names alphabetically
+    return b.name.localeCompare(a.name);
 });
 
 console.log(arr);
