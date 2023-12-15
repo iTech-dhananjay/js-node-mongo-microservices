@@ -338,6 +338,25 @@ function wordCount(w) {
 
 console.log(wordCount('This is a list of words')); //6
 
+
+const words = "There is word count ";
+
+const wordCount = (words) => {
+    let count = 0;
+    const wordArray = words.split(' ');
+
+    for (let word of wordArray) {
+        if (word) {
+            count++;
+        }
+    }
+
+    return count;
+};
+
+console.log(wordCount(words));
+
+
 // <<<<<<<<<<<<----------------------------------------------------- 14. [[   Find Max of array  ]] -------------------------------------------------------------->>>>>>>>>>>
 let arrk = [2, 4, 5, 7, 8];
 
