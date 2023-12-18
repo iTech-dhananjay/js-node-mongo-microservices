@@ -97,9 +97,7 @@ console.log(linearSearch(number, 28)); //-1
 
 // <<<<<<<<<<<<<<<------------------------------------------------ 3. [[   Merge sort  ]] ------------------------------------------------------------->>>>>>>>>>>
 /*
-   - Best Time complexity : O(nlogn) 
-
-
+   - Best Time complexity : O(nlogn)
  */
 function mergeSort(arr) {
     if (arr.length < 2) {
