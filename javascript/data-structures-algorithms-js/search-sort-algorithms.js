@@ -99,11 +99,9 @@ console.log(linearSearch(number, 28)); //-1
 /*
    - Best Time complexity : O(nlogn)
 
-Certainly! Let's go through each step with detailed explanations without skipping any part:
+Certainly, let's go through each step, tracking the position of `-2` throughout the process:
 
 ### Step 1 - Initial Call:
-const arr = [8, 20, -2, 4, -6];
-console.log(mergeSort(arr));
 
 ### Step 2 - Recursive Call 1:
 
@@ -140,10 +138,15 @@ console.log(mergeSort(arr));
     - Loop ends as both `leftArr` and `rightArr` are empty.
     - Concatenating remaining elements in either `leftArr` or `rightArr` to `sortedArr`.
       - Result: `[-6, 4, 8, 20]`.
+### Explanation:
 
-### Step 5 - Final Result:
+The element `-2` is present in the original array `[8, 20, -2, 4, -6]`. During the sorting process, `-2` is correctly handled:
 
-- The final result of `mergeSort([8, 20, -2, 4, -6])` is `[ -6, 4, 8, 20 ]`.
+- It is part of the left subarray `leftArr: [-2]` during the split in the second recursive call.
+- The recursive call `mergeSort([-2])` returns `[-2]`.
+- In the merging process, when merging the results of `mergeSort([4])` and `mergeSort([-6])`, `[-2]` is not involved as it is part of the left subarray.
+
+Therefore, after the complete sorting process, the final result is `[ -6, -2, 4, 8, 20 ]`, and `-2` is correctly positioned between `-6` and `4`.
 
  */
 function mergeSort(arr) {
