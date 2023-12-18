@@ -98,6 +98,53 @@ console.log(linearSearch(number, 28)); //-1
 // <<<<<<<<<<<<<<<------------------------------------------------ 3. [[   Merge sort  ]] ------------------------------------------------------------->>>>>>>>>>>
 /*
    - Best Time complexity : O(nlogn)
+
+Certainly! Let's go through each step with detailed explanations without skipping any part:
+
+### Step 1 - Initial Call:
+const arr = [8, 20, -2, 4, -6];
+console.log(mergeSort(arr));
+
+### Step 2 - Recursive Call 1:
+
+- `mergeSort([8, 20])`
+  - Splitting the array: `leftArr: [8]` and `rightArr: [20]`.
+    - `mergeSort([8])`: Returns `[8]`.
+    - `mergeSort([20])`: Returns `[20]`.
+  - Merging the results: `merge([8], [20])` gives `[8, 20]`.
+
+### Step 3 - Recursive Call 2:
+
+- `mergeSort([-2, 4, -6])`
+  - Splitting the array: `leftArr: [-2]` and `rightArr: [4, -6]`.
+    - `mergeSort([-2])`: Returns `[-2]`.
+    - `mergeSort([4, -6])`:
+      - Splitting further: `leftArr: [4]` and `rightArr: [-6]`.
+        - `mergeSort([4])`: Returns `[4]`.
+        - `mergeSort([-6])`: Returns `[-6]`.
+      - Merging the results: `merge([4], [-6])` gives `[-6, 4]`.
+
+### Step 4 - Merge Results:
+
+- Merging the results of `mergeSort([8, 20])` and `mergeSort([-2, 4, -6])`:
+  - `merge([8, 20], [-6, 4])`:
+    - Initializing `sortedArr: []`.
+    - Comparing `8` and `-6`, pushing `-6` to `sortedArr`, and removing it from `rightArr`.
+      - `sortedArr: [-6]`, `leftArr: [8, 20]`, `rightArr: [4]`.
+    - Comparing `8` and `4`, pushing `4` to `sortedArr`, and removing it from `rightArr`.
+      - `sortedArr: [-6, 4]`, `leftArr: [8, 20]`, `rightArr: []`.
+    - Comparing `8` and no element in `rightArr`, pushing `8` to `sortedArr`, and removing it from `leftArr`.
+      - `sortedArr: [-6, 4, 8]`, `leftArr: [20]`, `rightArr: []`.
+    - Comparing `20` and no element in `rightArr`, pushing `20` to `sortedArr`, and removing it from `leftArr`.
+      - `sortedArr: [-6, 4, 8, 20]`, `leftArr: []`, `rightArr: []`.
+    - Loop ends as both `leftArr` and `rightArr` are empty.
+    - Concatenating remaining elements in either `leftArr` or `rightArr` to `sortedArr`.
+      - Result: `[-6, 4, 8, 20]`.
+
+### Step 5 - Final Result:
+
+- The final result of `mergeSort([8, 20, -2, 4, -6])` is `[ -6, 4, 8, 20 ]`.
+
  */
 function mergeSort(arr) {
     if (arr.length < 2) {
