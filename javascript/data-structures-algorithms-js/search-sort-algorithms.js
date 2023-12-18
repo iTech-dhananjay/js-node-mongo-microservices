@@ -10,11 +10,12 @@ O(n^2), O(2^n) and O(n!) - Horrible/Worst
 
 
   1. Binary Search  [ Divide & Conquerer Technique ]
-  2. Linear Search 
-  3. Merge sort 
-  4. Bubble Sort without in-built method
-  5. Selected Sort [https://www.youtube.com/watch?v=766JkxAAFJ4&list=PL_HlKez9XCSOi5thYDzipbJ2pEdzop7vx&index=16] 
-  6. Recursive function
+  2. Linear Search
+  3. Quick Sort
+  4. Merge sort
+  5. Bubble Sort without in-built method
+  6. Selection Sort [https://www.youtube.com/watch?v=766JkxAAFJ4&list=PL_HlKez9XCSOi5thYDzipbJ2pEdzop7vx&index=16]
+  7. Recursive function
 
 */
 
@@ -95,7 +96,10 @@ function linearSearch(number, num) {
 console.log(linearSearch(number, 8)); //3
 console.log(linearSearch(number, 28)); //-1
 
-// <<<<<<<<<<<<<<<------------------------------------------------ 3. [[   Merge sort  ]] ------------------------------------------------------------->>>>>>>>>>>
+
+// <<<<<<<<<<<<<<<-------------------------------------------------- 3. [[  Quick Sort  ]] ------------------------------------------------------------>>>>>>>>>>>
+
+// <<<<<<<<<<<<<<<------------------------------------------------ 4. [[   Merge sort  ]] ------------------------------------------------------------->>>>>>>>>>>
 /*
    - Best Time complexity : O(nlogn)
 
@@ -175,7 +179,7 @@ function merge(leftArr, rightArr) {
 const arr = [8, 20, -2, 4, -6];
 console.log(mergeSort(arr)); //[ -6, -2, 4, 8, 20 ] Best Time complexity O(nlogn)
 
-// <<<<<<<<----------------------------- 4. [[   Bubble Sort without in-built method [Most asked sort question] ]] --------------------------------------->>>>>>>>>>>
+// <<<<<<<<----------------------------- 5. [[   Bubble Sort without in-built method [Most asked sort question] ]] --------------------------------------->>>>>>>>>>>
 /* 
 20, 5, 1, 4, 80, 78 === i / here it will compare 20,5 (20-i ,5=j) first it will 20,20 
 5, 20, 1, 4, 80, 78 === j
@@ -202,9 +206,9 @@ for (let i = 0; i < array.length; i++) {
 }
 console.log(array); //[ 1, 4, 5, 20, 78, 80 ]
 
-// <<<<<<<<<<<<<<<------------------------------------------------ 5. [[  Selection sort  ]] -------------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<<<------------------------------------------------ 6. [[  Selection sort  ]] -------------------------------------------------------------->>>>>>>>>>>
 
-// <<<<<<<<<<<<<<<------------------------------------------------- 6. [[  Recursive function ]] ---------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<<<------------------------------------------------- 7. [[  Recursive function ]] ---------------------------------------------------------->>>>>>>>>>>
 
 /* 
     - [ Recursive function ] : When f(n) call itself 
