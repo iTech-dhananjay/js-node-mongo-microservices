@@ -99,6 +99,31 @@ console.log(linearSearch(number, 28)); //-1
 
 // <<<<<<<<<<<<<<<-------------------------------------------------- 3. [[  Quick Sort  ]] ------------------------------------------------------------>>>>>>>>>>>
 
+const arr = [8, 20, -2, 4, -6];
+
+const quickSort = (arr) => {
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    let pivot = arr[0];
+    let leftArr = [];
+    let rightArr = [];
+
+    // Skip the first element (pivot)
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+            leftArr.push(arr[i]);
+        } else {
+            rightArr.push(arr[i]);
+        }
+    }
+
+    return [...quickSort(leftArr), pivot, ...quickSort(rightArr)];
+};
+
+console.log(quickSort(arr));
+
 // <<<<<<<<<<<<<<<------------------------------------------------ 4. [[   Merge sort  ]] ------------------------------------------------------------->>>>>>>>>>>
 /*
    - Best Time complexity : O(nlogn)
