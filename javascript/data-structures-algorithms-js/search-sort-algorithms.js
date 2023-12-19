@@ -99,6 +99,37 @@ console.log(linearSearch(number, 28)); //-1
 
 // <<<<<<<<<<<<<<<-------------------------------------------------- 3. [[  Quick Sort  ]] ------------------------------------------------------------>>>>>>>>>>>
 
+
+/*
+
+### QuickSort Algorithm In-Depth Explanation:
+
+1. **Initial Call:**
+   - Input Array: `[8, 20, -2, 4, -6]`
+
+2. **QuickSort Function:**
+   - Pivot Selection: Initially, the pivot is the first element (`8`).
+   - Iteration: Elements less than the pivot go to `leftArr`, and others go to `rightArr`.
+   - Recursive Calls: Apply `quickSort` on both `leftArr` and `rightArr`.
+   - Concatenation: Concatenate the sorted `leftArr`, pivot, and sorted `rightArr`.
+
+3. **Sorting Process:**
+   - **Round 1:**
+     - Pivot: `8`
+     - `leftArr`: `[-2, 4, -6]`
+     - Recursive Call on `leftArr`: Pivot is `-2`.
+     - Sorting `leftArr`: `[-6, -2, 4]`
+     - Result: `[-6, -2, 4, 8, 20]`
+
+4. **Output:**
+   - Final Sorted Array: `[ -6, -2, 4, 8, 20 ]`
+
+In summary, QuickSort selects a pivot, partitions the array into elements less than and greater than the pivot, and recursively applies the same process to each subarray.
+The final sorted array is obtained by concatenating the sorted left subarray, the pivot, and the sorted right subarray.
+This process continues until the base case (one or zero elements) is reached.
+
+*/
+
 const arr = [8, 20, -2, 4, -6];
 
 const quickSort = (arr) => {
