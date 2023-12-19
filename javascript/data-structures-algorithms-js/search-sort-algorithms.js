@@ -133,6 +133,7 @@ This process continues until the base case (one or zero elements) is reached.
 const arr = [8, 20, -2, 4, -6];
 
 const quickSort = (arr) => {
+    //base case
     if (arr.length <= 1) {
         return arr;
     }
