@@ -142,8 +142,8 @@ Certainly, let's go through each step, tracking the position of `-2` throughout 
     - Loop ends as both `leftArr` and `rightArr` are empty.
     - Concatenating remaining elements in either `leftArr` or `rightArr` to `sortedArr`.
       - Result: `[-6, 4, 8, 20]`.
-### Explanation:
 
+### Explanation:
 The element `-2` is present in the original array `[8, 20, -2, 4, -6]`. During the sorting process, `-2` is correctly handled:
 
 - It is part of the left subarray `leftArr: [-2]` during the split in the second recursive call.
