@@ -110,7 +110,7 @@ var addTwoNumbers = function (l1, l2) {
  * @return {number}
  */
 
-var romanToInt = function (s) {
+const romanToInt = (s) => {
     let result = 0;
     let hash = {
         I: 1,
@@ -123,19 +123,23 @@ var romanToInt = function (s) {
     };
 
     for (let i = 0; i < s.length; i++) {
-        let curr = hash[s[i]];
-        let next = hash[s[i + 1]];
-        //IV
+        let curr = hash[s[i]];  // Current Roman numeral value
+        let next = hash[s[i + 1]];  // Next Roman numeral value
+
         if (curr < next) {
+            // If current value is less than the next value (e.g., IV), subtract current from next
             result += next - curr;
-            i++;
+            i++;  // Skip the next numeral, as it has already been considered
         } else {
+            // If current value is greater than or equal to the next value, simply add the current value
             result += curr;
         }
     }
+
     return result;
-};
-console.log(romanToInt('IV')); //4
+}
+
+console.log(romanToInt('IV')); // Output: 4
 
 // <<<<<<<<<<<<------------------------------------------------- 13. [[ Longest Common Prefix  ]] ------------------------------------------------------->>>>>>>>>>>
 
