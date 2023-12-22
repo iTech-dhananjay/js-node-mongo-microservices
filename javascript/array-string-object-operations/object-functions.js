@@ -236,5 +236,4 @@ console.log(isBankingIndustry);
 const industryIds = industryArray.map((ind) => ind.id);
 console.log(industryIds);
 
-
 //--------------------------------------------------------------------------------------------> Type-3
