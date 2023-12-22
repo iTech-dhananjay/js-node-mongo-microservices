@@ -210,29 +210,41 @@ const jsonData = {
         },
     ],
 };
+// Filtering roles with name starting with 'r'
+const rolesStartingWithR = ourRoleArray.filter((role) => role.name.startsWith('r'));
+console.log(rolesStartingWithR);
 
-// Filtering 'ourrole' array to get values where the name is 'API Integration'
-const apiIntegrationRole = ourRoleArray.find((role) => role.name === 'ourrole' && role.value === 'API Integration');
-console.log(apiIntegrationRole);
+// Sorting roles based on their ids
+const sortedRoles = ourRoleArray.sort((a, b) => a.id.localeCompare(b.id));
+console.log(sortedRoles);
 
-// Mapping 'ourrole' array to get an array of role names
-const ourRoleNames = ourRoleArray.map((role) => role.name);
-console.log(ourRoleNames);
+// Checking if all roles have a value
+const allRolesHaveValue = ourRoleArray.every((role) => 'value' in role);
+console.log(allRolesHaveValue);
 
 
-// Check if 'Web Development' exists in 'category' array
-const isWebDevelopmentCategory = categoryArray.some((cat) => cat.value === 'Web Development');
-console.log(isWebDevelopmentCategory);
+// Counting the number of categories
+const categoryCount = categoryArray.length;
+console.log(categoryCount);
 
-// Getting the first category in the array
-const firstCategory = categoryArray[0];
-console.log(firstCategory);
+// Extracting unique category names
+const uniqueCategoryNames = [...new Set(categoryArray.map((cat) => cat.value))];
+console.log(uniqueCategoryNames);
 
-// Checking if 'Banking' exists in 'industry' array
-const isBankingIndustry = industryArray.some((ind) => ind.value === 'Banking');
-console.log(isBankingIndustry);
+// Summing the lengths of category names
+const totalLengthOfCategories = categoryArray.reduce((total, cat) => total + cat.value.length, 0);
+console.log(totalLengthOfCategories);
 
-// Extracting ids from 'industry' array
-const industryIds = industryArray.map((ind) => ind.id);
-console.log(industryIds);
+// Finding the industry with the longest name
+const industryWithLongestName = industryArray.reduce((prev, current) => (prev.value.length > current.value.length ? prev : current));
+console.log(industryWithLongestName);
+
+// Grouping industries by the first letter of their names
+const groupedIndustries = industryArray.reduce((groups, ind) => {
+    const key = ind.value[0].toUpperCase();
+    (groups[key] || (groups[key] = [])).push(ind);
+    return groups;
+}, {});
+console.log(groupedIndustries);
+
 //--------------------------------------------------------------------------------------------> Type-3
