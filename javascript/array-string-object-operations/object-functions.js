@@ -6,8 +6,8 @@
 
 // <<<<<<<<<<<<<<<------------------------------------------------- 1. [[  Functions () ]] --------------------------------------------------------->>>>>>>>>>>
 
-
 // ==>>>> Q1. Function Expression
+
 // after const square = it is called anonymous function which has no name - this function can be assigned as variable or pass as callback function
 const squareOne = function (nums) {
     return nums * nums;
@@ -211,18 +211,30 @@ const jsonData = {
     ],
 };
 
-// Accessing ourrole
-const ourRoleData = jsonData.data.find((item) => 'ourrole' in item.item);
-const ourRoleArray = ourRoleData.item.ourrole;
-console.log(ourRoleArray);
+// Filtering 'ourrole' array to get values where the name is 'API Integration'
+const apiIntegrationRole = ourRoleArray.find((role) => role.name === 'ourrole' && role.value === 'API Integration');
+console.log(apiIntegrationRole);
 
-// Accessing category
-const categoryData = jsonData.data.find((item) => 'category' in item.item);
-const categoryArray = categoryData.item.category;
-console.log(categoryArray);
+// Mapping 'ourrole' array to get an array of role names
+const ourRoleNames = ourRoleArray.map((role) => role.name);
+console.log(ourRoleNames);
 
-// Accessing industry
-const industryData = jsonData.data.find((item) => 'industry' in item.item);
-const industryArray = industryData.item.industry;
-console.log(industryArray);
 
+// Check if 'Web Development' exists in 'category' array
+const isWebDevelopmentCategory = categoryArray.some((cat) => cat.value === 'Web Development');
+console.log(isWebDevelopmentCategory);
+
+// Getting the first category in the array
+const firstCategory = categoryArray[0];
+console.log(firstCategory);
+
+// Checking if 'Banking' exists in 'industry' array
+const isBankingIndustry = industryArray.some((ind) => ind.value === 'Banking');
+console.log(isBankingIndustry);
+
+// Extracting ids from 'industry' array
+const industryIds = industryArray.map((ind) => ind.id);
+console.log(industryIds);
+
+
+//--------------------------------------------------------------------------------------------> Type-3
