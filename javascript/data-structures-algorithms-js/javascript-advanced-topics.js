@@ -23,7 +23,7 @@ O(n^2), O(2^n) and O(n!) - Horrible/Worst
   11. IIFE (Immediately Invoked Function Expression)
   12. Currying
   13. ['this'] keyword
-  14. Prototype and Prototypal Inheritance 
+  14. Prototype and Prototypal Inheritance  - Not required as of now
 
 */
 //Tricky
@@ -37,7 +37,6 @@ console.log(typeof arrays); //object
 // <<<<<<<<<<<<<<<------------------------------------------------  1. [[ indexOf()  ]]]] ----------------------------------------------------->>>>>>>>>>>
 /*   
      - The indexOf() method returns the first index of occurance of an array element, or -1 if it is not found.
-
 */
 
 let languages = ['Java', 'JavaScript', 'Python', 'JavaScript'];
