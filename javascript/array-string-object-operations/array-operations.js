@@ -124,7 +124,7 @@ let arr = [1, 2, 10, 3, 4, 5, 6, [7, 8, [6, [7, 9]]]];
 let outputOne = arr.flat(Infinity);
 console.log(outputOne); // [1, 2, 10, 3, 4, 5, 6, 7, 8, 6, 7, 9];
 
-let outputTwo = arr.flat(2); // [1, 2, 10, 3, 4, 5, 6, 7, 8, 6, [7, 9]];
+let outputTwo = arr.flat(2); // [1, 2, 10, 3, 4, 5, 6, 7, 8, 6, [7, 9]];  //flatten the array upto '2' level
 
 
 //-----------------------------------------------------------------------------------------> Type-3
