@@ -235,5 +235,4 @@ console.log(isBankingIndustry);
 // Extracting ids from 'industry' array
 const industryIds = industryArray.map((ind) => ind.id);
 console.log(industryIds);
-
 //--------------------------------------------------------------------------------------------> Type-3
