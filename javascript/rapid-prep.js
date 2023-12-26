@@ -401,3 +401,24 @@ function outer() {
 // The inner function retains access to the variable 'a' due to closure.
 const innerFun = outer();
 console.log(innerFun());
+
+
+//----------->
+const str = "Hello";
+
+function solution(str) {
+    // base case
+    if (str.length === 0) {
+        console.log("Base Case:", str);
+        return " ";
+    }
+
+    // recursion
+    console.log("Current Character:", str[str.length - 1]);
+    console.log("Remaining String:", str.slice(0, str.length - 1));
+
+    return str[str.length - 1] +
+        solution(str.slice(0, str.length - 1));
+}
+
+console.log("Result:", solution(str));
