@@ -533,3 +533,10 @@ arr.sort((a, b) => {
 });
 
 console.log(arr);
+
+
+// Loop through ASCII values for uppercase letters (A-Z)----------------------------------------------------------
+for (let i = 65; i <= 90; i++) {
+    // Convert ASCII value to corresponding character and print
+    console.log(String.fromCharCode(i));
+}
