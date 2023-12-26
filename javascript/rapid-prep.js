@@ -469,4 +469,8 @@ console.log("Result:", solution(str));
 
 14. **Final Result:**
 - The final result is the reversed string: " olleH".
+
+
+==Backtracking refers to the process of undoing or backtracking the steps taken during recursion. In the context of the given code,
+ backtracking happens during the unwinding phase of the recursive calls. Let's break down how backtracking occurs in the provided code
 */
