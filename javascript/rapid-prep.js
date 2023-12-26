@@ -404,6 +404,8 @@ console.log(innerFun());
 
 
 //----------->
+
+
 const str = "Hello";
 
 function solution(str) {
@@ -422,3 +424,49 @@ function solution(str) {
 }
 
 console.log("Result:", solution(str));
+
+
+/*
+1. **Initial Call:**
+- The function is called with the string "Hello".
+
+2. **Base Case Check:**
+- The length of the string is not 0, so the base case is not met.
+
+3. **Recursion (1st Call):**
+- The function returns the last character of the string "Hello", which is "o", and then calls itself with the substring "Hell".
+
+4. **Base Case Check (1st Recursive Call):**
+- The length of "Hell" is not 0, so the base case is not met.
+
+5. **Recursion (2nd Call):**
+- The function returns the last character of "Hell", which is "l", and then calls itself with the substring "Hel".
+
+6. **Base Case Check (2nd Recursive Call):**
+- The length of "Hel" is not 0, so the base case is not met.
+
+7. **Recursion (3rd Call):**
+- The function returns the last character of "Hel", which is "l", and then calls itself with the substring "He".
+
+8. **Base Case Check (3rd Recursive Call):**
+- The length of "He" is not 0, so the base case is not met.
+
+9. **Recursion (4th Call):**
+- The function returns the last character of "He", which is "e", and then calls itself with the substring "H".
+
+10. **Base Case Check (4th Recursive Call):**
+- The length of "H" is not 0, so the base case is not met.
+
+11. **Recursion (5th Call):**
+- The function returns the last character of "H", which is "H", and then calls itself with the substring "" (empty string).
+
+12. **Base Case Check (5th Recursive Call - Base Case):**
+- The length of the empty string is 0, so the base case is met.
+- The function returns a space character.
+
+13. **Backtracking:**
+- As the recursion unwinds, it concatenates the results: "e" + "l" + "l" + "o" + " ".
+
+14. **Final Result:**
+- The final result is the reversed string: " olleH".
+*/
