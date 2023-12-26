@@ -404,26 +404,26 @@ console.log(innerFun());
 
 
 //----------->
-
-
 const str = "Hello";
 
 function solution(str) {
     // base case
     if (str.length === 0) {
-        console.log("Base Case:", str);
         return " ";
     }
 
     // recursion
-    console.log("Current Character:", str[str.length - 1]);
-    console.log("Remaining String:", str.slice(0, str.length - 1));
+    const lastCharacter = str[str.length - 1];
+    const recursiveResult = solution(str.slice(0, str.length - 1));
 
-    return str[str.length - 1] +
-        solution(str.slice(0, str.length - 1));
+    // Combine the current character with the recursive result
+    const combinedResult = lastCharacter + recursiveResult;
+
+    return combinedResult;
 }
 
-console.log("Result:", solution(str));
+const finalResult = solution(str);
+console.log("Final Result:", finalResult);
 
 
 /*
