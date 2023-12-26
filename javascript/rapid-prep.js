@@ -474,3 +474,12 @@ console.log("Result:", solution(str));
 ==Backtracking refers to the process of undoing or backtracking the steps taken during recursion. In the context of the given code,
  backtracking happens during the unwinding phase of the recursive calls. Let's break down how backtracking occurs in the provided code
 */
+
+const data = [
+    {sum: 1}, {sum: 2}, {sum: 3}
+]
+const res = data.reduce((acc, curr) => {
+    return acc + curr.sum
+}, 0)
+
+console.log(res)
