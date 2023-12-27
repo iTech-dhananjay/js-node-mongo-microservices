@@ -464,6 +464,8 @@ console.log(findDuplicates([4, 3, 2, 7, 8, 2, 3, 1]));
 
 
 */
+
+//Correct approach
 var plusOne = function (digits) {
     for (let i = digits.length - 1; i >= 0; i--) {
         if (digits[i] < 9) {
