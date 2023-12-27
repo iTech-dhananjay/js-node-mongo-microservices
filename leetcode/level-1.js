@@ -15,6 +15,8 @@
   27.  Remove Element
   88.  Merge Sorted Array
   66.  Plus One
+  169. Majority Element
+
 
 
   :: [[ Medium ]]
@@ -540,3 +542,41 @@ for (let i = 65; i <= 90; i++) {
     // Convert ASCII value to corresponding character and print
     console.log(String.fromCharCode(i));
 }
+
+
+const arr = [1, 2, 3, 2, 3, 4, 2, 6, 2, 3, 5, 2, 7];
+
+
+//169. Majority Element
+
+const majorityElement = (arr) => {
+    let maxCount = 0;
+    let maxElement = null;
+    let hash = {};
+    let mid = Math.floor(arr.length / 2);
+
+    for (let i = 0; i < arr.length; i++) {
+        let element = arr[i];
+
+        if (hash[element]) {
+            hash[element]++;
+        } else {
+            hash[element] = 1;
+        }
+
+        if (hash[element] > maxCount) {
+            maxCount = hash[element];
+            maxElement = element;
+        }
+    }
+
+    const result = {maxElement, hash, maxCount};
+
+    if (maxCount > mid) {
+        return result;
+    }
+
+    return false;
+};
+
+console.log(majorityElement(arr));
