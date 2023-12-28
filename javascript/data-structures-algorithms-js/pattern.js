@@ -65,6 +65,7 @@ for (let n = 1; n <= rows; n++) {
     for (let num = 1; num <= n; num++) {
         pattern += n;
     }
+    
     // Add a new line character after contents of each line
     pattern += "\n";
 }
