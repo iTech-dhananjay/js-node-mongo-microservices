@@ -70,8 +70,6 @@ for (let n = 1; n <= rows; n++) {
     pattern += "\n";
 }
 console.log(pattern);
-
-
 /*
 12345
 1234
