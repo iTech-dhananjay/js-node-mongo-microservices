@@ -84,28 +84,3 @@ const arraySum = function (arr) {
 
 let result = arraySum(arr);
 console.log(result);
-
-// <<<<<<<<<<<<<<<------------------------------------------------------------[ Sum of Array elements :- Arrow Function ] ------------------------------------------------------------>>>>>>>
-
-const arrowSum = (arr) => {
-    let sum = 0;
-    for (let i = 0; i < arr.length; i++) {
-        sum = sum + arr[i];
-    }
-    return sum;
-};
-
-let results = arrowSum(arr);
-console.log(results);
-
-
-const resultss = studentDetails.filter((value) => {
-    if (value.name === 'Dhananjay') {
-        return value.name;
-    } else {
-        return null;
-    }
-});
-
-console.log(resultss);
-//[ { identificationNumber: 20, name: 'Dhananjay' } ]
