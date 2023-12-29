@@ -286,6 +286,9 @@ console.log(sumNumbers(a));
 The issue in your code is that you're still concatenating strings instead of adding numbers together. When you use the + operator with strings, it concatenates them, not performs arithmetic addition.
 To fix this, you need to convert each character in the string a to a number before adding it to sum. You can do this using the parseInt() function.
  */
+
+
+// 11. sumNumbers -----------------------------------------------------------------------------------------------$$$$$
 let a = 2343546571;
 let sum = 0;
 
@@ -313,26 +316,29 @@ console.log(sum); // Output: 45
 
 // console.log(sorting(str));
 
+
+// 12. Swap First Two Chars -----------------------------------------------------------------------------------------$$$$$
+
 let str = 'abcde';
 
-function sorting(str) {
+function swapFirstTwoChars(str) {
     // Convert the string into an array of characters
     let chars = str.split('');
 
-    if (chars[1] > chars[0]) {
+    if (chars.length >= 2) {
         let temp = chars[0];
         chars[0] = chars[1];
         chars[1] = temp;
     }
-
     // Convert the array back into a string
     return chars.join('');
 }
 
-console.log(sorting(str));
+console.log(swapFirstTwoChars(str));
 
 
-//Find odd missing number from array
+// 13.Array Rotation with methods ----------------------------------------------------------------------------------$$$$$
+
 //Array Rotation in Javascript
 const arr = [1, 2, 3, 4, 5];
 const k = 2;
@@ -345,10 +351,8 @@ function rotateArr(arr, k) {
 
 console.log(rotateArr(arr, k));
 
-
-// //Sorting
+// 14. Sort Array ----------------------------------------------------------------------------------------------------$$$$$
 const arr = [4, 2, 8, 5, 1, 20, 9]
-
 const sortedArr = (arr) => {
     let temp
     for (let i = 0; i <= arr.length; i++) {
@@ -366,17 +370,14 @@ const sortedArr = (arr) => {
 console.log(sortedArr(arr))
 
 
+// 15. Slice && Splice ----------------------------------------------------------------------------------------------------$$$$$
 const data = [1, 2, 3, 4, 5]
 
 data.slice(2)
 //console.log(data)
-
 //data.splice(1,1,'Hello') //[ 1, 'Hello', 3, 4 ]
 data.splice(2, 2, 'World')//[ 1, 2, 'World', 5 ]
 console.log(data)
-
-
-console.log(typeof NaN)
 
 
 function outer() {
@@ -395,7 +396,7 @@ const innerFun = outer();
 console.log(innerFun());
 
 
-//----------->
+// 16. Reverse with recursive appraoch  ----------------------------------------------------------------------------------------$$$$$
 const str = "Hello";
 
 function solution(str) {
@@ -467,6 +468,7 @@ console.log("Final Result:", finalResult);
  backtracking happens during the unwinding phase of the recursive calls. Let's break down how backtracking occurs in the provided code
 */
 
+// 17. Reduce  ----------------------------------------------------------------------------------------------------$$$$$
 const data = [
     {sum: 1}, {sum: 2}, {sum: 3}
 ]
