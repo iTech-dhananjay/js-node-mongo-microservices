@@ -173,7 +173,7 @@ var longestCommonPrefix = function (strs) {
 console.log(longestCommonPrefix(['flower', 'flow', 'flight']));
 
 
-//6. Given "hellohellohellohellohellohello", add space after every 4 elements. --------------------------------------------------$$$$$
+//6. Given "hellohellohellohellohellohello", add space after every 4 elements. -------------------------------------------------$$$$$
 
 /*
   - Here's a step-by-step breakdown of the loop execution:
@@ -190,14 +190,10 @@ for (let i = 0; i < str.length; i += 5) {
     // Extract a substring of 5 characters using the slice method & concatenate a space after it
     result += str.slice(i, i + 5) + ' ';
 }
-
 console.log(result.trim()); //hello hello hello hello hello hello
 
 
-//hannan.abdul007@gmail.com
-
-
-// 7. Replace Comma with Space in string  --------------------------------------------------------------------------------------$$$$$
+// 7. Replace Comma with Space in string  -----------------------------------------------------------------------------------------$$$$$
 function replaceCommasWithSpaces(input) {
     let result = '';
     for (let i = 0; i < input.length; i++) {
@@ -245,11 +241,10 @@ function findDuplicates(numbers) {
     return duplicates;
 }
 
-
 console.log(findDuplicates(numbers));
 
 
-// replaceThreeConsecutive
+// 9. replaceThreeConsecutive -----------------------------------------------------------------------------------------------$$$$$
 function replaceThreeConsecutive(inputString) {
     let result = '';
     let count = 1;
@@ -272,15 +267,15 @@ const input = 'abbacccaabaa';
 const output = replaceThreeConsecutive(input);
 console.log(output); // Output: "abbbaabaa"
 
-let a = '2343546576';
 
+// 10. sumNumbers -----------------------------------------------------------------------------------------------$$$$$
+let a = '2343546576';
 
 function sumNumbers(a) {
     let sum = 0;
     for (let i = 0; i < a.length; i++) {
-
         sum = sum + parseInt(a[i]);
-
+        //sum = sum + Number(a[i])
     }
     return sum;
 }
@@ -289,10 +284,7 @@ console.log(sumNumbers(a));
 
 /*
 The issue in your code is that you're still concatenating strings instead of adding numbers together. When you use the + operator with strings, it concatenates them, not performs arithmetic addition.
-
 To fix this, you need to convert each character in the string a to a number before adding it to sum. You can do this using the parseInt() function.
-
-In this corrected code, parseInt(a[i]) converts the character at index i to a number before adding it to sum. This way, you'll get the correct sum of the digits in the string "2343546576", which is 45.
  */
 let a = 2343546571;
 let sum = 0;
