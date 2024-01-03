@@ -155,6 +155,24 @@ function checkPalindrome(str) {
 
 console.log(checkPalindrome(str));
 
+//2nd-approach
+const checkPalindrome = (str) => {
+    // Loop through the first half of the string
+    for (let i = 0; i < str.length / 2; i++) {
+        // Compare characters from the beginning and end of the string
+        if (str[i] !== str[str.length - 1 - i]) {
+            // If characters don't match, return early
+            return `Not ${str} Palindrome`;
+        }
+    }
+    // If the loop completes without returning, the string is a palindrome
+    return `Given ${str} is palindrome`;
+}
+
+const str = "madam";
+console.log(checkPalindrome(str));
+
+
 // <<<<<<<<<<<<<<<---------------------------------------------------- 5. [[  Sum Zero Problem  ]] ----------------------------------------------------------->>>>>>>>>>>
 /* 
    Traverse : To visit each and every element of array
