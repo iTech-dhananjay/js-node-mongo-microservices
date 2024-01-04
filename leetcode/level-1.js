@@ -17,6 +17,7 @@
   66.  Plus One
   169. Majority Element
   28. [[ Find the Index of the First Occurrence in a String ]]
+  70. Climbing Stairs
 
 
 
@@ -604,6 +605,31 @@ console.log(majorityElement(arr));
 
 // <<<<<<<<<---------------------- 28. [[ Find the Index of the First Occurrence in a String ]] --------------------------------------->>>>>>>>>>>
 
+const hayNeed = (haystack, needle) => {
+    if (needle === "") {
+        return 0;
+    }
+
+    for (let i = 0; i <= haystack.length - 1; i++) {
+        let match = true;
+        for (let j = 0; j <= needle.length - 1; j++) {
+            if (haystack[i + j] !== needle[j]) {
+                match = false;
+                break;
+            }
+        }
+
+        if (match) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+console.log(hayNeed("adbutsad", "akar"));
+console.log(hayNeed("sadbutsad", "sad"));
+console.log(hayNeed("leetcode", "leeto"));
+
 //
 // 28. Find the Index of the First Occurrence in a String
 // Easy
@@ -631,3 +657,54 @@ console.log(majorityElement(arr));
 //
 //     1 <= haystack.length, needle.length <= 104
 // haystack and needle consist of only lowercase English characters.
+
+// Certainly! Let's go through the example for the first test case:
+//
+//     ```javascript
+// console.log(strStr("sadbutsad", "sad"));
+// ```
+//
+// 1. **Iteration 1 (i = 0):**
+// - Outer Loop: `i=0`
+// - Inner Loop: `j=0`, `haystack[0] (s) !== needle[0] (s)` (no mismatch)
+// - Inner Loop: `j=1`, `haystack[1] (a) !== needle[1] (a)` (no mismatch)
+// - Inner Loop: `j=2`, `haystack[2] (d) !== needle[2] (d)` (no mismatch)
+// - Match found! Returning index: `0`
+//
+// 2. **Iteration 2 (i = 1):**
+// - Outer Loop: `i=1`
+// - Inner Loop: `j=0`, `haystack[1] (a) !== needle[0] (s)` (mismatch, breaks out of the inner loop)
+//
+// 3. **Iteration 3 (i = 2):**
+// - Outer Loop: `i=2`
+// - Inner Loop: `j=0`, `haystack[2] (d) !== needle[0] (s)` (mismatch, breaks out of the inner loop)
+//
+// ... and so on.
+//
+//     The function returns `0` in the first iteration because it finds a match at index 0, the starting position of "sad" in the `haystack`. If there is no match, it continues iterating until a match is found or all possibilities are exhausted.
+// 70. Climbing Stairs
+// Easy
+// 20.7K
+// 722
+// Companies
+// You are climbing a staircase. It takes n steps to reach the top.
+//
+//     Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+//
+//
+//
+//     Example 1:
+//
+// Input: n = 2
+// Output: 2
+// Explanation: There are two ways to climb to the top.
+// 1. 1 step + 1 step
+// 2. 2 steps
+// Example 2:
+//
+// Input: n = 3
+// Output: 3
+// Explanation: There are three ways to climb to the top.
+// 1. 1 step + 1 step + 1 step
+// 2. 1 step + 2 steps
+// 3. 2 steps + 1 step
