@@ -656,6 +656,15 @@ console.log(hayNeed("adbutsad", "akar"));
 console.log(hayNeed("sadbutsad", "sad"));
 console.log(hayNeed("leetcode", "leeto"));
 
+// Use indexOf
+let haystack = "sadbutsad"
+let needle = "but"
+
+function hayNeed(haystack, needle) {
+    return haystack.indexOf(needle)
+}
+
+console.log(hayNeed(haystack, needle)) //3
 
 // <<<<<<<<<----------------------------------------- 28. [[ Climbing Stairs ]] ------------------------------------------------------>>>>>>>>>>>
 
@@ -675,3 +684,33 @@ console.log(hayNeed("leetcode", "leeto"));
 // 1. 1 step + 1 step + 1 step
 // 2. 1 step + 2 steps
 // 3. 2 steps + 1 step
+
+function climbStairs(n) {
+    // Memoization array to store already computed results
+    let memo = [];
+
+    // Recursive function with memoization
+    function climbHelper(n, memo) {
+        if (n <= 2) {
+            return n;
+        }
+
+        // Check if the result is already memoized
+        if (memo[n]) {
+            return memo[n];
+        }
+
+        // Calculate the number of ways for each step and memoize the result
+        memo[n] = climbHelper(n - 1, memo) + climbHelper(n - 2, memo);
+        return memo[n];
+    }
+
+    return climbHelper(n, memo);
+}
+
+// Example usage:
+let n1 = 2;
+console.log(climbStairs(n1)); // Output: 2
+
+let n2 = 3;
+console.log(climbStairs(n2)); // Output: 3
