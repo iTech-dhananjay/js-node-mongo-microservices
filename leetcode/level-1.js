@@ -605,6 +605,32 @@ console.log(majorityElement(arr));
 
 // <<<<<<<<<---------------------- 28. [[ Find the Index of the First Occurrence in a String ]] --------------------------------------->>>>>>>>>>>
 
+/*
+  - Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+  - Input: haystack = "sadbutsad", needle = "sad"   / Output: 0 , Explanation: "sad" occurs at index 0 and 6.
+  - Input: haystack = "leetcode", needle = "leeto"
+
+
+
+  1. **Iteration 1 (i = 0):**
+- Outer Loop: `i=0`
+- Inner Loop: `j=0`, `haystack[0] (s) !== needle[0] (s)` (no mismatch)
+- Inner Loop: `j=1`, `haystack[1] (a) !== needle[1] (a)` (no mismatch)
+- Inner Loop: `j=2`, `haystack[2] (d) !== needle[2] (d)` (no mismatch)
+- Match found! Returning index: `0`
+
+2. **Iteration 2 (i = 1):**
+- Outer Loop: `i=1`
+- Inner Loop: `j=0`, `haystack[1] (a) !== needle[0] (s)` (mismatch, breaks out of the inner loop)
+
+3. **Iteration 3 (i = 2):**
+- Outer Loop: `i=2`
+- Inner Loop: `j=0`, `haystack[2] (d) !== needle[0] (s)` (mismatch, breaks out of the inner loop)
+
+The function returns `0` in the first iteration because it finds a match at index 0, the starting position of "sad" in the `haystack`.
+If there is no match, it continues iterating until a match is found or all possibilities are exhausted.
+
+*/
 const hayNeed = (haystack, needle) => {
     if (needle === "") {
         return 0;
@@ -630,58 +656,7 @@ console.log(hayNeed("adbutsad", "akar"));
 console.log(hayNeed("sadbutsad", "sad"));
 console.log(hayNeed("leetcode", "leeto"));
 
-//
-// 28. Find the Index of the First Occurrence in a String
-// Easy
-// 5.3K
-// 327
-// Companies
-// Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
-//
-//
-//
-//     Example 1:
-//
-// Input: haystack = "sadbutsad", needle = "sad"
-// Output: 0
-// Explanation: "sad" occurs at index 0 and 6.
-// The first occurrence is at index 0, so we return 0.
-// Example 2:
-//
-// Input: haystack = "leetcode", needle = "leeto"
-// Output: -1
-// Explanation: "leeto" did not occur in "leetcode", so we return -1.
-//
-//
-// Constraints:
-//
-//     1 <= haystack.length, needle.length <= 104
-// haystack and needle consist of only lowercase English characters.
 
-// Certainly! Let's go through the example for the first test case:
-//
-//     ```javascript
-// console.log(strStr("sadbutsad", "sad"));
-// ```
-//
-// 1. **Iteration 1 (i = 0):**
-// - Outer Loop: `i=0`
-// - Inner Loop: `j=0`, `haystack[0] (s) !== needle[0] (s)` (no mismatch)
-// - Inner Loop: `j=1`, `haystack[1] (a) !== needle[1] (a)` (no mismatch)
-// - Inner Loop: `j=2`, `haystack[2] (d) !== needle[2] (d)` (no mismatch)
-// - Match found! Returning index: `0`
-//
-// 2. **Iteration 2 (i = 1):**
-// - Outer Loop: `i=1`
-// - Inner Loop: `j=0`, `haystack[1] (a) !== needle[0] (s)` (mismatch, breaks out of the inner loop)
-//
-// 3. **Iteration 3 (i = 2):**
-// - Outer Loop: `i=2`
-// - Inner Loop: `j=0`, `haystack[2] (d) !== needle[0] (s)` (mismatch, breaks out of the inner loop)
-//
-// ... and so on.
-//
-//     The function returns `0` in the first iteration because it finds a match at index 0, the starting position of "sad" in the `haystack`. If there is no match, it continues iterating until a match is found or all possibilities are exhausted.
 // 70. Climbing Stairs
 // Easy
 // 20.7K
