@@ -458,6 +458,25 @@ var findDuplicates = function (nums) {
 
 console.log(findDuplicates([4, 3, 2, 7, 8, 2, 3, 1]));
 
+let nums = [4, 3, 2, 7, 8, 2, 3, 1];
+
+const findDuplicates = (nums) => {
+    let duplicates = [];
+    let uniqueSet = new Set();
+
+    for (let num of nums) {
+        if (uniqueSet.has(num)) {
+            duplicates.push(num);
+        } else {
+            uniqueSet.add(num);
+        }
+    }
+
+    return duplicates;
+}
+
+console.log(findDuplicates(nums));
+
 // <<<<<<<<<<<<<<<------------------------------------------------- 66. [[  Plus One ]] -------------------------------------------------------------->>>>>>>>>>>
 /* [[ https://www.youtube.com/watch?v=P3K_hKNU2ME ]]
    - Input: digits = [1,2,3]
