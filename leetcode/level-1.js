@@ -703,31 +703,32 @@ console.log(hayNeed(haystack, needle)) //3
 // 3. 2 steps + 1 step
 
 function climbStairs(n) {
-    // Memoization array to store already computed results
-    let memo = [];
+    // Storage array for caching previously calculated results
+    let cache = [];
 
-    // Recursive function with memoization
-    function climbHelper(n, memo) {
+    // Recursive function with caching
+    function calculateWaysToClimb(n, cache) {
+        // Base case: If there are 1 or 2 steps, there are n ways to climb.
         if (n <= 2) {
             return n;
         }
 
-        // Check if the result is already memoized
-        if (memo[n]) {
-            return memo[n];
+        // Check if the result is already cached
+        if (cache[n]) {
+            return cache[n];
         }
 
-        // Calculate the number of ways for each step and memoize the result
-        memo[n] = climbHelper(n - 1, memo) + climbHelper(n - 2, memo);
-        return memo[n];
+        // Calculate the number of ways for each step and cache the result
+        cache[n] = calculateWaysToClimb(n - 1, cache) + calculateWaysToClimb(n - 2, cache);
+        return cache[n];
     }
 
-    return climbHelper(n, memo);
+    return calculateWaysToClimb(n, cache);
 }
 
 // Example usage:
-let n1 = 2;
-console.log(climbStairs(n1)); // Output: 2
+let steps1 = 2;
+console.log(climbStairs(steps1)); // Output: 2
 
-let n2 = 3;
-console.log(climbStairs(n2)); // Output: 3
+let steps2 = 3;
+console.log(climbStairs(steps2)); // Output: 3
