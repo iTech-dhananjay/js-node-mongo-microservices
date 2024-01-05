@@ -471,6 +471,12 @@ console.log(findDuplicates([4, 3, 2, 7, 8, 2, 3, 1]));
    - Here it will add 1 at the beginning of the array if digits is 99 -> with for loop 00 we achieve and 1 from unshift()
 
 
+   => The unshift method in JavaScript returns the new length of the array after the element has been added. So, if you want to directly return the result of digits.unshift(1),
+   you would be returning the new length of the array, not the modified array itself.
+  [ not return digits.unshift() it will return length of array as 3 , so we need to first unshift and then return]
+   => If you want to return the modified array with the new digit added at the beginning, you should use unshift separately and then return the digits array.
+
+
 */
 
 //Correct approach
