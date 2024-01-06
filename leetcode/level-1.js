@@ -28,6 +28,28 @@
 \
 */
 
+function findSecondLargest(arr) {
+    let largest = arr[0];
+    let secondLargest = -Infinity;
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];
+        } else if (arr[i] > secondLargest && arr[i] !== largest) {
+            secondLargest = arr[i];
+        }
+    }
+
+    return secondLargest !== -Infinity ? secondLargest : null;
+}
+
+// Example usage
+const myArray = [4, 7, 1, 9, 5];
+const secondLargest = findSecondLargest(myArray);
+
+console.log("Second largest element:", secondLargest);
+
 // <<<<<<<<<<<<<<<------------------------------------------------- 1. [[   Two Sum  ]] -------------------------------------------------------------->>>>>>>>>>>
 
 /*         [https://www.youtube.com/watch?v=mq6ZQv_apmc&list=PLrClazTqVpJlyey7Szwe_XX9meD4wl2Ma&index=60]
