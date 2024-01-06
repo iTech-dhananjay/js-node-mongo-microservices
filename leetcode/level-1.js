@@ -28,6 +28,7 @@
 \
 */
 
+//Find Second Largest Element
 function findSecondLargest(arr) {
     let largest = arr[0];
     let secondLargest = -Infinity;
