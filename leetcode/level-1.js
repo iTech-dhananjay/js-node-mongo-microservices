@@ -29,7 +29,7 @@
 */
 
 //Find Second Largest Element
-function findSecondLargest(arr) {
+const findSecondLargest = (arr) => {
     let largest = arr[0];
     let secondLargest = -Infinity;
 
@@ -45,7 +45,6 @@ function findSecondLargest(arr) {
     return secondLargest !== -Infinity ? secondLargest : null;
 }
 
-// Example usage
 const myArray = [4, 7, 1, 9, 5];
 const secondLargest = findSecondLargest(myArray);
 
