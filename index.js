@@ -223,6 +223,46 @@ fetchDataForStudents(complexArray).then((studentsWithAsyncData) => {
     console.log('Students with Additional Asynchronous Data:', studentsWithAsyncData);
 });
 
+
+// Perform More Advanced Operations:
+
+// 4. Dynamically add a new subject and score for each student:
+const dynamicallyAddSubject = (students, subject, newScores) => {
+    return students.map((student) => {
+        return {
+            ...student,
+            scores: {
+                ...student.scores,
+                [subject]: newScores,
+            },
+        };
+    });
+};
+
+const subjectsToAdd = ['programming', 'music'];
+const newScores = [[85, 90, 88], [92, 88, 95]];
+
+const studentsWithNewSubjects = subjectsToAdd.reduce(
+    (students, subject, index) => dynamicallyAddSubject(students, subject, newScores[index]),
+    complexArray
+);
+
+console.log('Students with Dynamically Added Subjects:', studentsWithNewSubjects);
+
+// 5. Implement a custom sorting algorithm to sort students by total score:
+const sortByTotalScore = (students) => {
+    return students.sort((a, b) => {
+        const totalScoreA = Object.values(a.scores).flat().reduce((sum, score) => sum + score, 0);
+        const totalScoreB = Object.values(b.scores).flat().reduce((sum, score) => sum + score, 0);
+        return totalScoreB - totalScoreA;
+    });
+};
+
+const studentsSortedByTotalScore = sortByTotalScore(complexArray);
+
+console.log('Students Sorted by Total Score:', studentsSortedByTotalScore);
+
+
 //------------------------------------------------------------------//------------------------------------------------------------------
 
 const {MongoClient} = require('mongodb');
