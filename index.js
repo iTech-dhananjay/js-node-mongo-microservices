@@ -15,12 +15,37 @@ const maxArr = (arr) => {
 }
 console.log(maxArr(arr))
 
+//------------------------------------------------------------------
+function moveArrayElements(arr, positions) {
+    const movedArray = [];
+    const length = arr.length;
+
+    // Iterate through the array starting from the specified positions
+    for (let i = positions; i < length; i++) {
+        movedArray.push(arr[i]);
+    }
+    // Iterate through the array from the beginning up to the specified positions
+    for (let i = 0; i < positions; i++) {
+        movedArray.push(arr[i]);
+    }
+
+    return movedArray;
+}
+
+const inputArray = [2, 6, 3, 9, 7, 5];
+const positionsToMove = 2;
+
+const movedArray = moveArrayElements(inputArray, positionsToMove);
+
+console.log(movedArray);
+
+//------------------------------------------------------------------
 
 
-const { MongoClient } = require('mongodb');
+const {MongoClient} = require('mongodb');
 
 const uri = 'mongodb://localhost:27017';
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
 async function addOrganization(organizationName) {
     try {
@@ -53,13 +78,13 @@ async function createDefaultCollections(db) {
     // Create additional collections and insert initial data if needed
     const usersCollection = db.collection('users');
     await usersCollection.insertMany([
-        { username: 'admin', password: 'adminpassword' },
+        {username: 'admin', password: 'adminpassword'},
         // Add more initial user data as needed
     ]);
 
     const productsCollection = db.collection('products');
     await productsCollection.insertMany([
-        { name: 'Product 1', price: 19.99 },
+        {name: 'Product 1', price: 19.99},
         // Add more initial product data as needed
     ]);
 
