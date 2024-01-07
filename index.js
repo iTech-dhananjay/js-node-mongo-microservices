@@ -317,3 +317,125 @@ async function createDefaultCollections(db) {
 // Example usage
 const organizationName = 'My Organization';
 addOrganization(organizationName);
+
+
+//---------
+const complexArray = [
+    {
+        id: 1,
+        name: 'John',
+        details: {
+            age: 30,
+            address: {
+                city: 'New York',
+                zipCode: '10001',
+                country: 'USA',
+            },
+        },
+        hobbies: ['reading', 'traveling'],
+        scores: {
+            math: [90, 85, 92],
+            science: [85, 88, 90],
+            history: [78, 85, 80],
+        },
+    },
+    {
+        id: 2,
+        name: 'Jane',
+        details: {
+            age: 28,
+            address: {
+                city: 'San Francisco',
+                zipCode: '94105',
+                country: 'USA',
+            },
+        },
+        hobbies: ['painting', 'gardening'],
+        scores: {
+            math: [95, 92, 88],
+            science: [92, 85, 90],
+            history: [80, 75, 78],
+        },
+    },
+    {
+        id: 3,
+        name: 'Bob',
+        details: {
+            age: 35,
+            address: {
+                city: 'London',
+                zipCode: 'WC2N',
+                country: 'UK',
+            },
+        },
+        hobbies: ['photography', 'cooking'],
+        scores: {
+            math: [88, 90, 85],
+            science: [75, 78, 80],
+            history: [82, 85, 88],
+        },
+    },
+];
+
+// More Advanced Operations:
+
+// 6. Filter students based on multiple criteria (age and total score):
+const filterStudents = (students, ageThreshold, totalScoreThreshold) => {
+    return students.filter((student) => {
+        const totalScore = Object.values(student.scores).flat().reduce((sum, score) => sum + score, 0);
+        return student.details.age <= ageThreshold && totalScore >= totalScoreThreshold;
+    });
+};
+
+const filteredStudents = filterStudents(complexArray, 30, 250);
+
+console.log('Filtered Students:', filteredStudents);
+
+// 7. Simulate asynchronous data fetching with more realistic scenarios:
+const simulateAsyncDataFetching = (student) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            // Simulate fetching additional data (e.g., from an API)
+            const additionalData = {
+                studentId: student.id,
+                attendance: '90%',
+                performance: 'Excellent',
+            };
+            resolve({...student, additionalData});
+        }, 1000);
+    });
+};
+
+// Perform asynchronous data fetching for all students:
+const fetchAsyncDataForStudents = async (students) => {
+    const asyncData = await Promise.all(students.map(simulateAsyncDataFetching));
+    return asyncData;
+};
+
+fetchAsyncDataForStudents(complexArray).then((studentsWithAsyncData) => {
+    console.log('Students with Additional Asynchronous Data:', studentsWithAsyncData);
+});
+
+// 8. Dynamically transform data based on conditions:
+const dynamicDataTransformation = (students, conditionFunction, transformationFunction) => {
+    return students.map((student) => {
+        if (conditionFunction(student)) {
+            return transformationFunction(student);
+        }
+        return student;
+    });
+};
+
+const conditionFunction = (student) => student.details.address.country === 'USA';
+const transformationFunction = (student) => ({
+    ...student,
+    additionalInfo: 'Transformed in USA',
+});
+
+const transformedDataBasedOnCondition = dynamicDataTransformation(
+    complexArray,
+    conditionFunction,
+    transformationFunction
+);
+
+console.log('Transformed Data Based on Condition:', transformedDataBasedOnCondition);
