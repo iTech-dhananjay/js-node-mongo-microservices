@@ -15,7 +15,7 @@ const maxArr = (arr) => {
 }
 console.log(maxArr(arr))
 
-//------------------------------------------------------------------
+//------------------------------------------------------------------//------------------------------------------------------------------
 function moveArrayElements(arr, positions) {
     const movedArray = [];
     const length = arr.length;
@@ -39,7 +39,90 @@ const movedArray = moveArrayElements(inputArray, positionsToMove);
 
 console.log(movedArray);
 
-//------------------------------------------------------------------
+//------------------------------------------------------------------//------------------------------------------------------------------
+const complexArray = [
+    {
+        id: 1,
+        name: 'John',
+        details: {
+            age: 30,
+            address: {
+                city: 'New York',
+                zipCode: '10001',
+                country: 'USA',
+            },
+        },
+        hobbies: ['reading', 'traveling'],
+    },
+    {
+        id: 2,
+        name: 'Jane',
+        details: {
+            age: 28,
+            address: {
+                city: 'San Francisco',
+                zipCode: '94105',
+                country: 'USA',
+            },
+        },
+        hobbies: ['painting', 'gardening'],
+    },
+    {
+        id: 3,
+        name: 'Bob',
+        details: {
+            age: 35,
+            address: {
+                city: 'London',
+                zipCode: 'WC2N',
+                country: 'UK',
+            },
+        },
+        hobbies: ['photography', 'cooking'],
+    },
+];
+
+// Perform Advanced Operations:
+
+// 1. Flatten the array of objects:
+const flattenedArray = complexArray.reduce((result, obj) => {
+    const flatObj = {
+        id: obj.id,
+        name: obj.name,
+        age: obj.details.age,
+        city: obj.details.address.city,
+        zipCode: obj.details.address.zipCode,
+        country: obj.details.address.country,
+        hobbies: obj.hobbies.join(', '),
+    };
+    return result.concat(flatObj);
+}, []);
+
+console.log('Flattened Array:', flattenedArray);
+
+// 2. Group objects by country:
+const groupedByCountry = complexArray.reduce((grouped, obj) => {
+    const country = obj.details.address.country;
+    grouped[country] = (grouped[country] || []).concat(obj);
+    return grouped;
+}, {});
+
+console.log('Grouped by Country:', groupedByCountry);
+
+// 3. Remove duplicates based on zipCode:
+const uniqueByZipCode = complexArray.filter((obj, index, self) =>
+    index === self.findIndex((o) => o.details.address.zipCode === obj.details.address.zipCode)
+);
+
+console.log('Unique by Zip Code:', uniqueByZipCode);
+
+// 4. Sort objects by age in descending order:
+const sortedByAgeDesc = complexArray.sort((a, b) => b.details.age - a.details.age);
+
+console.log('Sorted by Age (Descending):', sortedByAgeDesc);
+
+
+//------------------------------------------------------------------//------------------------------------------------------------------
 
 
 const {MongoClient} = require('mongodb');
