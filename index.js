@@ -123,7 +123,107 @@ console.log('Sorted by Age (Descending):', sortedByAgeDesc);
 
 
 //------------------------------------------------------------------//------------------------------------------------------------------
+const complexArray = [
+    {
+        id: 1,
+        name: 'John',
+        details: {
+            age: 30,
+            address: {
+                city: 'New York',
+                zipCode: '10001',
+                country: 'USA',
+            },
+        },
+        hobbies: ['reading', 'traveling'],
+        scores: {
+            math: [90, 85, 92],
+            science: [85, 88, 90],
+            history: [78, 85, 80],
+        },
+    },
+    {
+        id: 2,
+        name: 'Jane',
+        details: {
+            age: 28,
+            address: {
+                city: 'San Francisco',
+                zipCode: '94105',
+                country: 'USA',
+            },
+        },
+        hobbies: ['painting', 'gardening'],
+        scores: {
+            math: [95, 92, 88],
+            science: [92, 85, 90],
+            history: [80, 75, 78],
+        },
+    },
+    {
+        id: 3,
+        name: 'Bob',
+        details: {
+            age: 35,
+            address: {
+                city: 'London',
+                zipCode: 'WC2N',
+                country: 'UK',
+            },
+        },
+        hobbies: ['photography', 'cooking'],
+        scores: {
+            math: [88, 90, 85],
+            science: [75, 78, 80],
+            history: [82, 85, 88],
+        },
+    },
+];
 
+// Perform Advanced Operations:
+
+// 1. Calculate the average score for each student and subject:
+const averageScores = complexArray.map((student) => {
+    const subjectAverages = Object.entries(student.scores).reduce((averages, [subject, scores]) => {
+        const average = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+        averages[subject] = average;
+        return averages;
+    }, {});
+    return {...student, averageScores: subjectAverages};
+});
+
+console.log('Average Scores for Each Student and Subject:', averageScores);
+
+// 2. Filter students with an average score above a certain threshold:
+const filteredByAverageScore = averageScores.filter((student) =>
+    Object.values(student.averageScores).some((average) => average > 88)
+);
+
+console.log('Filtered by Average Score Threshold:', filteredByAverageScore);
+
+// 3. Asynchronously fetch additional data for each student:
+async function fetchDataForStudents(students) {
+    const asyncData = await Promise.all(
+        students.map(async (student) => {
+            // Simulate an asynchronous operation (e.g., fetching additional data from an API)
+            const additionalData = await fetchAdditionalData(student.id);
+            return {...student, additionalData};
+        })
+    );
+    return asyncData;
+}
+
+// Simulated asynchronous function
+async function fetchAdditionalData(studentId) {
+    // Simulate fetching additional data (e.g., from an API)
+    return {studentId, additionalInfo: 'Lorem ipsum'};
+}
+
+fetchDataForStudents(complexArray).then((studentsWithAsyncData) => {
+    console.log('Students with Additional Asynchronous Data:', studentsWithAsyncData);
+});
+
+//------------------------------------------------------------------//------------------------------------------------------------------
 
 const {MongoClient} = require('mongodb');
 
