@@ -36,7 +36,6 @@ const inputArray = [2, 6, 3, 9, 7, 5];
 const positionsToMove = 2;
 
 const movedArray = moveArrayElements(inputArray, positionsToMove);
-
 console.log(movedArray);
 
 //------------------------------------------------------------------//------------------------------------------------------------------
