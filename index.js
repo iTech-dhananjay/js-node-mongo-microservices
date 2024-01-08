@@ -15,28 +15,6 @@ const maxArr = (arr) => {
 }
 console.log(maxArr(arr))
 
-//------------------------------------------------------------------//------------------------------------------------------------------
-function moveArrayElements(arr, positions) {
-    const movedArray = [];
-    const length = arr.length;
-
-    // Iterate through the array starting from the specified positions
-    for (let i = positions; i < length; i++) {
-        movedArray.push(arr[i]);
-    }
-    // Iterate through the array from the beginning up to the specified positions
-    for (let i = 0; i < positions; i++) {
-        movedArray.push(arr[i]);
-    }
-
-    return movedArray;
-}
-
-const inputArray = [2, 6, 3, 9, 7, 5];
-const positionsToMove = 2;
-
-const movedArray = moveArrayElements(inputArray, positionsToMove);
-console.log(movedArray);
 
 //------------------------------------------------------------------//------------------------------------------------------------------
 const complexArray = [
