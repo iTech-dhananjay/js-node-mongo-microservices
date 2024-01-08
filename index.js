@@ -62,8 +62,23 @@ const complexArray = [
 // Perform Advanced Operations:
 
 // 1. Flatten the array of objects:
-const flattenedArray = complexArray.reduce((result, obj) => {
-    const flatObj = {
+const flattenedArray = complexArray.map(obj => ({
+    id: obj.id,
+    name: obj.name,
+    age: obj.details.age,
+    city: obj.details.address.city,
+    zipCode: obj.details.address.zipCode,
+    country: obj.details.address.country,
+    hobbies: obj.hobbies.join(', '),
+}));
+
+console.log('Flattened Array:', flattenedArray);
+
+
+//with forEach
+const flattenArray = [];
+complexArray.forEach(obj => {
+    flattenArray.push({
         id: obj.id,
         name: obj.name,
         age: obj.details.age,
@@ -71,20 +86,32 @@ const flattenedArray = complexArray.reduce((result, obj) => {
         zipCode: obj.details.address.zipCode,
         country: obj.details.address.country,
         hobbies: obj.hobbies.join(', '),
-    };
-    return result.concat(flatObj);
-}, []);
+    });
+});
 
-console.log('Flattened Array:', flattenedArray);
+console.log('Flattened Array:', flattenArray);
 
 // 2. Group objects by country:
-const groupedByCountry = complexArray.reduce((grouped, obj) => {
-    const country = obj.details.address.country;
-    grouped[country] = (grouped[country] || []).concat(obj);
-    return grouped;
-}, {});
+function groupByCountry(arr) {
 
-console.log('Grouped by Country:', groupedByCountry);
+    const groupedByCountry = {};
+
+    for (const item of arr) {
+        const country = item.details.address.country;
+
+        if (!groupedByCountry[country]) {
+            groupedByCountry[country] = [];
+        }
+
+        groupedByCountry[country].push(item);
+    }
+
+    return groupedByCountry;
+}
+
+const groupedResult = groupByCountry(complexArray);
+console.log('Grouped by Country:', groupedResult);
+
 
 // 3. Remove duplicates based on zipCode:
 const uniqueByZipCode = complexArray.filter((obj, index, self) =>

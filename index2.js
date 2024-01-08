@@ -40,35 +40,23 @@ const complexArray = [
     },
 ];
 
-// 1. Flatten the array of objects:
-const flattenedArray = complexArray.map(obj => ({
-    id: obj.id,
-    name: obj.name,
-    age: obj.details.age,
-    city: obj.details.address.city,
-    zipCode: obj.details.address.zipCode,
-    country: obj.details.address.country,
-    hobbies: obj.hobbies.join(', '),
-}));
 
-console.log('Flattened Array:', flattenedArray);
+function groupByCountry(arr) {
 
+    const groupedByCountry = {};
 
-//with forEach
-const flattenArray = [];
-complexArray.forEach(obj => {
-    flattenArray.push({
-        id: obj.id,
-        name: obj.name,
-        age: obj.details.age,
-        city: obj.details.address.city,
-        zipCode: obj.details.address.zipCode,
-        country: obj.details.address.country,
-        hobbies: obj.hobbies.join(', '),
-    });
-});
+    for (const item of arr) {
+        const country = item.details.address.country;
 
-console.log('Flattened Array:', flattenArray);
+        if (!groupedByCountry[country]) {
+            groupedByCountry[country] = [];
+        }
 
+        groupedByCountry[country].push(item);
+    }
 
-//console.log(complexArray)
+    return groupedByCountry;
+}
+
+const groupedResult = groupByCountry(complexArray);
+console.log('Grouped by Country:', groupedResult);
