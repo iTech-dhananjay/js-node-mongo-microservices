@@ -22,7 +22,7 @@ O(n^2), O(2^n) and O(n!) - Horrible/Worst
   12. Words that contains vowel
   13. Words count
   14. Find Max of array elements
-  15. Move Array Position
+  15. Move Array Elements with position index
 */
 
 
