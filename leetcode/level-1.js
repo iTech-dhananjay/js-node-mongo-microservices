@@ -29,26 +29,42 @@
 */
 
 //Find Second Largest Element
-const findSecondLargest = (arr) => {
+const secondLargestArr = (arr) => {
     let largest = arr[0];
     let secondLargest = -Infinity;
 
-    for (let i = 1; i < arr.length; i++) {
+    for (let i = 1; i <= arr.length - 1; i++) {
         if (arr[i] > largest) {
-            secondLargest = largest;
+            secondLargest = largest;  // Update the second largest before updating the largest
             largest = arr[i];
-        } else if (arr[i] > secondLargest && arr[i] !== largest) {
-            secondLargest = arr[i];
+        } else if (arr[i] > secondLargest && arr[i] < largest) {
+            secondLargest = arr[i];  // Update the second largest if the current element is between the largest and second largest
         }
+        // Note: No action is taken if arr[i] is not greater than largest or between the largest and second largest
     }
 
-    return secondLargest !== -Infinity ? secondLargest : null;
+    return secondLargest;
 }
 
-const myArray = [4, 7, 1, 9, 5];
-const secondLargest = findSecondLargest(myArray);
+const arr = [3, 8, 2, 5, 10];
+console.log(secondLargestArr(arr));
 
-console.log("Second largest element:", secondLargest);
+
+/*
+Explanation for each iteration:
+
+    1. **Iteration 1:** `arr[1]` (8) is greater than `largest` (3), so `largest` becomes 8, and `secondLargest` becomes 3.
+
+2. **Iteration 2:** `arr[2]` (2) is not greater than `largest` (8) and not between `largest` and `secondLargest`, so no update.
+
+3. **Iteration 3:** `arr[3]` (5) is not greater than `largest` (8) and is between `largest` and `secondLargest` (3), so `secondLargest` becomes 5.
+
+4. **Iteration 4:** `arr[4]` (10) is greater than `largest` (8), so `largest` becomes 10, and `secondLargest` becomes 8.
+
+5. **Loop completes:** The function returns `secondLargest` which is now 8.
+
+So, in the example array `[3, 8, 2, 5, 10]`, the second largest element is 8.*/
+
 
 // <<<<<<<<<<<<<<<------------------------------------------------- 1. [[   Two Sum  ]] -------------------------------------------------------------->>>>>>>>>>>
 
