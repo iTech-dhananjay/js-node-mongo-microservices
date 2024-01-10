@@ -358,41 +358,37 @@ var rotate = function (nums, k) {
 // <<<<<<<<<<<--------------------------------------- 189. [[ Remove Duplicates from Sorted Array   ]] -------------------------------------------->>>>>>>>>>>
 
 // splice will not modify arr and remove element form specific position  nums.splice(i, 1); i -> position and 1 -> one element should be deleted
-var removeDuplicates = function (nums) {
-    for (let i = 0; i < nums.length; i++) {
-        for (let j = nums.length; j >= i + 1; j--) {
-            if (nums[i] === nums[j]) {
-                nums.splice(i, 1);
-            }
-        }
+function removeDuplicates(nums) {
+    // Check if the array is empty or has only one element
+    if (nums.length <= 1) {
+        return nums.length;
     }
-};
 
-let sortedArray = [1, 1, 2, 2, 3, 4, 5, 5, 5, 6];
-const removeDuplicates = (nums) => {
     // Use two pointers approach
     let uniqueIndex = 0;
+
     // Iterate through the array starting from the second element
     for (let i = 1; i < nums.length; i++) {
         // If the current element is different from the previous unique element
         if (nums[i] !== nums[uniqueIndex]) {
             // Move the unique index forward
-            uniqueIndex++
+            uniqueIndex++;
 
             // Update the unique element at the new index
             nums[uniqueIndex] = nums[i];
         }
     }
 
-    // The unique elements are now in the front of the array
-    // Trim the array to keep only the unique elements
-    nums.length = uniqueIndex + 1;
+    // Remove the remaining elements at the end of the array
+    nums.splice(uniqueIndex + 1);
+    // Return the new length of the array
     return nums.length;
 }
 
-console.log(removeDuplicates(sortedArray))
+let sortedArray = [1, 1, 2, 2, 3, 4, 5, 5, 5, 6];
 let newLength = removeDuplicates(sortedArray);
-console.log(sortedArray.slice(0, newLength));
+
+console.log(sortedArray.slice(0, newLength)); // Output: [1, 2, 3, 4, 5, 6]!
 
 
 /*
