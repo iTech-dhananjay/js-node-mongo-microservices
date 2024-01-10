@@ -366,8 +366,49 @@ var removeDuplicates = function (nums) {
             }
         }
     }
-}; /* 
+};
 
+let sortedArray = [1, 1, 2, 2, 3, 4, 5, 5, 5, 6];
+const removeDuplicates = (nums) => {
+    // Use two pointers approach
+    let uniqueIndex = 0;
+    // Iterate through the array starting from the second element
+    for (let i = 1; i < nums.length; i++) {
+        // If the current element is different from the previous unique element
+        if (nums[i] !== nums[uniqueIndex]) {
+            // Move the unique index forward
+            uniqueIndex++
+
+            // Update the unique element at the new index
+            nums[uniqueIndex] = nums[i];
+        }
+    }
+
+    // The unique elements are now in the front of the array
+    // Trim the array to keep only the unique elements
+    nums.length = uniqueIndex + 1;
+    return nums.length;
+}
+
+console.log(removeDuplicates(sortedArray))
+let newLength = removeDuplicates(sortedArray);
+console.log(sortedArray.slice(0, newLength));
+
+
+/*
+
+function removeDuplicates(nums) {
+    // Use the filter method to keep only elements that are different from their previous element
+    nums = nums.filter((value, index) => value !== nums[index - 1]);
+
+    return nums.length;
+}
+
+// Example usage:
+let sortedArray = [1, 1, 2, 2, 3, 4, 5, 5, 5, 6];
+let newLength = removeDuplicates(sortedArray);
+
+console.log(sortedArray.slice(0, newLength)); // Output: [1, 2, 3, 4, 5, 6]
 
 */
 
