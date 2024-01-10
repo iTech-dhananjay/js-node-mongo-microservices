@@ -391,8 +391,7 @@ let newLength = removeDuplicates(sortedArray);
 console.log(sortedArray.slice(0, newLength)); // Output: [1, 2, 3, 4, 5, 6]!
 
 
-/*
-
+//2-way
 function removeDuplicates(nums) {
     // Use the filter method to keep only elements that are different from their previous element
     nums = nums.filter((value, index) => value !== nums[index - 1]);
@@ -405,6 +404,9 @@ let sortedArray = [1, 1, 2, 2, 3, 4, 5, 5, 5, 6];
 let newLength = removeDuplicates(sortedArray);
 
 console.log(sortedArray.slice(0, newLength)); // Output: [1, 2, 3, 4, 5, 6]
+/*
+
+
 
 */
 
