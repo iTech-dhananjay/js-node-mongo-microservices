@@ -61,3 +61,23 @@
 //
 // // console.log(groupByCountry(complexArray))
 
+let arr = [20, 90, 70, 40, 10]
+
+const secLar = (arr) => {
+    let largest = arr[0]
+    let secondLargest = -Infinity
+
+    for (let i = 1; i <= arr.length - 1; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest
+            largest = arr[i]
+        } else {
+            if (arr[i] > secondLargest && arr[i] < largest) {
+                secondLargest = arr[i]
+            }
+        }
+    }
+    return secondLargest
+}
+
+console.log(secLar(arr))
