@@ -167,7 +167,7 @@ const {
 console.log(first); //Dhananjay
 
 
-//Level-13  Non-Writable Property Handling
+//Level-13  Non-Writable Property Handling-
 const user = {
     name: 'John ',
     aadhaarNo: 111,
@@ -179,11 +179,14 @@ Object.defineProperty(user, "aadhaarNo", {
     writable: false
 })
 
-// Attempting to change the 'aadhaarNo' and 'name' properties
 user.aadhaarNo = 222; // This assignment will be ignored due to non-writability
 user.name = 'John Doe'; // This will be allowed
+user.age = 30;
+user.email = 'john@example.com';
 
-console.log(user); //{ name: 'John Doe', aadhaarNo: 111, isActive: true }
+console.log(user['name'], 'test') //John Doe test
+
+console.log(user); //{ name: 'John Doe', aadhaarNo: 111, isActive: true ,age:30,email:'john@example.com' }
 
 
 //--------------------------------------------------------------------------------------------> Type-2
