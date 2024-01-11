@@ -135,3 +135,27 @@ console.log(result2);
 
 
 //--------------------------------------------------------------------------------------------> Problem-4
+
+let users = [
+    {name: 'A', age: 10},
+    {name: 'B', age: 17},
+    {name: 'C', age: 14},
+    {name: 'D', age: 10},
+];
+
+
+const groupUsersByAge = (users) => {
+
+    let groupByAge = {}
+    for (let user of users) {
+        //  const {name,age} = user
+        if (!groupByAge[user.age]) {
+            groupByAge[user.age] = []
+        }
+        groupByAge[user.age].push(user)
+    }
+    return groupByAge
+}
+
+
+console.log(groupUsersByAge(users))

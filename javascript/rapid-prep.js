@@ -477,3 +477,17 @@ const res = data.reduce((acc, curr) => {
 }, 0)
 
 console.log(res)
+
+// 18. Array Ascending Order Check  ----------------------------------------------------------------------------------------------------$$$$$
+const arr = [1, 2, 3, 5, 6, 7, 8, 9, 4];
+
+const isArrayAscending = (arr) => {
+    for (let i = 0; i <= arr.length - 1; i++) {
+        if (arr[i] > arr[i + 1]) {
+            return `The given ${arr} is not in ascending order`
+        }
+    }
+    return `The given ${arr} is in ascending order`
+}
+
+console.log(isArrayAscending(arr))
