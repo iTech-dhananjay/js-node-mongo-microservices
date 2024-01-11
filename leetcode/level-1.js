@@ -368,7 +368,7 @@ function removeDuplicates(nums) {
     let uniqueIndex = 0;
 
     // Iterate through the array starting from the second element
-    for (let i = 1; i < nums.length; i++) {
+    for (let i = 1; i <= nums.length; i++) {
         // If the current element is different from the previous unique element
         if (nums[i] !== nums[uniqueIndex]) {
             // Move the unique index forward
@@ -380,7 +380,7 @@ function removeDuplicates(nums) {
     }
 
     // Remove the remaining elements at the end of the array
-    nums.splice(uniqueIndex + 1);
+    nums.splice(uniqueIndex)
     // Return the new length of the array
     return nums.length;
 }
