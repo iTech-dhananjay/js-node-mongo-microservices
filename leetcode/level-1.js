@@ -17,16 +17,19 @@
   66.  Plus One
   169. Majority Element
   28. [[ Find the Index of the First Occurrence in a String ]]
-  70. Climbing Stairs
-
-
+  70. Climbing Stairs [NOT DONE]]
+  387. First Unique Character in a String
+   ?? Ransom Note Problem
 
   :: [[ Medium ]]
   33. Search in Rotated Sorted Array
   151. Reverse Words in a String
   442. Find All Duplicates in an Array
-\
-*/
+
+
+
+ */
+
 
 //Find Second Largest Element
 const secondLargestArr = (arr) => {
@@ -775,6 +778,7 @@ function hayNeed(haystack, needle) {
 
 console.log(hayNeed(haystack, needle)) //3
 
+
 // <<<<<<<<<----------------------------------------- 28. [[ Climbing Stairs ]] ------------------------------------------------------>>>>>>>>>>>
 
 // You are climbing a staircase. It takes n steps to reach the top.
@@ -824,3 +828,34 @@ console.log(climbStairs(steps1)); // Output: 2
 
 let steps2 = 3;
 console.log(climbStairs(steps2)); // Output: 3
+
+// <<<<<<<<<<-------------------------------------------------- 387. [[ First Unique Character in a String ]] --------------------------------------------------->>>>>>>>>>>
+
+/*
+* -- Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+*
+*
+* */
+function firstUniqChar(s) {
+    const charFrequency = {};
+
+    // Count the frequency of each character
+    for (const char of s) {
+        charFrequency[char] = (charFrequency[char] || 0) + 1;
+    }
+
+    // Find the first character with a frequency of 1
+    for (let i = 0; i < s.length; i++) {
+        if (charFrequency[s[i]] === 1) {
+            return i;
+        }
+    }
+
+    // If no unique character is found, return -1
+    return -1;
+}
+
+// Test cases
+console.log("Example 1:", firstUniqChar("leetcode"));        // Output: 0
+console.log("Example 2:", firstUniqChar("loveleetcode"));    // Output: 2
+console.log("Example 3:", firstUniqChar("aabb"));            // Output: -1
