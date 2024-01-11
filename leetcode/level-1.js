@@ -378,17 +378,13 @@ function removeDuplicates(nums) {
             nums[uniqueIndex] = nums[i];
         }
     }
-
     // Remove the remaining elements at the end of the array
     nums.splice(uniqueIndex)
-    // Return the new length of the array
-    return nums.length;
+    return nums
 }
 
 let sortedArray = [1, 1, 2, 2, 3, 4, 5, 5, 5, 6];
-let newLength = removeDuplicates(sortedArray);
-
-console.log(sortedArray.slice(0, newLength)); // Output: [1, 2, 3, 4, 5, 6]!
+console.log(removeDuplicates(sortedArray))
 
 
 //2-way

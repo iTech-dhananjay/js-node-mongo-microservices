@@ -9,7 +9,6 @@ const removeDuplicates = (arr) => {
         }
     }
     arr.splice(uniqueIndex)
-    return arr.length
+    return arr
 }
-let newArray = removeDuplicates(arr)
-console.log(arr.slice(0, newArray))
+console.log(removeDuplicates(arr))
