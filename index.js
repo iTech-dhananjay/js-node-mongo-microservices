@@ -450,53 +450,27 @@ Write a program to find duplicate numbers in an integer array ?
 *
 *How do you remove duplicates from an integer array ?
 *10. We have group of people in the form of array and you have to group people basis upon age ?
-let peopleArr = [
-    {name: 'A', age: 10},
-    {name: 'B', age: 17},
-    {name: 'C', age: 14},
-    {name: 'D', age: 10},
-];
+*/
 
-let resultObj = {};
-for(let i=0; i<peopleArr.length; i++)
-{
-    if(resultObj[peopleArr[i].age]){
-       resultObj[peopleArr[i].age].push(peopleArr[i].name);
-    }else{
-       resultObj[peopleArr[i].age] = [peopleArr[i].name];
-    }
-}
-console.log(resultObj)
-*
-*
-*
-* 387. First Unique Character in a String
-Easy
-Topics
-Companies
-Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
-
-
-
-Example 1:
-
-Input: s = "leetcode"
-Output: 0
-Example 2:
-
-Input: s = "loveleetcode"
-Output: 2
-Example 3:
-
-Input: s = "aabb"
-Output: -1
-
-
-Constraints:
-
-1 <= s.length <= 105
-s consists of only lowercase English letters.
-*
-
-
-* */
+// 383. Ransom Note
+// Easy
+// Topics
+// Companies
+// Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
+//
+//     Each letter in magazine can only be used once in ransomNote.
+//
+//
+//
+//     Example 1:
+//
+// Input: ransomNote = "a", magazine = "b"
+// Output: false
+// Example 2:
+//
+// Input: ransomNote = "aa", magazine = "ab"
+// Output: false
+// Example 3:
+//
+// Input: ransomNote = "aa", magazine = "aab"
+// Output: true

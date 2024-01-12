@@ -17,9 +17,9 @@
   66.  Plus One
   169. Majority Element
   28. [[ Find the Index of the First Occurrence in a String ]]
-  70. Climbing Stairs [NOT DONE]]
+  70.  Climbing Stairs [NOT DONE]]
   387. First Unique Character in a String
-   ?? Ransom Note Problem
+  383. Ransom Note Problem
 
   :: [[ Medium ]]
   33. Search in Rotated Sorted Array
@@ -28,7 +28,21 @@
 
 
 
+[[Tricky]]
  */
+
+var a = {}, b = {key: 'b'}, c = {key: 'c'}
+a[b] = 123
+a[c] = 456
+console.log(a[b]) //456
+
+/*
+* console.log(b.toString()); //[object Object]
+* Explanation :
+*            -  When you use an object (b in this case) as a key in another object (a), JavaScript implicitly converts the object to a string.
+             -  The default toString method of objects returns "[object Object]". Therefore, the assignment is essentially a['[object Object]'] = 123;.
+             -  a[b] = 123 || a['[object Object]'] = 123  both are equal
+* */
 
 
 //Find Second Largest Element
@@ -859,3 +873,18 @@ function firstUniqChar(s) {
 console.log("Example 1:", firstUniqChar("leetcode"));        // Output: 0
 console.log("Example 2:", firstUniqChar("loveleetcode"));    // Output: 2
 console.log("Example 3:", firstUniqChar("aabb"));            // Output: -1
+
+
+// <<<<<<<<<<-------------------------------------------------- 383. [[ Ransom Note ]] --------------------------------------------------->>>>>>>>>>>
+
+/*
+*   - Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
+*    Example 1:
+     Input: ransomNote = "a", magazine = "b"    // Output: false
+     Example 2:
+     Input: ransomNote = "aa", magazine = "ab"  // Output: false
+     Example 3:
+     Input: ransomNote = "aa", magazine = "aab" // Output: true
+*
+*
+* */
