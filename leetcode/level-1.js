@@ -5,6 +5,7 @@
  :: [[ Easy ]]
   1.   Two Sum 
   2.   Add Two Numbers
+  9.   Palindrome Number
   13.  Roman to Integer
   14.  Longest Common Prefix
   20.  Valid Parentheses
@@ -893,10 +894,16 @@ console.log("Example 3:", firstUniqChar("aabb"));            // Output: -1
      Input: ransomNote = "aa", magazine = "ab"  // Output: false
      Example 3:
      Input: ransomNote = "aa", magazine = "aab" // Output: true
-*
-*
+     *
+     * { a: 2, b: 1 } magazineFreq
+        Before decrement: a - 2
+        After decrement: a - 1
+        Before decrement: a - 1
+        After decrement: a - 0
+        true
 * */
 
+let ransomNote = 'a', magazine = 'b'
 const canConstruct = (ransomNote, magazine) => {
     const magazineFreq = {}
     for (let char of magazine) {
@@ -916,3 +923,19 @@ const canConstruct = (ransomNote, magazine) => {
 }
 
 console.log(canConstruct(ransomNote, magazine))
+
+// <<<<<<<<<<------------------------------------------------ 9. [[ Palindrome Number ]] --------------------------------------------------->>>>>>>>>>>
+/*
+*   - Given an integer x, return true if x is palindrome, and false otherwise.
+
+    Example 1:
+     Input: x = 121  // Output: true
+     //Explanation: 121 reads as 121 from left to right and from right to left.
+    Example 2:
+     Input: x = -121  // Output: false
+     Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+    Example 3:
+     Input: x = 10    // Output: false
+     Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+
+* */
