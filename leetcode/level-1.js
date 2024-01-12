@@ -67,6 +67,14 @@ const arr = [3, 8, 2, 5, 10];
 console.log(secondLargestArr(arr));
 
 
+const arr = ['abcd', 'abc', 'abcdef', 'abcd']
+const shortestStr = (arr) => {
+    return arr.reduce((shortest, current) => {
+        return current.length > shortest.length ? shortest : current
+
+    }, arr[0])
+}
+console.log(shortestStr(arr)) //abc
 /*
 Explanation for each iteration:
 
