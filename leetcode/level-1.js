@@ -936,5 +936,4 @@ console.log(canConstruct(ransomNote, magazine))
     Example 3:
      Input: x = 10    // Output: false
      Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
-
 * */
