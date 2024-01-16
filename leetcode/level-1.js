@@ -21,7 +21,9 @@
   70.  Climbing Stairs [NOT DONE]]
   387. First Unique Character in a String
   383. Ransom Note Problem
-  35. Search Insert Position
+  35. Search Insert Position [Re-visit the code]
+  69. Sqrt(x)
+
 
   :: [[ Medium ]]
   33. Search in Rotated Sorted Array
@@ -1008,3 +1010,22 @@ const target3 = 7;
 console.log(searchInsert(nums1, target1));  // Output: 2
 console.log(searchInsert(nums2, target2));  // Output: 1
 console.log(searchInsert(nums3, target3));  // Output: 4
+
+// <<<<<<<<<<------------------------------------------------ 69. [[ Sqrt(x) ]] --------------------------------------------------->>>>>>>>>>>
+
+/*
+* =>  Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
+      You must not use any built-in exponent function or operator.
+        Example 1:
+                  Input: x = 4  //  Output: 2  Explanation: The square root of 4 is 2, so we return 2.
+        Example 2:
+                  Input: x = 8  //  Output: 2  Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
+
+*
+* */
+let x = 8
+const mysqrt = (x) => {
+    console.log(x)
+}
+
+console.log(mysqrt(x))
