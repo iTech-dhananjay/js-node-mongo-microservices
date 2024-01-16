@@ -937,3 +937,27 @@ console.log(canConstruct(ransomNote, magazine))
      Input: x = 10    // Output: false
      Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 * */
+
+function isPalindrome(x) {
+    // Convert the integer to a string
+    const str = x.toString();
+
+    // Use two pointers approach to compare characters
+    let left = 0;
+    let right = str.length - 1;
+
+    while (left < right) {
+        if (str[left] !== str[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+
+    return true;
+}
+
+// Test cases
+console.log(isPalindrome(121));    // Output: true
+console.log(isPalindrome(-121));   // Output: false
+console.log(isPalindrome(10));     // Output: false
