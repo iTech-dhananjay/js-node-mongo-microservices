@@ -23,6 +23,7 @@
   383. Ransom Note Problem
   35. Search Insert Position [Re-visit the code]
   67. Add Binary
+  83. Remove Duplicates from Sorted List
 
 
   :: [[ Medium ]]
@@ -1080,3 +1081,50 @@ console.log(result2); // Output: "10101"
 // // Example usage:
 // console.log(addBinary("11", "1"));      // Output: "100"
 // console.log(addBinary("1010", "1011")); // Output: "10101"
+
+// <<<<<<<<<<------------------------------------------------ 83. [[ Remove Duplicates from Sorted List ]] --------------------------------------------------->>>>>>>>>>>
+/*
+*
+* =>   Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+       Example 1:  Input: head = [1,1,2]          // Output: [1,2]
+       Example 2:  Input: head = [1,1,2,3,3]      // Output: [1,2,3]
+* */
+var deleteDuplicates = function (head) {
+    if (!head || !head.next) {
+        return head;
+    }
+
+    let current = head;
+
+    while (current.next !== null) {
+        if (current.val === current.next.val) {
+            // Duplicate found, update the next pointer to skip the duplicate
+            current.next = current.next.next;
+        } else {
+            // Move to the next node
+            current = current.next;
+        }
+    }
+
+    return head;
+};
+
+// Example usage:
+function ListNode(val, next) {
+    this.val = (val === undefined ? 0 : val);
+    this.next = (next === undefined ? null : next);
+}
+
+// Create a sample linked list: 1 -> 1 -> 2 -> 3 -> 3
+let head = new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(3)))));
+let result = deleteDuplicates(head);
+
+// Output the result
+let output = [];
+while (result !== null) {
+    output.push(result.val);
+    result = result.next;
+}
+console.log(output); // Output: [1, 2, 3]
+
+
