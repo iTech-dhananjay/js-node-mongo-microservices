@@ -22,7 +22,7 @@
   387. First Unique Character in a String
   383. Ransom Note Problem
   35. Search Insert Position [Re-visit the code]
-  69. Sqrt(x)
+  67. Add Binary
 
 
   :: [[ Medium ]]
@@ -48,7 +48,7 @@ console.log(a[b]) //456
              -  a[b] = 123 || a['[object Object]'] = 123  both are equal
 * */
 
-
+console.log([1, 2, 3] + [4, 5, 6])  //1,2,34,5,6
 //Find Second Largest Element
 const secondLargestArr = (arr) => {
     let largest = arr[0];
@@ -1011,21 +1011,50 @@ console.log(searchInsert(nums1, target1));  // Output: 2
 console.log(searchInsert(nums2, target2));  // Output: 1
 console.log(searchInsert(nums3, target3));  // Output: 4
 
-// <<<<<<<<<<------------------------------------------------ 69. [[ Sqrt(x) ]] --------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<------------------------------------------------ 67. [[ Add Binary]] --------------------------------------------------->>>>>>>>>>>
 
 /*
-* =>  Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
-      You must not use any built-in exponent function or operator.
+    * let num =10 ======>> console.log(num.toString(2)) 1010
+*   =>  Given two binary strings a and b, return their sum as a binary string.
         Example 1:
-                  Input: x = 4  //  Output: 2  Explanation: The square root of 4 is 2, so we return 2.
+        Input: a = "11", b = "1"          // Output: "100"
+        Explanation : a is "11" in binary, which represents the decimal number 3,b is "1" in binary, which represents the decimal number 1. add (3+1) 4 have binary 100
         Example 2:
-                  Input: x = 8  //  Output: 2  Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
+        Input: a = "1010", b = "1011"    // Output: "10101"
 
-*
 * */
-let x = 8
-const mysqrt = (x) => {
-    console.log(x)
+function addBinary(a, b) {
+    let result = '';
+    let carry = 0;
+
+    // Make both strings the same length by padding zeros
+    const maxLength = Math.max(a.length, b.length);
+    a = a.padStart(maxLength, '0');
+    b = b.padStart(maxLength, '0');
+
+    // Iterate through the strings from right to left
+    for (let i = maxLength - 1; i >= 0; i--) {
+        const bitA = parseInt(a[i]);
+        const bitB = parseInt(b[i]);
+
+        // Calculate the sum of the current bits and the carry
+        const sum = bitA + bitB + carry;
+
+        // Determine the current bit in the result
+        result = (sum % 2) + result;
+
+        // Calculate the carry for the next iteration
+        carry = Math.floor(sum / 2);
+    }
+
+    // Add any remaining carry to the result
+    if (carry > 0) {
+        result = carry + result;
+    }
+
+    return result;
 }
 
-console.log(mysqrt(x))
+// Example usage:
+console.log(addBinary("11", "1"));      // Output: "100"
+console.log(addBinary("1010", "1011")); // Output: "10101"

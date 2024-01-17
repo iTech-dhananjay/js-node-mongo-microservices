@@ -1,16 +1,18 @@
 /*
-* =>  Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
-      You must not use any built-in exponent function or operator.
+*
+*   =>  Given two binary strings a and b, return their sum as a binary string.
         Example 1:
-                  Input: x = 4  //  Output: 2  Explanation: The square root of 4 is 2, so we return 2.
+        Input: a = "11", b = "1"          // Output: "100"
         Example 2:
-                  Input: x = 8  //  Output: 2  Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
-
+        Input: a = "1010", b = "1011"    // Output: "10101"
 *
 * */
-let x = 8
-const mysqrt = (x) => {
-    console.log(x)
+
+let a = "11", b = "1"
+console.log(a.toString())
+const addBinary = (a, b) => {
+    // console.log(a, b)
+
 }
 
-console.log(mysqrt(x))
+console.log(addBinary(a, b))
