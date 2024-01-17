@@ -1024,37 +1024,59 @@ console.log(searchInsert(nums3, target3));  // Output: 4
 
 * */
 function addBinary(a, b) {
-    let result = '';
-    let carry = 0;
+    // Convert binary strings to decimal
+    const num1 = BigInt('0b' + a);
+    const num2 = BigInt('0b' + b);
 
-    // Make both strings the same length by padding zeros
-    const maxLength = Math.max(a.length, b.length);
-    a = a.padStart(maxLength, '0');
-    b = b.padStart(maxLength, '0');
 
-    // Iterate through the strings from right to left
-    for (let i = maxLength - 1; i >= 0; i--) {
-        const bitA = parseInt(a[i]);
-        const bitB = parseInt(b[i]);
+    // Add the decimal numbers
+    const sum = num1 + num2;
 
-        // Calculate the sum of the current bits and the carry
-        const sum = bitA + bitB + carry;
+    // Convert the sum back to binary
+    const binarySum = sum.toString(2);
 
-        // Determine the current bit in the result
-        result = (sum % 2) + result;
-
-        // Calculate the carry for the next iteration
-        carry = Math.floor(sum / 2);
-    }
-
-    // Add any remaining carry to the result
-    if (carry > 0) {
-        result = carry + result;
-    }
-
-    return result;
+    return binarySum;
 }
 
 // Example usage:
-console.log(addBinary("11", "1"));      // Output: "100"
-console.log(addBinary("1010", "1011")); // Output: "10101"
+const result1 = addBinary("11", "1");
+console.log(result1); // Output: "100"
+
+const result2 = addBinary("1010", "1011");
+console.log(result2); // Output: "10101"
+
+// function addBinary(a, b) {
+//     let result = '';
+//     let carry = 0;
+//
+//     // Make both strings the same length by padding zeros
+//     const maxLength = Math.max(a.length, b.length);
+//     a = a.padStart(maxLength, '0');
+//     b = b.padStart(maxLength, '0');
+//
+//     // Iterate through the strings from right to left
+//     for (let i = maxLength - 1; i >= 0; i--) {
+//         const bitA = parseInt(a[i]);
+//         const bitB = parseInt(b[i]);
+//
+//         // Calculate the sum of the current bits and the carry
+//         const sum = bitA + bitB + carry;
+//
+//         // Determine the current bit in the result
+//         result = (sum % 2) + result;
+//
+//         // Calculate the carry for the next iteration
+//         carry = Math.floor(sum / 2);
+//     }
+//
+//     // Add any remaining carry to the result
+//     if (carry > 0) {
+//         result = carry + result;
+//     }
+//
+//     return result;
+// }
+//
+// // Example usage:
+// console.log(addBinary("11", "1"));      // Output: "100"
+// console.log(addBinary("1010", "1011")); // Output: "10101"
