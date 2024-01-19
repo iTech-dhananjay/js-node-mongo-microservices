@@ -10,4 +10,4 @@ const mysqrt = (x) => {
     return x;
 }
 
-console.log(mysqrt(number));
+console.log(mysqrt(number))
