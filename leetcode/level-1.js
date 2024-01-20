@@ -24,6 +24,7 @@
   35. Search Insert Position [Re-visit the code]
   67. Add Binary
   83. Remove Duplicates from Sorted List
+  27. Remove Element
 
 
   :: [[ Medium ]]
