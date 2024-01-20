@@ -39,7 +39,6 @@
 // }
 // console.log(output); // Output: [1, 2, 3]
 
-
 const arrObj = [
     {name: 'abc', slug: 'abc'},
     {name: 'pqr', slug: 'xyz'},
@@ -48,11 +47,11 @@ const arrObj = [
 ];
 
 const uniqueArrObj = arrObj.filter((obj, index, self) =>
-    index ===
-    self.findIndex(
-        (o) => o.name === obj.name && o.slug === obj.slug
-    )
+        index === self.findIndex(
+            (o) => o.name === obj.name && o.slug === obj.slug
+        )
 );
 
 console.log(uniqueArrObj);
+
 
