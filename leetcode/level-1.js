@@ -97,6 +97,20 @@ Explanation for each iteration:
 So, in the example array `[3, 8, 2, 5, 10]`, the second largest element is 8.*/
 
 
+const arrObj = [
+    {name: 'abc', slug: 'abc'},
+    {name: 'pqr', slug: 'xyz'},
+    {name: 'abc', slug: 'abc'},
+    {name: 'abc', slug: 'xyz'}
+];
+
+function isUniqueSlug(value, index, self) {
+    return self.findIndex(obj => obj.slug === value.slug) === index;
+}
+
+const uniqueArrObj = arrObj.filter(isUniqueSlug);
+
+console.log(uniqueArrObj); //[ { name: 'abc', slug: 'abc' }, { name: 'pqr', slug: 'xyz' } ]
 // <<<<<<<<<<<<<<<------------------------------------------------- 1. [[   Two Sum  ]] -------------------------------------------------------------->>>>>>>>>>>
 
 /*         [https://www.youtube.com/watch?v=mq6ZQv_apmc&list=PLrClazTqVpJlyey7Szwe_XX9meD4wl2Ma&index=60]
