@@ -100,20 +100,25 @@ const person = {
 
 function getObjectDepth(obj) {
     if (typeof obj !== 'object' || obj === null) {
-        // Base case: if obj is not an object or is null, return 0
-        return 0;
+        // Base case: if obj is not an object or is null, return 0 depth
+        return {maxDepth: 0, currentDepth: 0};
     }
+
     let maxDepth = 0;
+    let currentDepth = 1; // Initialize currentDepth to 1 for the current object level
+
     for (const key in obj) {
         if (obj.hasOwnProperty(key)) {
-            const depth = getObjectDepth(obj[key]);
-            maxDepth = Math.max(maxDepth, depth);
+            const depths = getObjectDepth(obj[key]);
+            maxDepth = Math.max(maxDepth, depths.maxDepth);
         }
     }
-    // Increment the depth for the current object level
-    return 1 + maxDepth;
+
+    return {maxDepth: maxDepth + 1, currentDepth};
 }
 
 
-const depth = getObjectDepth(person);
-console.log("Depth of the object:", depth);
+const depthInfo = getObjectDepth(person);
+console.log("Current Depth of the object:", depthInfo.currentDepth);
+console.log("Max Depth of the object:", depthInfo.maxDepth);
+
