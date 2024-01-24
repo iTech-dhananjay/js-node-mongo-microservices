@@ -38,6 +38,14 @@ Explanation: 7/-3 = -2.33333.. which is truncated to -2.
 *
 * */
 
+
+/*
+*        -----  Inside the loop, there are two conditions. The first condition checks if the property in user1 is not null, is an object, and if the corresponding property exists in result. If true,
+                it recursively calls mergeObjects to merge the nested objects.
+         -----  The second condition checks if the property in user1 is not null or if the property in result is undefined. If true, it assigns the value from user1 to the result object.
+*
+*
+* */
 const user1 = {
     name: "Rajan",
     age: null,
@@ -59,22 +67,22 @@ const user2 = {
     mobile: 1234567890,
 };
 
-function mergeObjects(obj1, obj2) {
-    const result = {...obj2};
+function mergeObjects(user1, user2) {
+    const result = {...user2};
 
-    for (const key in obj1) {
-        if (obj1.hasOwnProperty(key)) {
-            if (obj1[key] !== null && typeof obj1[key] === 'object' && result[key]) {
+    for (const key in user1) {
+        if (user1.hasOwnProperty(key)) {
+            if (user1[key] !== null && typeof user1[key] === 'object' && result[key]) {
                 // Recursively merge nested objects
-                result[key] = mergeObjects(obj1[key], result[key]);
-            } else if (obj1[key] !== null || result[key] === undefined) {
-                result[key] = obj1[key];
+                result[key] = mergeObjects(user1[key], result[key]);
+            } else if (user1[key] !== null || result[key] === undefined) {
+                result[key] = user1[key];
             }
         }
     }
+
     return result;
 }
 
+console.log(mergeObjects(user1, user2))
 
-const mergedUser = mergeObjects(user1, user2);
-console.log(mergedUser);
