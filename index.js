@@ -1,41 +1,32 @@
-const user1 = {
-    name: "Rajan",
-    age: null,
-    address: {
-        pincode: 1234444,
-        city: null,
-    },
-    test: null,
-};
+function getObjectDepth(obj) {
+    if (typeof obj !== 'object' || obj === null) {
+        // Base case: if obj is not an object or is null, return 1
+        return 1;
+    }
 
-const user2 = {
-    name: "Piyush",
-    age: 20,
-    address: {
-        pincode: 843434,
-        city: "GGN",
-        state: "haryana",
-    },
-    mobile: 1234567890,
-};
+    let maxDepth = 1; // Initialize maxDepth to 1
 
-
-function mergeObjects(user1, user2) {
-    const result = {...user2};
-    
-    for (const key in user1) {
-        if (user1.hasOwnProperty(key)) {
-            if (user1[key] !== null && typeof user1[key] === 'object' && result[key]) {
-                // Recursively merge nested objects
-                result[key] = mergeObjects(user1[key], result[key]);
-            } else if (user1[key] !== null || result[key] === undefined) {
-                result[key] = user1[key];
-            }
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            const depth = getObjectDepth(obj[key]);
+            maxDepth = Math.max(maxDepth, depth);
         }
     }
 
-    return result;
+    return maxDepth;
 }
 
-console.log(mergeObjects(user1, user2))
+// Example usage:
+const person = {
+    name: "John",
+    age: 25,
+    address: {
+        city: "Exampleville",
+        zipCode: "12345",
+        country: "Sampleland",
+    },
+    hobbies: ["Reading", "Coding", "Traveling"],
+};
 
+const depth = getObjectDepth(person);
+console.log("Depth of the object:", depth);

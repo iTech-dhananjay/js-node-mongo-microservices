@@ -86,3 +86,34 @@ function mergeObjects(user1, user2) {
 
 console.log(mergeObjects(user1, user2))
 
+
+const person = {
+    name: "John",
+    age: 25,
+    address: {
+        city: "Exampleville",
+        zipCode: "12345",
+        country: "Sampleland",
+    },
+    hobbies: ["Reading", "Coding", "Traveling"],
+};
+
+function getObjectDepth(obj) {
+    if (typeof obj !== 'object' || obj === null) {
+        // Base case: if obj is not an object or is null, return 0
+        return 0;
+    }
+    let maxDepth = 0;
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            const depth = getObjectDepth(obj[key]);
+            maxDepth = Math.max(maxDepth, depth);
+        }
+    }
+    // Increment the depth for the current object level
+    return 1 + maxDepth;
+}
+
+
+const depth = getObjectDepth(person);
+console.log("Depth of the object:", depth);
