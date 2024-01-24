@@ -40,12 +40,12 @@ Explanation: 7/-3 = -2.33333.. which is truncated to -2.
 
 
 /*
-*        -----  Inside the loop, there are two conditions. The first condition checks if the property in user1 is not null, is an object, and if the corresponding property exists in result. If true,
-                it recursively calls mergeObjects to merge the nested objects.
-         -----  The second condition checks if the property in user1 is not null or if the property in result is undefined. If true, it assigns the value from user1 to the result object.
-*
-*
+*        -----  The first condition checks if the property in user1 is not null, is an object, and if the corresponding property exists in result. If all these conditions are true, it means there is a nested object,
+                and the function recursively calls itself (mergeObjects) to merge the nested objects..
+         -----  The second condition checks if the property in user1 is not null or if the property in result is undefined. If either of these conditions is true, it means that the property exists in user1 but not in result,
+                so it assigns the value from user1 to the result object.
 * */
+
 const user1 = {
     name: "Rajan",
     age: null,
