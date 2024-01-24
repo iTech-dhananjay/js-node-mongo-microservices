@@ -10,7 +10,7 @@ const user1 = {
 
 const user2 = {
     name: "Piyush",
-    age: null,
+    age: 20,
     address: {
         pincode: 843434,
         city: "GGN",
@@ -20,16 +20,16 @@ const user2 = {
 };
 
 
-function mergeObjects(obj1, obj2) {
-    const result = {...obj2};
-
-    for (const key in obj1) {
-        if (obj1.hasOwnProperty(key)) {
-            if (obj1[key] !== null && typeof obj1[key] === 'object' && result[key]) {
+function mergeObjects(user1, user2) {
+    const result = {...user2};
+    
+    for (const key in user1) {
+        if (user1.hasOwnProperty(key)) {
+            if (user1[key] !== null && typeof user1[key] === 'object' && result[key]) {
                 // Recursively merge nested objects
-                result[key] = mergeObjects(obj1[key], result[key]);
-            } else if (obj1[key] !== null || result[key] === undefined) {
-                result[key] = obj1[key];
+                result[key] = mergeObjects(user1[key], result[key]);
+            } else if (user1[key] !== null || result[key] === undefined) {
+                result[key] = user1[key];
             }
         }
     }
@@ -37,5 +37,5 @@ function mergeObjects(obj1, obj2) {
     return result;
 }
 
-
 console.log(mergeObjects(user1, user2))
+
