@@ -662,6 +662,7 @@ const arr = [
     {name: 'Chaman', score: 32},
     {name: 'Dhananjay', score: 32},
 ];
+
 // Bubble sort implementation
 for (let i = 0; i < arr.length - 1; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
