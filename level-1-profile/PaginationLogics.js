@@ -4,7 +4,6 @@ const departmentData = {
     name: 'IT Department',
     departmentCodeId: 'IT001',
 };
-
 // Sample assets data
 const assetsData = {
     organizationId: '12345',
