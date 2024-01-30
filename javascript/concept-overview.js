@@ -2,21 +2,29 @@
 /* 
 => clg for console.log
 => MongoDB connections
+
+**************
+
   1. Increment (++)
   2. Temporal Dead Zone
   3. Call back Hell , Inversion of Control - Call Back
   4. Promises - Creating Promise, Chaining , Error Handling
   5. Event Loop, Callback Queue, Microtask Queue
-  6. Undefined vs Not defined
-  7. Rest vs Spread Operator
-  8. The Scope Chain, 🔥Scope & Lexical Environment
-  9. Functions Types & Higer Order Function
-  10. Closures
-  11. Objects {}
-  12. IIFE (Immediately Invoked Function Expression)
-  13. Currying
-  14. ['this'] keyword
-  15. Prototype and Prototypal Inheritance
+  6. The Scope Chain, 🔥Scope & Lexical Environment
+  7. Functions Types & Higer Order Function
+  8. Closures
+  9. Objects {}
+  10. IIFE (Immediately Invoked Function Expression)
+  11. Currying
+  12. ['this'] keyword
+  13. Prototype and Prototypal Inheritance
+
+
+**************
+
+  14. Undefined vs Not defined
+  15. Rest vs Spread Operator
+  16. call() apply() & bind()
 
 */
 
@@ -240,95 +248,8 @@ setTimeout(function cb() {
 
 console.log('End');
 
-// <<<<<<<<<<<<<----------------------------------------- 6. [[  Undefined vs Not defined  ]] ----------------------------------------------------->>>>>>>>>>>
-/* 
 
-  -  Undefined is like a placeholder till a variable is not assigned a value.
-  -  undefined !== not defined
-  -  JS- weakly or loosely typed language since it doesn't depend on data type declarations
-
-
-memory is already allocated to 'a'
-console.log(x); // Reference Error , x is not defined
-console.log(a); // undefined
-var a = 7;
-console.log(a); // 7 
-
-
-var a;
-if (a === undefined) {
-     console.log('a is undefined');
-} else {
-     console.log('a is not defined');
-}
-
-*/
-
-var a;
-console.log(a); // undefined
-a = 10;
-console.log(a); // 10
-a = 'Hello World'; //loosely typed-language as it can store undefined,number, string sometimes,javascript is called loosely typed language.
-console.log(a); //Hello World
-a = undefined; // not a good practice to do this
-
-
-// <<<<<<<<<<<<<----------------------------------------- 7. [[  Rest vs Spread Operator  ]] ----------------------------------------------------->>>>>>>>>>>
-
-/* Rest Operator (...)
- 1. Usage in Function Declarations
-     - The rest operator can be used in both function declarations and function expressions.
-
- 2. No Need for arguments Object
-     - The rest operator provides a more modern and concise way to handle variable arguments compared to the older arguments object.
-* */
-function exampleFunction(arg1, arg2, ...restArgs) {
-    console.log(arg1);      // 1
-    console.log(arg2);      // 2
-    console.log(restArgs);  // [3, 4, 5]
-}
-
-exampleFunction(1, 2, 3, 4, 5);
-
-function exampleFunction(...args) {
-    console.log(args); // [1, 2, 3, 4, 5]
-}
-
-exampleFunction(1, 2, 3, 4, 5);
-
-
-// Spread Operator (...)
-/*
-* 1. Usage with Arrays:
-*     - Used to spread the elements of an array into another array.
-
-* 2. Usage with Objects:
-*     - Used to spread the properties of an object into another object.
-
-* */
-const arr1 = [1, 2, 3];
-const arr2 = [...arr1, 4, 5, 6];
-
-const obj1 = {a: 1, b: 2};
-const obj2 = {...obj1, c: 3, d: 4};
-
-
-const arr3 = [1, 2, 3];
-const arr4 = [4, 5, 6];
-const combinedArray = [...arr3, ...arr4];
-
-/* [[ Key Differences ]]
-Rest Operator:
-     =>   Used in function parameters to collect arguments into an array.
-     =>   Particularly useful for functions with a variable number of arguments.
-
-Spread Operator:
-     =>   Used with arrays and objects to spread elements or properties into another array or object.
-     =>   Efficient for creating copies of arrays and objects and merging multiple arrays or objects.
-* */
-
-
-// <<<<----------------------------------- 8. [[   The Scope Chain, 🔥Scope & Lexical Environment [Do it later]  ]]] ----------------------------------->>>>>>>
+// <<<<----------------------------------- 6. [[   The Scope Chain, 🔥Scope & Lexical Environment [Do it later]  ]]] ----------------------------------->>>>>>>
 /* 
   To concise things:
 
@@ -389,7 +310,7 @@ a();
 // b is not defined as when we put var in block scope it behaves like block scope only so it is not defined
 console.log(b); // Reference Error : b is not defined
 
-// <<<<<<<<<<<<<-------------------------------------------- 9. [[ Functions Types ]] -------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<-------------------------------------------- 7. [[ Functions Types ]] -------------------------------------------------------->>>>>>>>>>>
 /* 
  1.  Function Statement aka Function Declaration - Hoisting diffrence b/w F(n) Statement & b/w F(n) Expression
  2.  Function Expression
@@ -653,7 +574,7 @@ const outputD = users
 
 console.log(outputD); //[ 'Dhananjay', 'Soumen' ]
 
-// <<<<<<<<<<<<<------------------------------------------------ 10. [[ Closures ]] --------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<------------------------------------------------ 8. [[ Closures ]] --------------------------------------------------------->>>>>>>>>>>
 /* 
 Prime Definition - The ability of function to access variables or functions that are lexically out of scope are called closures
 
@@ -795,7 +716,7 @@ const fn = (a, x, y, ...numbers) => {
 };
 fn(1, 2, 3, 4, 5);
 
-// <<<<<<<<<<<<<------------------------------------------------ 11. [[ Objects {} ]] ----------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<------------------------------------------------ 9. [[ Objects {} ]] ----------------------------------------------------------->>>>>>>>>>>
 /* 
 
 1.  An object is a collection of properties, and a property is an association between a name (or key) and a value. 
@@ -823,7 +744,7 @@ console.log(func); //5
 
 //Level-3
 
-// <<<<<<<<<--------------------------------- 12. [[ IIFE (Immediately Invoked Function Expression) ]] ------------------------------------------------>>>>>>>>>
+// <<<<<<<<<--------------------------------- 10. [[ IIFE (Immediately Invoked Function Expression) ]] ------------------------------------------------>>>>>>>>>
 
 (function squareThree(num) {
     console.log(num * num);
@@ -837,7 +758,7 @@ console.log(func); //5
     })(2);
 })(1);
 
-// <<<<<<<<<<<<<----------------------------------------------------- 13. [[ Currying  ]] ----------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<----------------------------------------------------- 11. [[ Currying  ]] ----------------------------------------------------------->>>>>>>>>>>
 /* 
    - Currying function takes one function at a time returning a new function  expecting a next argument
  */
@@ -851,7 +772,7 @@ function a(a) {
 
 console.log(a(5)(6));
 
-// <<<<<<<<<<<<<----------------------------------------------------- 14. [[ this keyword  ]] ----------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<----------------------------------------------------- 12. [[ this keyword  ]] ----------------------------------------------------------->>>>>>>>>>>
 //Objects are not compared by value: two objects are not equal even if they have the same properties and values. This is true of arrays too: even if they have the same values in the same order.
 
 var o = {x: 1},
@@ -861,7 +782,7 @@ var a = [],
     b = []; // Two distinct, empty arrays
 a === b; // => false: distinct arrays are never equal
 
-// <<<<<<<<<--------------------------------- 15. [[ Prototype and Prototypal Inheritance in Javascript]] ------------------------------------------------>>>>>>>>>
+// <<<<<<<<<--------------------------------- 13. [[ Prototype and Prototypal Inheritance in Javascript]] ------------------------------------------------>>>>>>>>>
 
 /* 
 ONE OBJECT TRYING TO GET THE PROPERTIES OF OTHER OBJECTS
@@ -879,3 +800,96 @@ let objectTwo = {
 };
 
 objectTwo.__proto__ = objectOne; // objectTwo.city = 'Noida' - 2nd object as access two first object
+
+
+// <<<<<<<<<<<<<----------------------------------------- 14. [[  Undefined vs Not defined  ]] ----------------------------------------------------->>>>>>>>>>>
+/*
+
+  -  Undefined is like a placeholder till a variable is not assigned a value.
+  -  undefined !== not defined
+  -  JS- weakly or loosely typed language since it doesn't depend on data type declarations
+
+
+memory is already allocated to 'a'
+console.log(x); // Reference Error , x is not defined
+console.log(a); // undefined
+var a = 7;
+console.log(a); // 7
+
+
+var a;
+if (a === undefined) {
+     console.log('a is undefined');
+} else {
+     console.log('a is not defined');
+}
+
+*/
+
+var a;
+console.log(a); // undefined
+a = 10;
+console.log(a); // 10
+a = 'Hello World'; //loosely typed-language as it can store undefined,number, string sometimes,javascript is called loosely typed language.
+console.log(a); //Hello World
+a = undefined; // not a good practice to do this
+
+
+// <<<<<<<<<<<<<----------------------------------------- 15. [[  Rest vs Spread Operator  ]] ----------------------------------------------------->>>>>>>>>>>
+
+/* Rest Operator (...)
+ 1. Usage in Function Declarations
+     - The rest operator can be used in both function declarations and function expressions.
+
+ 2. No Need for arguments Object
+     - The rest operator provides a more modern and concise way to handle variable arguments compared to the older arguments object.
+* */
+function exampleFunction(arg1, arg2, ...restArgs) {
+    console.log(arg1);      // 1
+    console.log(arg2);      // 2
+    console.log(restArgs);  // [3, 4, 5]
+}
+
+exampleFunction(1, 2, 3, 4, 5);
+
+function exampleFunction(...args) {
+    console.log(args); // [1, 2, 3, 4, 5]
+}
+
+exampleFunction(1, 2, 3, 4, 5);
+
+
+// Spread Operator (...)
+/*
+* 1. Usage with Arrays:
+*     - Used to spread the elements of an array into another array.
+
+* 2. Usage with Objects:
+*     - Used to spread the properties of an object into another object.
+
+* */
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1, 4, 5, 6];
+
+const obj1 = {a: 1, b: 2};
+const obj2 = {...obj1, c: 3, d: 4};
+
+
+const arr3 = [1, 2, 3];
+const arr4 = [4, 5, 6];
+const combinedArray = [...arr3, ...arr4];
+
+/* [[ Key Differences ]]
+Rest Operator:
+     =>   Used in function parameters to collect arguments into an array.
+     =>   Particularly useful for functions with a variable number of arguments.
+     =>   Does not allow default values.
+
+Spread Operator:
+     =>   Used with arrays and objects to spread elements or properties into another array or object.
+     =>   Efficient for creating copies of arrays and objects and merging multiple arrays or objects.
+     =>   Promotes immutable operations when creating copies.
+* */
+
+
+// <<<<<<<<<<<<<----------------------------------------- 16. [[ call() apply() && bind()  ]] ----------------------------------------------------->>>>>>>>>>>
