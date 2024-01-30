@@ -43,7 +43,6 @@ const getDepartmentById = async (id, organizationId, page, limit) => {
     try {
         // Simulate fetching department data
         const department = departmentData;
-
         if (!department) {
             throw new Error('Department not found');
         }
@@ -70,7 +69,6 @@ const getDepartmentById = async (id, organizationId, page, limit) => {
         const startSerialNumber = skip + 1;
         const endSerialNumber = Math.min(page * limit, totalDocuments);
 
-
         return {
             department,
             totalAssets,
@@ -81,7 +79,6 @@ const getDepartmentById = async (id, organizationId, page, limit) => {
         throw new Error('Unable to fetch department');
     }
 };
-
 // Example usage
 const result = getDepartmentById('1', '12345', 1, 2);
 console.log(result);
