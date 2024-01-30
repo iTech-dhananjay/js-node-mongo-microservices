@@ -1,93 +1,42 @@
 // Sample department data
 const departmentData = {
-    _id: '60a7f5f65c2f3f002ba97da4',
+    _id: '1',
     name: 'IT Department',
     departmentCodeId: 'IT001',
 };
-// Sample assets data
-const assetsData = {
-    organizationId: '12345',
-    assets: [
-        {
-            uniqueAssetId: 'A001',
-            status: 'Active',
-            createdAt: '2022-01-01',
-            rowAsset: [
-                {
-                    subgroups: [
-                        {
-                            fields: [
-                                {name: 'field1', value: 'value1'},
-                                {name: 'field2', value: 'IT001'},
-                                {name: 'field3', value: 'location1'},
-                                {name: 'assetName', value: 'Asset 1'},
-                            ],
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            uniqueAssetId: 'A002',
-            status: 'Active',
-            createdAt: '2022-01-01',
-            rowAsset: [
-                {
-                    subgroups: [
-                        {
-                            fields: [
-                                {name: 'field1', value: 'value2'},
-                                {name: 'field2', value: 'IT002'},
-                                {name: 'field3', value: 'location1'},
-                                {name: 'assetName', value: 'Asset 2'},
-                            ],
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            uniqueAssetId: 'A003',
-            status: 'Inactive',
-            createdAt: '2022-01-02',
-            rowAsset: [
-                {
-                    subgroups: [
-                        {
-                            fields: [
-                                {name: 'field1', value: 'value3'},
-                                {name: 'field2', value: 'IT001'},
-                                {name: 'field3', value: 'location2'},
-                                {name: 'assetName', value: 'Asset 3'},
-                            ],
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            uniqueAssetId: 'A004',
-            status: 'Active',
-            createdAt: '2022-01-03',
-            rowAsset: [
-                {
-                    subgroups: [
-                        {
-                            fields: [
-                                {name: 'field1', value: 'value4'},
-                                {name: 'field2', value: 'IT003'},
-                                {name: 'field3', value: 'location1'},
-                                {name: 'assetName', value: 'Asset 4'},
-                            ],
-                        },
-                    ],
-                },
-            ],
-        },
-        // Add more assets as needed...
-    ],
-};
 
+// Sample assets data
+const assetsData = [
+    {
+        assetId: 'A001',
+        status: 'Active',
+        createdAt: '2022-01-01',
+        departmentCodeId: 'IT001',
+        assetName: 'Asset 1',
+    },
+    {
+        assetId: 'A002',
+        status: 'Active',
+        createdAt: '2022-01-01',
+        departmentCodeId: 'IT002',
+        assetName: 'Asset 2',
+    },
+    {
+        assetId: 'A003',
+        status: 'Inactive',
+        createdAt: '2022-01-02',
+        departmentCodeId: 'IT001',
+        assetName: 'Asset 3',
+    },
+    {
+        assetId: 'A004',
+        status: 'Active',
+        createdAt: '2022-01-03',
+        departmentCodeId: 'IT003',
+        assetName: 'Asset 4',
+    },
+    // Add more assets as needed...
+];
 
 // Function to apply pagination logic
 const getDepartmentById = async (id, organizationId, page, limit) => {
@@ -101,55 +50,31 @@ const getDepartmentById = async (id, organizationId, page, limit) => {
 
         // Simulate fetching assets data
         const allAssets = assetsData;
+        const totalAssets = allAssets.length
 
         // Apply pagination to assetList
         const skip = (page - 1) * limit;
-        const assetList = [];
-
-        allAssets.assets.forEach((asset) => {
-            const tempAssetInfo = {
-                uniqueAssetId: asset.uniqueAssetId,
+        const filteredAssets = allAssets.filter((asset) => asset.departmentCodeId === department.departmentCodeId);
+        const paginatedAssetList = filteredAssets
+            .slice(skip, skip + limit)
+            .map((asset) => ({
+                assetId: asset.assetId,
                 status: asset.status || null,
                 createdAt: asset.createdAt || null,
-                assetLocation: null,
-                assetName: null,
-            };
-
-            asset.rowAsset.forEach((rowAsset) => {
-                if (rowAsset) {
-                    rowAsset.subgroups.forEach((subgroup) => {
-                        if (subgroup && subgroup.fields) {
-                            subgroup.fields.forEach((field) => {
-                                if (field.value == department.departmentCodeId) {
-                                    assetList.push({
-                                        ...tempAssetInfo,
-                                        assetName: field.name === 'assetName' ? field.value : tempAssetInfo.assetName,
-                                        assetLocation: field.name === 'locationName' ? field.value : tempAssetInfo.assetLocation,
-                                    });
-                                }
-                            });
-                        }
-                    });
-                }
-            });
-        });
-
-        // Apply pagination to assetList
-        const paginatedAssetList = assetList.slice(skip, skip + limit);
+                assetName: asset.assetName || null,
+            }));
 
         // Additional information
-        const totalDocuments = assetList.length;
+        const totalDocuments = filteredAssets.length;
         const totalPages = Math.ceil(totalDocuments / limit);
         const startSerialNumber = skip + 1;
         const endSerialNumber = Math.min(page * limit, totalDocuments);
 
-        const totalAssets = paginatedAssetList.length;
 
         return {
             department,
             totalAssets,
             assetList: paginatedAssetList,
-            userList: [],
             paginatedAssetList: {totalDocuments, totalPages, startSerialNumber, endSerialNumber},
         };
     } catch (error) {
@@ -158,5 +83,5 @@ const getDepartmentById = async (id, organizationId, page, limit) => {
 };
 
 // Example usage
-const result = getDepartmentById('60a7f5f65c2f3f002ba97da4', '12345', 1, 2);
+const result = getDepartmentById('1', '12345', 1, 2);
 console.log(result);
