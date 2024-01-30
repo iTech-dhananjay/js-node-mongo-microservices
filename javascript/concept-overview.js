@@ -8,14 +8,15 @@
   4. Promises - Creating Promise, Chaining , Error Handling
   5. Event Loop, Callback Queue, Microtask Queue
   6. Undefined vs Not defined
-  7. The Scope Chain, 🔥Scope & Lexical Environment
-  8. Functions Types & Higer Order Function
-  9. Closures
-  10. Objects {}
-  11. IIFE (Immediately Invoked Function Expression)
-  12. Currying
-  13. ['this'] keyword
-  14. Prototype and Prototypal Inheritance 
+  7. Rest vs Spread Operator
+  8. The Scope Chain, 🔥Scope & Lexical Environment
+  9. Functions Types & Higer Order Function
+  10. Closures
+  11. Objects {}
+  12. IIFE (Immediately Invoked Function Expression)
+  13. Currying
+  14. ['this'] keyword
+  15. Prototype and Prototypal Inheritance
 
 */
 
@@ -58,6 +59,12 @@ b = a++;
 console.log(a); //6
 console.log(b); //5
 
+
+let a = 5;
+
+console.log(++a) //6
+console.log(a++) //6
+console.log(++a) //8
 /* 
 
 
@@ -265,7 +272,63 @@ a = 'Hello World'; //loosely typed-language as it can store undefined,number, st
 console.log(a); //Hello World
 a = undefined; // not a good practice to do this
 
-// <<<<----------------------------------- 7. [[   The Scope Chain, 🔥Scope & Lexical Environment [Do it later]  ]]] ----------------------------------->>>>>>>
+
+// <<<<<<<<<<<<<----------------------------------------- 7. [[  Rest vs Spread Operator  ]] ----------------------------------------------------->>>>>>>>>>>
+
+/* Rest Operator (...)
+ 1. Usage in Function Declarations
+     - The rest operator can be used in both function declarations and function expressions.
+
+ 2. No Need for arguments Object
+     - The rest operator provides a more modern and concise way to handle variable arguments compared to the older arguments object.
+* */
+function exampleFunction(arg1, arg2, ...restArgs) {
+    console.log(arg1);      // 1
+    console.log(arg2);      // 2
+    console.log(restArgs);  // [3, 4, 5]
+}
+
+exampleFunction(1, 2, 3, 4, 5);
+
+function exampleFunction(...args) {
+    console.log(args); // [1, 2, 3, 4, 5]
+}
+
+exampleFunction(1, 2, 3, 4, 5);
+
+
+// Spread Operator (...)
+/*
+* 1. Usage with Arrays:
+*     - Used to spread the elements of an array into another array.
+
+* 2. Usage with Objects:
+*     - Used to spread the properties of an object into another object.
+
+* */
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1, 4, 5, 6];
+
+const obj1 = {a: 1, b: 2};
+const obj2 = {...obj1, c: 3, d: 4};
+
+
+const arr3 = [1, 2, 3];
+const arr4 = [4, 5, 6];
+const combinedArray = [...arr3, ...arr4];
+
+/* [[ Key Differences ]]
+Rest Operator:
+     =>   Used in function parameters to collect arguments into an array.
+     =>   Particularly useful for functions with a variable number of arguments.
+
+Spread Operator:
+     =>   Used with arrays and objects to spread elements or properties into another array or object.
+     =>   Efficient for creating copies of arrays and objects and merging multiple arrays or objects.
+* */
+
+
+// <<<<----------------------------------- 8. [[   The Scope Chain, 🔥Scope & Lexical Environment [Do it later]  ]]] ----------------------------------->>>>>>>
 /* 
   To concise things:
 
@@ -326,7 +389,7 @@ a();
 // b is not defined as when we put var in block scope it behaves like block scope only so it is not defined
 console.log(b); // Reference Error : b is not defined
 
-// <<<<<<<<<<<<<-------------------------------------------- 8. [[ Functions Types ]] -------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<-------------------------------------------- 9. [[ Functions Types ]] -------------------------------------------------------->>>>>>>>>>>
 /* 
  1.  Function Statement aka Function Declaration - Hoisting diffrence b/w F(n) Statement & b/w F(n) Expression
  2.  Function Expression
@@ -590,7 +653,7 @@ const outputD = users
 
 console.log(outputD); //[ 'Dhananjay', 'Soumen' ]
 
-// <<<<<<<<<<<<<------------------------------------------------ 9. [[ Closures ]] --------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<------------------------------------------------ 10. [[ Closures ]] --------------------------------------------------------->>>>>>>>>>>
 /* 
 Prime Definition - The ability of function to access variables or functions that are lexically out of scope are called closures
 
@@ -732,7 +795,7 @@ const fn = (a, x, y, ...numbers) => {
 };
 fn(1, 2, 3, 4, 5);
 
-// <<<<<<<<<<<<<------------------------------------------------ 10. [[ Objects {} ]] ----------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<------------------------------------------------ 11. [[ Objects {} ]] ----------------------------------------------------------->>>>>>>>>>>
 /* 
 
 1.  An object is a collection of properties, and a property is an association between a name (or key) and a value. 
@@ -760,7 +823,7 @@ console.log(func); //5
 
 //Level-3
 
-// <<<<<<<<<--------------------------------- 11. [[ IIFE (Immediately Invoked Function Expression) ]] ------------------------------------------------>>>>>>>>>
+// <<<<<<<<<--------------------------------- 12. [[ IIFE (Immediately Invoked Function Expression) ]] ------------------------------------------------>>>>>>>>>
 
 (function squareThree(num) {
     console.log(num * num);
@@ -774,7 +837,7 @@ console.log(func); //5
     })(2);
 })(1);
 
-// <<<<<<<<<<<<<----------------------------------------------------- 12. [[ Currying  ]] ----------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<----------------------------------------------------- 13. [[ Currying  ]] ----------------------------------------------------------->>>>>>>>>>>
 /* 
    - Currying function takes one function at a time returning a new function  expecting a next argument
  */
@@ -788,7 +851,7 @@ function a(a) {
 
 console.log(a(5)(6));
 
-// <<<<<<<<<<<<<----------------------------------------------------- 13. [[ this keyword  ]] ----------------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<----------------------------------------------------- 14. [[ this keyword  ]] ----------------------------------------------------------->>>>>>>>>>>
 //Objects are not compared by value: two objects are not equal even if they have the same properties and values. This is true of arrays too: even if they have the same values in the same order.
 
 var o = {x: 1},
@@ -798,7 +861,7 @@ var a = [],
     b = []; // Two distinct, empty arrays
 a === b; // => false: distinct arrays are never equal
 
-// <<<<<<<<<--------------------------------- 14. [[ Prototype and Prototypal Inheritance in Javascript]] ------------------------------------------------>>>>>>>>>
+// <<<<<<<<<--------------------------------- 15. [[ Prototype and Prototypal Inheritance in Javascript]] ------------------------------------------------>>>>>>>>>
 
 /* 
 ONE OBJECT TRYING TO GET THE PROPERTIES OF OTHER OBJECTS
