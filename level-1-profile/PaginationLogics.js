@@ -28,9 +28,67 @@ const assetsData = {
                 },
             ],
         },
+        {
+            uniqueAssetId: 'A002',
+            status: 'Active',
+            createdAt: '2022-01-01',
+            rowAsset: [
+                {
+                    subgroups: [
+                        {
+                            fields: [
+                                {name: 'field1', value: 'value2'},
+                                {name: 'field2', value: 'IT002'},
+                                {name: 'field3', value: 'location1'},
+                                {name: 'assetName', value: 'Asset 2'},
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            uniqueAssetId: 'A003',
+            status: 'Inactive',
+            createdAt: '2022-01-02',
+            rowAsset: [
+                {
+                    subgroups: [
+                        {
+                            fields: [
+                                {name: 'field1', value: 'value3'},
+                                {name: 'field2', value: 'IT001'},
+                                {name: 'field3', value: 'location2'},
+                                {name: 'assetName', value: 'Asset 3'},
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            uniqueAssetId: 'A004',
+            status: 'Active',
+            createdAt: '2022-01-03',
+            rowAsset: [
+                {
+                    subgroups: [
+                        {
+                            fields: [
+                                {name: 'field1', value: 'value4'},
+                                {name: 'field2', value: 'IT003'},
+                                {name: 'field3', value: 'location1'},
+                                {name: 'assetName', value: 'Asset 4'},
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
         // Add more assets as needed...
     ],
 };
+
 
 // Function to apply pagination logic
 const getDepartmentById = async (id, organizationId, page, limit) => {
@@ -101,5 +159,5 @@ const getDepartmentById = async (id, organizationId, page, limit) => {
 };
 
 // Example usage
-const result = getDepartmentById('60a7f5f65c2f3f002ba97da4', '12345', 2, 2);
+const result = getDepartmentById('60a7f5f65c2f3f002ba97da4', '12345', 1, 2);
 console.log(result);
