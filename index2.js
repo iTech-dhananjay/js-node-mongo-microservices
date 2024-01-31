@@ -31,13 +31,13 @@
 //
 // user1.call(user2.name)
 
-const person = {
-    name: 'Jack',
-    age: 25,
-    test: greet = () => {
-        console.log(this);
-        console.log(this.name);
+var car = {
+    registrationNumber: "GA12345",
+    brand: 'Toyota',
+    displayDetails: function (ownerName) {
+        console.log(ownerName + ", this is your car: " + this.registrationNumber + " " + this.brand);
+
     }
 }
-
-person.test();
+var myCarDetails = car.displayDetails.bind(car, "Vivian")
+myCarDetails()

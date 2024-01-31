@@ -988,15 +988,14 @@ var car = {
 
 var car = {
     registrationNumber: "GA12345",
-    brand: "Toyota",
-
+    brand: 'Toyota',
     displayDetails: function (ownerName) {
         console.log(ownerName + ", this is your car: " + this.registrationNumber + " " + this.brand);
+
     }
 }
-//Example of passing arguments with bind():
-var myCarDetails = car.displayDetails.bind(car, "Vivian"); // Vivian, this is your car: GA12345 Toyota
-
+var myCarDetails = car.displayDetails.bind(car, "Vivian")
+myCarDetails() // Vivian, this is your car: GA12345 Toyota
 
 // 2nd Part  [[ call() and apply() methods ]]
 
