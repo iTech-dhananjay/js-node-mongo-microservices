@@ -763,7 +763,7 @@ console.log(majorityElement(arr));
 /*
   - Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
   - Input: haystack = "sadbutsad", needle = "sad"   / Output: 0 , Explanation: "sad" occurs at index 0 and 6.
-  - Input: haystack = "leetcode", needle = "leeto"
+  - Input: haystack = "lcode", needle = "leeto"
 
 
 
@@ -809,7 +809,7 @@ const hayNeed = (haystack, needle) => {
 
 console.log(hayNeed("adbutsad", "akar"));
 console.log(hayNeed("sadbutsad", "sad"));
-console.log(hayNeed("leetcode", "leeto"));
+console.log(hayNeed("lcode", "leeto"));
 
 // Use indexOf
 let haystack = "sadbutsad"
@@ -899,7 +899,7 @@ function firstUniqChar(s) {
 }
 
 // Test cases
-console.log("Example 1:", firstUniqChar("leetcode"));        // Output: 0
+console.log("Example 1:", firstUniqChar("lcode"));        // Output: 0
 console.log("Example 2:", firstUniqChar("loveleetcode"));    // Output: 2
 console.log("Example 3:", firstUniqChar("aabb"));            // Output: -1
 
