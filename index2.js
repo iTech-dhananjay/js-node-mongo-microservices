@@ -31,13 +31,17 @@
 //
 // user1.call(user2.name)
 
-var car = {
-    registrationNumber: "GA12345",
-    brand: 'Toyota',
-    displayDetails: function (ownerName) {
-        console.log(ownerName + ", this is your car: " + this.registrationNumber + " " + this.brand);
+const arrObj = [
+    {name: 'abc', slug: 'abc'},
+    {name: 'pqr', slug: 'xyz'},
+    {name: 'abc', slug: 'abc'},
+    {name: 'abc', slug: 'xyz'}
+];
 
-    }
+function isUniqueSlug(value, index, self) {
+    return self.findIndex(obj => obj.slug === value.slug) === index;
 }
-var myCarDetails = car.displayDetails.bind(car, "Vivian")
-myCarDetails()
+
+const uniqueArrObj = arrObj.filter(isUniqueSlug);
+
+console.log(uniqueArrObj); //[ { name: 'abc', slug: 'abc' }, { name: 'pqr', slug: 'xyz' } ]

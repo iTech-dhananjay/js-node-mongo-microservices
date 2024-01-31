@@ -971,12 +971,12 @@ var car = {
 
 /*
     - The above will work perfectly fine as long as we use it this way: car.displayDetails(); // GA12345 Toyota
- VVI- But what if we want to borrow a method?
+    - But what if we want to borrow a method?
            var myCarDetails =  car.displayDetails;
            myCarDetails();
     - Well, this won’t work as the “this” will be now assigned to the global context which doesn’t have neither the registrationNumber nor the brand property.
 
-    //The bind() Method - This means bind() can be used by every single function.
+     The bind() Method - This means bind() can be used by every single function.
      var myCarDetails = car.displayDetails.bind(car);
      myCarDetails(); // GA12345 Toyota
 
@@ -991,33 +991,32 @@ var car = {
     brand: 'Toyota',
     displayDetails: function (ownerName) {
         console.log(ownerName + ", this is your car: " + this.registrationNumber + " " + this.brand);
-
     }
 }
-var myCarDetails = car.displayDetails.bind(car, "Vivian")
-myCarDetails() // Vivian, this is your car: GA12345 Toyota
-
-// 2nd Part  [[ call() and apply() methods ]]
 
 /*
-   => Similar but slightly different usage provide the call() and apply() methods which also belong to the Function.prototype property.
-      This time there is a car object without the displayDetails function, which is located in the global context.
-   => Note that when using the apply() function the parameter must be placed in an array. Call() accepts both an array of parameters and a parameter itself.
-      Both are great tools for borrowing functions in JavaScript.
-   => bind(), call() and apply() functions can make your life easier when you need to set the value of ‘this’. Hope the post was helpful.
+     1. Borrowing Method and Calling It : bind()
+     => Explanation: In this example, we are borrowing the displayDetails method from the car object and binding it to the car object itself.
+                     The bind method returns a new function with the specified context (this value) and initial arguments. Here, we set the owner name to "Vivan".
+                     By calling myCarDetails(), we execute the method in the context of the car object, and the output will be logged to the console.
 * */
 
-var car = {
-    registrationNumber: "GA12345",
-    brand: "Toyota"
-}
+// When we have to borrow a method of one object and call it in another context
+var myCarDetails = car.displayDetails.bind(car, "Vivan")
+myCarDetails()
 
-function displayDetails(ownerName) {
-    console.log(ownerName + ", this is your car: " + this.registrationNumber + " " + this.brand);
-}
 
-//We can use the apply() function:
-displayDetails.apply(car, ["Vivian"]); // Vivian, this is your car: GA12345 Toyota
+/*
+     1. Borrowing Method Without Calling It: call and apply
+     => Explanation: In this example, we are using the apply or call method to borrow the displayDetails method from the car object.
+                     Both apply and call allow us to set the context (this value) and pass arguments to the method. However, in this case, we are not immediately calling the method.
+                     This is useful when you want to store a reference to the method with specific arguments for later use. If you later decide to execute the method,
+                     you can do so by calling myCarDetails(), and the output will be logged to the console.
+* */
 
-//Or
-displayDetails.call(car, "Vivian"); // Vivian, this is your car: GA12345 Toyota
+
+// When we want to borrow a method without immediately calling it
+var myCarDetails = car.displayDetails.apply(car, ["Vivan"])
+
+//OR
+var myCarDetails = car.displayDetails.call(car, "Vivan")
