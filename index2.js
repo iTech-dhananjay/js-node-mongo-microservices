@@ -16,22 +16,28 @@
 // console.log(sortedArray);
 
 
-function Car(type, fuelType) {
-    this.type = type;
-    this.fuelType = fuelType;
-}
-
-function setBrand(brand) {
-    Car.call(this, "convertible", "petrol");
-    this.brand = brand;
-    console.log(`Car details = `, this);
-}
-
-// function definePrice(price) {
-//     Car.call(this, "convertible", "diesel");
-//     this.price = price;
-//     console.log(`Car details = `, this);
+// let user1 = {
+//     name: 'Jack',
+//     state: 'Bihar',
+//     getName() {
+//         return this.name
+//     }
 // }
+//
+// let user2 = {
+//     name: 'John',
+//     state: 'Uttar Pradesh',
+// }
+//
+// user1.call(user2.name)
 
-const newBrand = new setBrand('Brand1');
-// const newCarPrice = new definePrice(100000);
+const person = {
+    name: 'Jack',
+    age: 25,
+    test: greet = () => {
+        console.log(this);
+        console.log(this.name);
+    }
+}
+
+person.test();

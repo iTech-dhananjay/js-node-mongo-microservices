@@ -16,14 +16,14 @@
   9. Objects {}
   10. IIFE (Immediately Invoked Function Expression)
   11. Currying
-  12. ['this'] keyword
-  13. Prototype and Prototypal Inheritance
+  12. Prototype and Prototypal Inheritance
 
 
 **************
 
-  14. Undefined vs Not defined
-  15. Rest vs Spread Operator
+  13. Undefined vs Not defined
+  14. Rest vs Spread Operator
+  15. ['this'] keyword
   16. call() apply() & bind()
 
 */
@@ -772,17 +772,8 @@ function a(a) {
 
 console.log(a(5)(6));
 
-// <<<<<<<<<<<<<----------------------------------------------------- 12. [[ this keyword  ]] ----------------------------------------------------------->>>>>>>>>>>
-//Objects are not compared by value: two objects are not equal even if they have the same properties and values. This is true of arrays too: even if they have the same values in the same order.
 
-var o = {x: 1},
-    p = {x: 1}; // Two objects with the same properties
-o === p; // => false: distinct objects are never equal
-var a = [],
-    b = []; // Two distinct, empty arrays
-a === b; // => false: distinct arrays are never equal
-
-// <<<<<<<<<--------------------------------- 13. [[ Prototype and Prototypal Inheritance in Javascript]] ------------------------------------------------>>>>>>>>>
+// <<<<<<<<<--------------------------------- 12. [[ Prototype and Prototypal Inheritance in Javascript]] ------------------------------------------------>>>>>>>>>
 
 /* 
 ONE OBJECT TRYING TO GET THE PROPERTIES OF OTHER OBJECTS
@@ -802,7 +793,18 @@ let objectTwo = {
 objectTwo.__proto__ = objectOne; // objectTwo.city = 'Noida' - 2nd object as access two first object
 
 
-// <<<<<<<<<<<<<----------------------------------------- 14. [[  Undefined vs Not defined  ]] ----------------------------------------------------->>>>>>>>>>>
+//  => Objects are not compared by value: two objects are not equal even if they have the same properties and values.
+//     This is true of arrays too: even if they have the same values in the same order.
+
+var o = {x: 1},
+    p = {x: 1}; // Two objects with the same properties
+o === p; // => false: distinct objects are never equal
+var a = [],
+    b = []; // Two distinct, empty arrays
+a === b; // => false: distinct arrays are never equal
+
+
+// <<<<<<<<<<<<<----------------------------------------- 13. [[  Undefined vs Not defined  ]] ----------------------------------------------------->>>>>>>>>>>
 /*
 
   -  Undefined is like a placeholder till a variable is not assigned a value.
@@ -835,7 +837,7 @@ console.log(a); //Hello World
 a = undefined; // not a good practice to do this
 
 
-// <<<<<<<<<<<<<----------------------------------------- 15. [[  Rest vs Spread Operator  ]] ----------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<----------------------------------------- 14. [[  Rest vs Spread Operator  ]] ----------------------------------------------------->>>>>>>>>>>
 
 /* Rest Operator (...)
  1. Usage in Function Declarations
@@ -891,5 +893,59 @@ Spread Operator:
      =>   Promotes immutable operations when creating copies.
 * */
 
+// <<<<<<<<<<<<<----------------------------------------------------- 15. [[ this keyword  ]] ------------------------------------------------------->>>>>>>>>>>
+
+/*
+   - In JavaScript, this keyword refers to the object where it is called. Arrow functions do not have their own this
+    1. this Inside Global Scope :
+            - When this is used alone, this refers to the global object (window object in browsers). For example, let a = this;  console.log(a);  o/p -> Window {}
+              || this.name = 'Sarah'; console.log(window.name); o/p -> Sarah
+
+    2. this Inside Function  :
+            - When this is used in a function, this refers to the global object (window object in browsers). For example,
+
+    3. this Inside Constructor Function
+            - In JavaScript, constructor functions are used to create objects. When a function is used as a constructor function, this refers to the object inside
+              which it is used. For example-
+    4. this Inside Object Method
+            - When this is used inside an object's method, this refers to the object it lies within. For example,
+
+
+
+* */
+
+function greet() {
+    // this inside function        [[2.this Inside Function ]]
+    // this refers to the global object
+    console.log(this);
+}
+
+greet(); // Window {}
+
+function Person() {
+    this.name = 'Joe'
+    console.log(this)          // [[ 3.this Inside Constructor Function ]]
+}
+
+let person1 = new Person()
+console.log(person1.name) //Here, this refers to the person1 object. That's why, person1.name gives us Jack.
+
+
+//VVI
+const person = {
+    name: 'Jack',
+    age: 25,
+
+    // this inside method        [[ 4. this Inside Object Method ]]
+    // this refers to the object itself
+    greet() {
+        console.log(this);
+        console.log(this.name);
+    }
+}
+
+person.greet();  //  {name: "Jack", age: 25, greet: ƒ}  || Jack   => In the above example, this refers to the person object.
+
 
 // <<<<<<<<<<<<<----------------------------------------- 16. [[ call() apply() && bind()  ]] ----------------------------------------------------->>>>>>>>>>>
+
