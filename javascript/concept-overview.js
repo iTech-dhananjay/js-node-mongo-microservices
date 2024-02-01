@@ -1023,6 +1023,13 @@ var myCarDetails = car.displayDetails.apply(car, ["Vivan"])
 var myCarDetails = car.displayDetails.call(car, "Vivan")
 
 // <<<<<<<<<<<<<--------------------------------------------------- 17. [[  Promises ]] ------------------------------------------------------------>>>>>>>>>>>
+/*
+1. What are Promises?
+     - The Promise is an object represents the eventual completion (or failure) of an asynchronous operation.[Best🫡]
+     - They are just like placeholders to store a future value that will be returned after some time.
+     - They contain two properties: PromiseState [ Pending ,Fulfilled ,Rejected] and PromiseResult.
+     - Promises are immutable so it can't be altered
+* */
 
 // Q-1 -----------------------
 const myPromise = new Promise((resolve, reject) => {
