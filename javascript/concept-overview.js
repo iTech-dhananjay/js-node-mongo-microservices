@@ -1038,7 +1038,6 @@ myPromise.then((data) => {
 })
 
 // Q-2
-
 const promise1 = Promise.resolve(3)
 const promise2 = 42
 const promise3 = new Promise((resolve, reject) => {
@@ -1048,3 +1047,5 @@ const promise3 = new Promise((resolve, reject) => {
 Promise.all([promise1, promise2, promise3]).then((values) => {
     console.log(values)
 })
+
+//Q-3
