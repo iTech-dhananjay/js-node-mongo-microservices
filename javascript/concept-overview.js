@@ -1037,7 +1037,6 @@ const myPromise = new Promise((resolve, reject) => {
         reject("foo")
     }, 2000)
 })
-
 myPromise.then((data) => {
     console.log(data)
 }).catch((error) => {
