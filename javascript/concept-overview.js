@@ -1024,7 +1024,7 @@ var myCarDetails = car.displayDetails.call(car, "Vivan")
 
 // <<<<<<<<<<<<<--------------------------------------------------- 17. [[  Promises ]] ------------------------------------------------------------>>>>>>>>>>>
 
-// Q-1
+// Q-1 -----------------------
 const myPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
         reject("foo")
@@ -1037,15 +1037,28 @@ myPromise.then((data) => {
     console.log(error)
 })
 
-// Q-2
-const promise1 = Promise.resolve(3)
-const promise2 = 42
-const promise3 = new Promise((resolve, reject) => {
-    setTimeout(resolve, 1000, 'foo')
-})
+// Q-2 -----------------------
+const p1 = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("one"), 1000);
+});
+const p2 = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("two"), 2000);
+});
+const p3 = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("three"), 3000);
+});
 
-Promise.all([promise1, promise2, promise3]).then((values) => {
-    console.log(values)
-})
+const p4 = new Promise((resolve, reject) => {
+    reject(new Error("reject"));
+});
+Promise.all([p1, p2, p3, p4])
+    .then((values) => {
+        console.log(values);
+    })
+    .catch((error) => {
+        console.error(error.message); //OP - reject
 
-//Q-3
+    });
+
+
+// Q-3 -----------------------
