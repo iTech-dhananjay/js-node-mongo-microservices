@@ -25,6 +25,7 @@
   14. Rest vs Spread Operator
   15. ['this'] keyword
   16. call() apply() & bind()
+  17. Promise
 
 */
 
