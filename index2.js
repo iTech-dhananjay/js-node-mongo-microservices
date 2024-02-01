@@ -13,35 +13,19 @@
 // }
 //
 // const sortedArray = bubbleSort(data.slice());
-// console.log(sortedArray);
-
-
-// let user1 = {
-//     name: 'Jack',
-//     state: 'Bihar',
-//     getName() {
-//         return this.name
-//     }
+// console.log(sortedArray)
+// const arrObj = [
+//     {name: 'abc', slug: 'abc'},
+//     {name: 'pqr', slug: 'xyz'},
+//     {name: 'abc', slug: 'abc'},
+//     {name: 'abc', slug: 'xyz'}
+// ];
+//
+// function isUniqueSlug(value, index, self) {
+//     return self.findIndex(obj => obj.slug === value.slug) === index;
 // }
 //
-// let user2 = {
-//     name: 'John',
-//     state: 'Uttar Pradesh',
-// }
+// const uniqueArrObj = arrObj.filter(isUniqueSlug);
 //
-// user1.call(user2.name)
+// console.log(uniqueArrObj); //[ { name: 'abc', slug: 'abc' }, { name: 'pqr', slug: 'xyz' } ]
 
-const arrObj = [
-    {name: 'abc', slug: 'abc'},
-    {name: 'pqr', slug: 'xyz'},
-    {name: 'abc', slug: 'abc'},
-    {name: 'abc', slug: 'xyz'}
-];
-
-function isUniqueSlug(value, index, self) {
-    return self.findIndex(obj => obj.slug === value.slug) === index;
-}
-
-const uniqueArrObj = arrObj.filter(isUniqueSlug);
-
-console.log(uniqueArrObj); //[ { name: 'abc', slug: 'abc' }, { name: 'pqr', slug: 'xyz' } ]

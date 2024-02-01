@@ -1021,3 +1021,30 @@ var myCarDetails = car.displayDetails.apply(car, ["Vivan"])
 
 //OR
 var myCarDetails = car.displayDetails.call(car, "Vivan")
+
+// <<<<<<<<<<<<<--------------------------------------------------- 17. [[  Promises ]] ------------------------------------------------------------>>>>>>>>>>>
+
+// Q-1
+const myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        reject("foo")
+    }, 2000)
+})
+
+myPromise.then((data) => {
+    console.log(data)
+}).catch((error) => {
+    console.log(error)
+})
+
+// Q-2
+
+const promise1 = Promise.resolve(3)
+const promise2 = 42
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 1000, 'foo')
+})
+
+Promise.all([promise1, promise2, promise3]).then((values) => {
+    console.log(values)
+})
