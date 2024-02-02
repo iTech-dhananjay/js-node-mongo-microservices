@@ -38,7 +38,7 @@ const assetsData = [
     // Add more assets as needed...
 ];
 
-// Function to apply pagination logic
+// Function to apply pagination logic [ We are not using skip and limit method of mongo , we implement logic to find pagination based on limit and skip calculative approach]
 const getDepartmentById = async (id, organizationId, page, limit) => {
     try {
         // Simulate fetching department data
