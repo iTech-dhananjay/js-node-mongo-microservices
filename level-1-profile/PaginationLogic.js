@@ -85,6 +85,7 @@ console.log(result);
 
 
 //------------------Replace Object Based on _id
+
 const assetFormManagements = [
     {
         "_id": "1",
@@ -159,4 +160,9 @@ const indexToReplace = assetFormManagements.findIndex(item => item._id === newOb
 assetFormManagements[indexToReplace] = newObj;
 
 // Log the updated array
-console.log(assetFormManagements);
+// console.log(assetFormManagements);
+
+// If you want to see the complete nested structure in the console output, you can use console.log with JSON.stringify and specify the number of spaces for indentation.
+// This will print the complete array with nested objects and arrays, indented with 2 spaces for better readability.
+console.log(JSON.stringify(assetFormManagements, null, 2));
+
