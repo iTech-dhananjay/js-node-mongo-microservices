@@ -30,10 +30,10 @@
 //
 // const depth = getObjectDepth(person);
 // console.log("Depth of the object:", depth);
-const data1 = [
-    {name: "jack", score: 20},
-    {name: "joe", score: 20},
-    {name: "deepak", score: 10},
-    {name: "rock", score: 15},
-    {name: "adam", score: 30},
-]
+// const data1 = [
+//     {name: "jack", score: 20},
+//     {name: "joe", score: 20},
+//     {name: "deepak", score: 10},
+//     {name: "rock", score: 15},
+//     {name: "adam", score: 30},
+// ]

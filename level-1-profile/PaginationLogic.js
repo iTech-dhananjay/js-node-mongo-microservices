@@ -82,3 +82,81 @@ const getDepartmentById = async (id, organizationId, page, limit) => {
 // Example usage
 const result = getDepartmentById('1', '12345', 1, 2);
 console.log(result);
+
+
+//------------------Replace Object Based on _id
+const assetFormManagements = [
+    {
+        "_id": "1",
+        "groupName": "updated_group_name",
+        "subgroups": [
+            {
+                "subgroupName": "updated_subgroup_name_1",
+                "fields": [
+                    {
+                        "name": "Asset File",
+                        "dataType": "List",
+                        "fieldType": "Select",
+                        "fieldLength": 30,
+                    }
+                ]
+            },
+            {
+                "subgroupName": "updated_subgroup_name_1",
+                "fields": [
+                    {
+                        "name": "Asset File",
+                        "dataType": "List",
+                        "fieldType": "Select",
+                        "fieldLength": 30,
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_id": "2",
+        "groupName": "updated_group_name",
+        "subgroups": [
+            {
+                "subgroupName": "updated_subgroup_name_1",
+                "fields": [
+                    {
+                        "name": "Asset File",
+                        "dataType": "List",
+                        "fieldType": "Select",
+                        "fieldLength": 30,
+                    }
+                ]
+            }
+        ]
+    }
+];
+
+// Define the new object that you want to replace with
+const newObj = {
+    "_id": "1",
+    "groupName": "new_group_name",
+    "subgroups": [
+        {
+            "subgroupName": "new_subgroup_name",
+            "fields": [
+                {
+                    "name": "New Asset File",
+                    "dataType": "List",
+                    "fieldType": "Select",
+                    "fieldLength": 40,
+                }
+            ]
+        }
+    ]
+};
+
+// Find the index of the object in assetFormManagements array based on _id
+const indexToReplace = assetFormManagements.findIndex(item => item._id === newObj._id);
+
+// Replace the object directly, assuming _id is unique
+assetFormManagements[indexToReplace] = newObj;
+
+// Log the updated array
+console.log(assetFormManagements);
