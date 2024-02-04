@@ -145,7 +145,7 @@ const newObj = {
                 {
                     "name": "New Asset File",
                     "dataType": "List",
-                    "fieldType": "Select",
+                    // "fieldType": "Select",
                     "fieldLength": 40,
                 }
             ]
