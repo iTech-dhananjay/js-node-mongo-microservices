@@ -26,6 +26,7 @@
   15. ['this'] keyword
   16. call() apply() & bind()
   17. Promise
+  18. Async/Await
 
 */
 
@@ -1067,4 +1068,27 @@ Promise.all([p1, p2, p3, p4])
     });
 
 
-// Q-3 -----------------------
+// <<<<<<<<<<<<<--------------------------------------------------- 18. [[ Async/Await ]] ------------------------------------------------------------>>>>>>>>>>>
+/*
+*  - Async functions and the await keyword provide a more concise and readable way to write asynchronous code, especially when dealing with Promises.
+*  - async keyword: It is used to define an asynchronous function, which returns a Promise implicitly. Within an async function,
+*                   you can use the await keyword to pause the execution of the function until the Promise is resolved.
+* - await keyword: It is used to pause the execution of an async function until the Promise is resolved. It can only be used inside an async function.
+
+
+*
+*
+* */
+
+async function fetchData() {
+    return Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log('Async/Await Check')
+        }, 2000)
+    })
+}
+
+async function fetchDataWrapper() {
+    const data = await fetchData()
+    console.log(data)
+}
