@@ -1,3 +1,28 @@
+/*
+     JSON.stringify() :
+         - The JSON.stringify() static method converts a JavaScript value to a JSON string.JavaScript Object Notation
+         - JSON [[JavaScript Object Notation]]
+* */
+
+
+let obj = {
+    name: "Joe Smith",
+    x: 10,
+    y: 20
+}
+console.log(JSON.stringify(obj))//{"name":"Joe Smith","x":10,"y":20}
+
+
+let obj2 = {
+    x: [10, undefined, function () {
+    }, Symbol('')],
+    y: new String('false'),
+    z: new Number(3)
+}
+console.log(JSON.stringify(obj2)); //{"x":[10,null,null,null],"y":"false","z":3}
+
+//----------------------------------------------------------------------------------------
+
 // Sample department data
 const departmentData = {
     _id: '1',
