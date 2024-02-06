@@ -27,6 +27,7 @@
   16. call() apply() & bind()
   17. Promise
   18. Async/Await
+  19. Closures
 
 */
 
@@ -577,21 +578,17 @@ const outputD = users
 console.log(outputD); //[ 'Dhananjay', 'Soumen' ]
 
 // <<<<<<<<<<<<<------------------------------------------------ 8. [[ Closures ]] --------------------------------------------------------->>>>>>>>>>>
-/* 
-Prime Definition - The ability of function to access variables or functions that are lexically out of scope are called closures
+/*
+    =>  Prime Definition - The ability of function to access variables or functions that are lexically out of scope are called closures
+    =>  Closure definition: A function bound together with its lexical environment. This means an inner nested function has access to its parents' lexical scope,
+                            and is able to remember variables the were declared in that environment, even after that functions has been removed from the call stack.
 
-
-
-
-Closure definition: a function bound together with its lexical environment. This means an inner nested function has access to its parents' lexical scope, 
-   and is able to remember variables the were declared in that environment, even after that functions has been removed from the call stack. 
-
-Uses of Closures
-  - Module Design Pattern
-  - Currying
-  - memoize
-  - setTimout
-  - Maintain state in async world
+    =>  Uses of Closures
+        - Module Design Pattern
+        - Currying
+        - memoize
+        - setTimout
+        - Maintain state in async world
 */
 
 function x() {
@@ -1090,3 +1087,18 @@ async function fetchDataWrapper() {
     const data = await fetchData()
     console.log(data)
 }
+
+
+// <<<<<<<<<<<<<------------------------------------------------ 19. [[ Closures ]] --------------------------------------------------------->>>>>>>>>>>
+/*
+    =>  Prime Definition - The ability of function to access variables or functions that are lexically out of scope are called closures
+    =>  Closure definition: A function bound together with its lexical environment. This means an inner nested function has access to its parents' lexical scope,
+                            and is able to remember variables the were declared in that environment, even after that functions has been removed from the call stack.
+
+    =>  Uses of Closures
+        - Module Design Pattern
+        - Currying
+        - memoize
+        - setTimout
+        - Maintain state in async world
+*/
