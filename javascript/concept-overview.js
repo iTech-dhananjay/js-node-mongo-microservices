@@ -1070,14 +1070,12 @@ Promise.all([p1, p2, p3, p4])
 
 // <<<<<<<<<<<<<--------------------------------------------------- 18. [[ Async/Await ]] ------------------------------------------------------------>>>>>>>>>>>
 /*
-*  - Async functions and the await keyword provide a more concise and readable way to write asynchronous code, especially when dealing with Promises.
-*  - async keyword: It is used to define an asynchronous function, which returns a Promise implicitly. Within an async function,
-*                   you can use the await keyword to pause the execution of the function until the Promise is resolved.
-* - await keyword: It is used to pause the execution of an async function until the Promise is resolved. It can only be used inside an async function.
-
-
-*
-*
+*  -  Async functions and the await keyword provide a more concise and readable way to write asynchronous code, especially when dealing with Promises.
+   -  async keyword: It is used to define an asynchronous function, which returns a Promise implicitly. Within an async function,
+            you can use the await keyword to pause the execution of the function until the Promise is resolved.
+   -  await keyword: It is used to pause the execution of an async function until the Promise is resolved. It can only be used inside an async function.
+   -  In the fetchDataWrapper function, await fetchData() pauses the execution until the Promise returned by fetchData() resolves. This makes the code look
+            synchronous while still being asynchronous under the hood. This approach improves readability and makes asynchronous code easier to understand and maintain.
 * */
 
 async function fetchData() {
