@@ -1,3 +1,18 @@
+// <<<<<<<<<<<<<<<-----------------------------------------------  [[ List of All concepts]] ------------------------------------------------>>>>>>>>>>>
+/*
+
+**************
+
+  1. MongoDB[NoSql] VS MySql Differnce
+  2. Event loop + Event Emiiter in node js
+  3. Definition -
+               => Global,Node.js,NPM,framework of node.js,stream,REPL,piping and callback-hell
+               => For Node.js, why does Google use the V8 engine?
+  3. File-Handling
+
+
+*/
+
 // <<<<<<<<<<<<<<<---------------------------------------- 1. [[ MongoDB[NoSql] VS MySql Differnce ]] --------------------------------------------------->>>>>>>>>>>
 
 /* 
@@ -27,29 +42,29 @@
 // mongoDB Connection
 const mongoose = require('mongoose');
 mongoose
-     .connect(process.env.DATABASE_CLOUD, {
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
-          useCreateIndex: true,
-          useFindAndModify: false,
-     })
-     .then(() => console.log('DB connected'))
-     .catch((err) => console.log(err));
+    .connect(process.env.DATABASE_CLOUD, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+    })
+    .then(() => console.log('DB connected'))
+    .catch((err) => console.log(err));
 
 // mySql Connection
 const pool = new Pool({
-     user: process.env.PG_USER,
-     password: process.env.PG_PASSWORD,
-     host: process.env.PG_HOST,
-     port: process.env.PG_PORT,
-     database: process.env.PG_DATABASE,
+    user: process.env.PG_USER,
+    password: process.env.PG_PASSWORD,
+    host: process.env.PG_HOST,
+    port: process.env.PG_PORT,
+    database: process.env.PG_DATABASE,
 });
 
 module.exports = pool;
 
 const newTodo = await pool.query(
-     'INSERT INTO todo (description) VALUES($1) RETURNING *',
-     [description]
+    'INSERT INTO todo (description) VALUES($1) RETURNING *',
+    [description]
 );
 
 // <<<<<<<<<<<<-------------------------------------------  2. [[ Event loop + Event Emiiter in node js ]] ------------------------------------------------->>>>>>>>>>>
@@ -64,17 +79,17 @@ const newTodo = await pool.query(
 
 //Eg- 1
 function resolveAfter2Seconds() {
-     return new Promise((resolve) => {
-          setTimeout(() => {
-               resolve('resolved');
-          }, 2000);
-     });
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('resolved');
+        }, 2000);
+    });
 }
 
 async function asyncCall() {
-     console.log('calling');
-     const result = await resolveAfter2Seconds();
-     console.log(result);
+    console.log('calling');
+    const result = await resolveAfter2Seconds();
+    console.log(result);
 }
 
 asyncCall();
@@ -84,15 +99,15 @@ asyncCall();
 
 //Eg- 2
 const getData = async () => {
-     try {
-          const response = await fetch(
-               'https://jsonplaceholder.typicode.com/todos/1'
-          );
-          const data = await response.json();
-          console.log(data);
-     } catch (err) {
-          console.log(err);
-     }
+    try {
+        const response = await fetch(
+            'https://jsonplaceholder.typicode.com/todos/1'
+        );
+        const data = await response.json();
+        console.log(data);
+    } catch (err) {
+        console.log(err);
+    }
 };
 
 getData();
@@ -154,13 +169,13 @@ Q1. What are streams in Node.js?
      */
 const fs = require('fs');
 fs.writeFile(
-     'DataFlairDemo.txt',
-     'Learn Node.js from DataFlair',
+    'DataFlairDemo.txt',
+    'Learn Node.js from DataFlair',
 
-     function (err, file) {
-          if (err) throw err;
-          console.log('Saved!' + file);
-     }
+    function (err, file) {
+        if (err) throw err;
+        console.log('Saved!' + file);
+    }
 );
 
 /* 
@@ -189,45 +204,45 @@ Q4. What is callback hell?
 
 */
 async function getResult() {
-     try {
-          const result1 = await asyncFunction1();
-          const result2 = await asyncFunction2(result1);
-          const result3 = await asyncFunction3(result2);
-          const result4 = await asyncFunction4(result3);
+    try {
+        const result1 = await asyncFunction1();
+        const result2 = await asyncFunction2(result1);
+        const result3 = await asyncFunction3(result2);
+        const result4 = await asyncFunction4(result3);
 
-          // Do something with the final result
-          return result4;
-     } catch (err) {
-          console.error('Error:', err);
-          return null; // or throw the error if you want to handle it further up the call stack
-     }
+        // Do something with the final result
+        return result4;
+    } catch (err) {
+        console.error('Error:', err);
+        return null; // or throw the error if you want to handle it further up the call stack
+    }
 }
 
 getResult()
-     .then((result) => {
-          // Use the final result here
-          console.log('Final Result:', result);
-     })
-     .catch((err) => {
-          // Handle errors from getResult() if needed
-          console.error('Error:', err);
-     });
+    .then((result) => {
+        // Use the final result here
+        console.log('Final Result:', result);
+    })
+    .catch((err) => {
+        // Handle errors from getResult() if needed
+        console.error('Error:', err);
+    });
 
 // Sample asynchronous functions (replace these with your actual asynchronous functions)
 async function asyncFunction1() {
-     return new Promise((resolve) => setTimeout(() => resolve(1), 1000));
+    return new Promise((resolve) => setTimeout(() => resolve(1), 1000));
 }
 
 async function asyncFunction2(data) {
-     return new Promise((resolve) => setTimeout(() => resolve(data * 2), 1000));
+    return new Promise((resolve) => setTimeout(() => resolve(data * 2), 1000));
 }
 
 async function asyncFunction3(data) {
-     return new Promise((resolve) => setTimeout(() => resolve(data + 3), 1000));
+    return new Promise((resolve) => setTimeout(() => resolve(data + 3), 1000));
 }
 
 async function asyncFunction4(data) {
-     return new Promise((resolve) => setTimeout(() => resolve(data - 4), 1000));
+    return new Promise((resolve) => setTimeout(() => resolve(data - 4), 1000));
 }
 
 /* 
@@ -340,8 +355,10 @@ Q.   What is Libuv?
 Q.   What is the difference between spawn and fork methods in Node.js?
 */
 const assert = require('assert');
+
 function add(x, y) {
-     return x + y;
+    return x + y;
 }
+
 var result = add(3, 5);
 assert(result === 8, 'three summed with five is eight');
