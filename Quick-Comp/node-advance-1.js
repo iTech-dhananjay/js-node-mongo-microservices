@@ -71,3 +71,38 @@ function getCachedData(key, callback) {
         });
     });
 }
+
+// <<<<<<<<<<<<<<<------------------------------------------------ 2. [[ Scalability ]] ----------------------------------------------------->>>>>>>>>>>
+/*
+        - Scalability is crucial for handling increasing loads and traffic in Node.js applications. Here's an example of using clustering to leverage multiple
+          CPU cores for better performance
+        - n this example, the master process forks multiple worker processes, each running on a separate CPU core. This allows the Node.js application to utilize the full processing power of the server.
+
+* */
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
+
+if (cluster.isMaster) {
+    console.log(`Master ${process.pid} is running`);
+
+    // Fork workers
+    for (let i = 0; i < numCPUs; i++) {
+        cluster.fork();
+    }
+
+    cluster.on('exit', (worker, code, signal) => {
+        console.log(`Worker ${worker.process.pid} died`);
+    });
+} else {
+    console.log(`Worker ${process.pid} started`);
+    // Worker process logic
+}
+
+// <<<<<<<<---------------------------------- 2. [[ Dependency Management and Package Security ]] ----------------------------------------->>>>>>>>>>>
+/*
+        - Managing dependencies and ensuring their security is crucial for building secure Node.js applications. Here's an example of using
+          npm audit to check for security vulnerabilities in dependencies
+          npm audit
+        - Running npm audit in the terminal will scan your project's dependencies for known security vulnerabilities and provide recommendations for fixing them.
+          It's essential to regularly update dependencies and follow security best practices to keep your Node.js applications secure.
+* */
