@@ -37,3 +37,24 @@
 //     {name: "rock", score: 15},
 //     {name: "adam", score: 30},
 // ]
+const results = [].forEach((text) => {
+    return text
+})
+
+console.log(results)
+
+let obj = {
+    a: 'Joe',
+    b: 'Doe'
+}
+
+let result;
+
+for (let item in obj) {
+    if (item === 'b') {
+        result = obj[item];
+        break;
+    }
+}
+
+console.log(result);
