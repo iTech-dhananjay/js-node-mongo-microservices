@@ -712,6 +712,7 @@ multiply(...values); //spread operator
 //Q2.
 const fn = (a, x, y, ...numbers) => {
     console.log(x, y, numbers);
+
 };
 fn(1, 2, 3, 4, 5);
 
@@ -891,6 +892,16 @@ Spread Operator:
      =>   Efficient for creating copies of arrays and objects and merging multiple arrays or objects.
      =>   Promotes immutable operations when creating copies.
 * */
+function sum(...numbers) {
+    console.log(numbers) //[ 1, 2, 3, 4, 5 ] => Used in function parameters to collect arguments into an array.
+    let sum = 0
+    for (let number of numbers) {
+        sum = sum + number
+    }
+    return sum
+}
+
+console.log(sum(1, 2, 3, 4, 5))//15
 
 // <<<<<<<<<<<<<----------------------------------------------------- 15. [[ this keyword  ]] ------------------------------------------------------->>>>>>>>>>>
 
