@@ -137,3 +137,11 @@ if (cluster.isMaster) {
         - Running npm audit in the terminal will scan your project's dependencies for known security vulnerabilities and provide recommendations for fixing them.
           It's essential to regularly update dependencies and follow security best practices to keep your Node.js applications secure.
 * */
+
+
+// 8. Memory Management
+// Garbage Collection: V8’s mechanism to free up unused memory.
+//     Heap Snapshots: Provides a state of the heap at a particular point.
+//     Memory Leaks: Situations where memory isn’t released even when no longer needed.
+//     Identification: Tools like node-inspect and heapdump.
+//     Common Causes: Global variables, event listeners not being removed.
