@@ -22,23 +22,23 @@ The MongoDB aggregation pipeline consists of several stages that allow you to pr
 // Create users collection and insert documents
 db.users.insertMany([
     {
-        name: "Alice",
-        age: 30,
+        name: "Dhananjay Kumar",
+        age: 22,
+        gender: "male",
+        maritalStatus: "single",
+        shoppingList: ["electronic-gadgets", "books", "laptop"]
+    },
+    {
+        name: "Pooja",
+        age: 20,
         gender: "female",
         maritalStatus: "single",
         shoppingList: ["dress", "shoes", "jewelry"]
     },
     {
-        name: "Bob",
-        age: 35,
-        gender: "male",
-        maritalStatus: "married",
-        shoppingList: ["electronics", "books"]
-    },
-    {
-        name: "Charlie",
-        age: 28,
-        gender: "male",
+        name: "Alice",
+        age: 24,
+        gender: "female",
         maritalStatus: "single",
         shoppingList: ["gadgets", "clothes"]
     }
