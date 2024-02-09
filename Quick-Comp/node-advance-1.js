@@ -1,16 +1,21 @@
 // <<<<<<<<<<<<<<<-----------------------------------------------  [[ Node.js Advanced Concepts ]] ------------------------------------------------>>>>>>>>>>>
 /*
    Advanced Concepts
-  1.  Event Loop ||  Streams || Promises and Async/Await || Concurrency and Parallelism ||  Debugging and Profiling
-  2.  Microservices Architecture || Security Best Practices ||  Performance Optimization ||  Scalability ||  Dependency Management and Package Security
-  3.
-  4.
-  5.
-  6.
-  7.
-  8.
-  9.
-  10.
+  1.  Event Loop and Non-blocking I/O
+  2.  Microservices Architecture
+  3.  Streams
+  4   Buffers
+  5.  Clusters
+  6.  Concurrency and Parallelism
+  7.  Debugging and Profiling
+  8.  Microservices Architecture
+  9.  Security Best Practices [Middleware: Helmet.js for security headers.]
+  10. Scalability
+  11  Dependency Management and Package Security || Package Management
+  12. Memory Management
+  13. N-API and Native Addons
+  14.
+  15.
 */
 
 // <<<<<<<<<<<<<<<------------------------------------------------ 1. [[ Event Loop ]] ----------------------------------------------------->>>>>>>>>>>
