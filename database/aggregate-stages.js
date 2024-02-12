@@ -30,12 +30,12 @@ db.users.insertMany([
     {_id: 3, name: "User3"},
 ]);
 
-// Create posts
+// Create posts with isPublished and category fields
 db.posts.insertMany([
-    {_id: 101, userId: 1, title: "Post1"},
-    {_id: 102, userId: 1, title: "Post2"},
-    {_id: 103, userId: 2, title: "Post3"},
-    {_id: 104, userId: 2, title: "Post4"},
+    {_id: 101, userId: 1, title: "Post1", category: "Technology"},
+    {_id: 102, userId: 1, title: "Post2", category: "Science"},
+    {_id: 103, userId: 2, title: "Post3", category: "Science"},
+    {_id: 104, userId: 2, title: "Post4", category: "Technology"},
 ]);
 
 
@@ -70,7 +70,16 @@ db.users.aggregate([
             _id: "$_id",
             name: {$first: "$name"},
             posts: {$push: "$result"}
+
         }
+    },
+    {
+        $project: {
+            _id: 1,
+            name: 1,
+            published_posts: "$posts",
+            category: "$posts.category", // Include the category field in the projection
+        },
     },
     {
         $skip: 0, // Skip the first document
@@ -80,7 +89,6 @@ db.users.aggregate([
     },
 
 ]).pretty()
-
 /*
  Output : -
 
@@ -91,25 +99,33 @@ db.users.aggregate([
 {
 	"_id" : 1,
 	"name" : "User1",
-	"posts" : [
+	"published_posts" : [
 		{
 			"_id" : 101,
 			"userId" : 1,
 			"title" : "Post1",
+			"category" : "Technology",
 			"isPublished" : true
 		}
+	],
+	"category" : [
+		"Technology"
 	]
 }
 {
 	"_id" : 2,
 	"name" : "User2",
-	"posts" : [
+	"published_posts" : [
 		{
 			"_id" : 103,
 			"userId" : 2,
 			"title" : "Post3",
+			"category" : "Science",
 			"isPublished" : true
 		}
+	],
+	"category" : [
+		"Science"
 	]
 }
 
