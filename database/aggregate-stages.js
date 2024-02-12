@@ -1,6 +1,6 @@
-// <<<<<<<<<<<<<<<-----------------------------------------------  [[ MongoDB Aggregation ]] ------------------------------------------------>>>>>>>>>>>
-/*
+// // <<<<<<<<<<<<<<<-----------------------------------------------  [[ MongoDB Aggregation ]] ------------------------------------------------>>>>>>>>>>>
 
+/*
 The MongoDB aggregation pipeline consists of several stages that allow you to process and transform documents as they pass through each stage. There are seven primary stages in the aggregation pipeline:
 
 1. **$match**: Filters the documents to pass only those that match the specified conditions.
@@ -17,8 +17,88 @@ The MongoDB aggregation pipeline consists of several stages that allow you to pr
 
 7. **$unwind**: Deconstructs an array field from the input documents and outputs one document for each element.
 
+**/
 
-*/
+
+// Q. =>  SELECT * FROM `posts` RIGHT JOIN users ON users.id=posts.user_id ORDER BY posts.id DESC GROUP BY posts.user_id
+
+// Create users
+db.users.insertMany([
+    {_id: 1, name: "User1"},
+    {_id: 2, name: "User2"},
+    {_id: 3, name: "User3"},
+]);
+
+// Create posts
+db.posts.insertMany([
+    {_id: 101, userId: 1, title: "Post1"},
+    {_id: 102, userId: 2, title: "Post2"},
+]);
+
+db.users.aggregate([
+    {
+        $lookup: {
+            from: "posts",
+            localField: "_id",
+            foreignField: "userId",
+            as: "result"
+        }
+    },
+    {
+        $unwind: "$result"
+    },
+    {
+        $sort: {"result._id": -1}
+    },
+
+    {
+        $group: {
+            _id: "$_id",
+            name: {$first: "$name"},
+            posts: {$push: "$result"}
+        }
+    },
+    {
+        $skip: 1, // Skip the first document
+    },
+    {
+        $limit: 2, // Limit the result to 2 documents
+    },
+
+]).pretty()
+
+
+/*
+ Output : -
+
+ { "acknowledged" : true, "insertedIds" : [ 1, 2, 3 ] }
+{ "acknowledged" : true, "insertedIds" : [ 101, 102 ] }
+{
+	"_id" : 2,
+	"name" : "User2",
+	"posts" : [
+		{
+			"_id" : 102,
+			"userId" : 2,
+			"title" : "Post2"
+		}
+	]
+}
+{
+	"_id" : 1,
+	"name" : "User1",
+	"posts" : [
+		{
+			"_id" : 101,
+			"userId" : 1,
+			"title" : "Post1"
+		}
+	]
+}
+
+* */
+
+
 // Create users collection and insert documents
 db.users.insertMany([
     {
@@ -122,3 +202,5 @@ print("\nMarriage Shopping Event Aggregation:");
 while (eventAggregation.hasNext()) {
     printjson(eventAggregation.next());
 }
+
+
