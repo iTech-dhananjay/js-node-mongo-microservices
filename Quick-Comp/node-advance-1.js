@@ -20,7 +20,7 @@
 
 // <<<<<<<<<<<<<<<------------------------------------------------ 1. [[ Event Loop ]] ----------------------------------------------------->>>>>>>>>>>
 
-// <<<<<<<<<<<<<<<------------------------------------------------ 1. [[ Streams ]] ----------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<<<------------------------------------------------ 3. [[ Streams ]] ----------------------------------------------------->>>>>>>>>>>
 
 /*
         - Streams are used for handling large amounts of data efficiently. Here's an example of using streams to copy data from one file to another.
@@ -78,7 +78,7 @@ function getCachedData(key, callback) {
 }
 
 
-// <<<<<<<<<<<<<<<------------------------------------------------ 2. [[ Scalability ]] ----------------------------------------------------->>>>>>>>>>>
+// <<<<<<<<<<<<<<<------------------------------------------------ 10. [[ Scalability ]] ----------------------------------------------------->>>>>>>>>>>
 /*
      - Scalability refers to the ability of a system to handle increasing loads and traffic effectively. In the context of Node.js applications, scalability becomes crucial
        as your application grows and encounters higher levels of traffic.
@@ -134,7 +134,7 @@ if (cluster.isMaster) {
 }
 
 
-// <<<<<<<<---------------------------------- 2. [[ Dependency Management and Package Security ]] ----------------------------------------->>>>>>>>>>>
+// <<<<<<<<---------------------------------- 11. [[ Dependency Management and Package Security ]] ----------------------------------------->>>>>>>>>>>
 /*
         - Managing dependencies and ensuring their security is crucial for building secure Node.js applications. Here's an example of using
           npm audit to check for security vulnerabilities in dependencies
@@ -144,9 +144,11 @@ if (cluster.isMaster) {
 * */
 
 
-// 8. Memory Management
-// Garbage Collection: V8’s mechanism to free up unused memory.
-//     Heap Snapshots: Provides a state of the heap at a particular point.
-//     Memory Leaks: Situations where memory isn’t released even when no longer needed.
-//     Identification: Tools like node-inspect and heapdump.
-//     Common Causes: Global variables, event listeners not being removed.
+// <<<<<<<<----------------------------------------------- 12. [[ Memory Management ]] ------------------------------------------------------->>>>>>>>>>>
+/*
+        - Garbage Collection: V8’s mechanism to free up unused memory.
+        - Heap Snapshots: Provides a state of the heap at a particular point.
+        - Memory Leaks: Situations where memory isn’t released even when no longer needed.
+        - Identification: Tools like node-inspect and heapdump.
+        - Common Causes: Global variables, event listeners not being removed.
+* */
