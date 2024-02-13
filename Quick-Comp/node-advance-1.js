@@ -152,3 +152,30 @@ if (cluster.isMaster) {
         - Identification: Tools like node-inspect and heapdump.
         - Common Causes: Global variables, event listeners not being removed.
 * */
+let str = "Hello, World!"; // String stored in a more direct manner, possibly on the stack
+let num = 42;              // Number stored similarly
+
+let person = {              // Object stored in the heap
+    name: "John",
+    age: 30
+};
+
+let array = [1, 2, 3];       // Array (which is an object) stored in the heap
+//https://www.daily.co/blog/introduction-to-memory-management-in-node-js-applications/
+
+//Binary vs. text: BSON is a binary-encoded format, whereas JSON is a text-based format. This means that BSON is compact for transmitting over a network, while JSON is human-readable and easier to work with in various contexts.
+
+let arr = [
+    {_id: 1, name: "John"},
+    {_id: 2, name: "Doe"}
+];
+
+let result = [
+    {_id: 3, name: "John-Update"},
+    {_id: 4, name: "Doe-Update"} // Corrected _id value
+];
+
+// Replace contents of arr with result
+console.log(arr.splice(0, arr.length, ...result));
+
+console.log(arr);

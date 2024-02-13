@@ -58,3 +58,16 @@ for (let item in obj) {
 }
 
 console.log(result);
+
+
+const arr = [1, 2, 3, 4, 5]
+
+function skipIndexMultiplying(arr) {
+    for (let i = 0; i <= arr.length - 1; i++) {
+        let track = arr[i]
+       
+
+    }
+}
+
+console.log(skipIndexMultiplying(arr))
