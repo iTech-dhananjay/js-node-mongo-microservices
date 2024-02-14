@@ -92,7 +92,7 @@ db.users.aggregate([
         $skip: 0, // Skip the first document
     },
     {
-        $limit: 4, // Limit the result to 2 documents
+        $limit: 2, // Limit the result to 2 documents
     },
 
 ]).pretty()
