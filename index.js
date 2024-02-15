@@ -79,3 +79,6 @@ function skipIndexMultiplying(arr) {
 }
 
 console.log(skipIndexMultiplying(arr));
+
+
+//aggreagete use - first name match and last name won't match

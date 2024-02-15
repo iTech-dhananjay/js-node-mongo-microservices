@@ -1113,3 +1113,22 @@ async function fetchDataWrapper() {
         - setTimout
         - Maintain state in async world
 */
+
+var a = 10;
+
+function outer() {
+    var a = 20;
+    var b = 30;
+
+    function inner(a) {
+        var a = 30;
+        console.log(a++, b++)
+    }
+
+    console.log(a, ++b);
+    inner(a);
+}
+
+outer();
+
+console.log(a++);  // 20,31 -> 30,31 - > 10
