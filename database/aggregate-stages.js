@@ -139,5 +139,61 @@ db.users.aggregate([
 * */
 
 
+db.users.insertMany([
+    {_id: 1, firstName: "Dhananjay", lastName: "Kumar"},
+    {_id: 2, firstName: "Rohit", lastName: "Kumar"},
+    {_id: 3, firstName: "Abhishek", lastName: "Kumar"},
+    {_id: 4, firstName: "John", lastName: "Doe"},
+    {_id: 5, firstName: "Dhananjay", lastName: "Kumar"},
+    {_id: 6, firstName: "John", lastName: "Singh"},
+    {_id: 7, firstName: "Abhishek", lastName: "Singh"},
+]);
+
+
+db.users.aggregate([
+    {
+        $group: {
+            _id: "$firstName",
+            lastNames: {$addToSet: "$lastName"},
+            count: {$sum: 1}
+        }
+    },
+    {
+        $match: {
+            $expr: {
+                $gt: [{$size: "$lastNames"}, 1]
+            }
+        }
+    },
+    {
+        $project: {
+            firstName: "$_id",
+            lastNames: 1,
+            count: 1,
+            _id: 0
+        }
+    }
+]);
+
+/*
+Output:
+
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		1,
+		2,
+		3,
+		4,
+		5,
+		6,
+		7
+	]
+}
+{ "lastNames" : [ "Singh", "Doe" ], "count" : 2, "firstName" : "John" }
+{ "lastNames" : [ "Kumar", "Singh" ], "count" : 2, "firstName" : "Abhishek" }
+
+* */
+
 
 
