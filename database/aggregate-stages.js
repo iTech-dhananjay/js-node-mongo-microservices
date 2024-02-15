@@ -195,5 +195,31 @@ Output:
 
 * */
 
+db.courses.insert([
+    {
+        university: 'USAL',
+        name: 'Computer Science',
+        level: 'Excellent'
+    },
+    {
+        university: 'USAL',
+        name: 'Electronics',
+        level: 'Intermediate'
+    },
+    {
+        university: 'USAL',
+        name: 'Communication',
+        level: 'Excellent'
+    }
+])
 
+db.courses.aggregate([
+    {
+        $match: {
+            university: 'USAL',
+            level: {"$ne": 'Excellent'}
+        }
+    }
+]).pretty()
+// db.employees.find({dept: 'Sales'});
 
