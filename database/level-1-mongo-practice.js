@@ -134,6 +134,73 @@ db.students3.updateMany(
 db.students3.find().pretty();
 
 
+//---------------------------------------------------------------3rd Cases-----------------------------------------------------------------------------
+const documents = [
+    {
+        organizationId: "org123",
+        assets: [
+            {
+                _id: ObjectId("61e6d6a8200ed2b42e942a95"),
+                images: [
+                    {publicId: "image1"},
+                    {publicId: "image2"},
+                    {publicId: "image3"}
+                ]
+            },
+            {
+                _id: ObjectId("61e6d6a8200ed2b42e942a96"),
+                images: [
+                    {publicId: "image4"},
+                    {publicId: "image5"},
+                    {publicId: "image6"}
+                ]
+            }
+        ]
+    },
+    {
+        organizationId: "org456",
+        assets: [
+            {
+                _id: ObjectId("61e6d6a8200ed2b42e942a97"),
+                images: [
+                    {publicId: "image7"},
+                    {publicId: "image8"},
+                    {publicId: "image9"}
+                ]
+            },
+            {
+                _id: ObjectId("61e6d6a8200ed2b42e942a98"),
+                images: [
+                    {publicId: "image10"},
+                    {publicId: "image11"},
+                    {publicId: "image12"}
+                ]
+            }
+        ]
+    }
+];
+
+db.organization.insertMany(documents);
+
+
+db.organization.updateOne(
+    {
+        organizationId: "org123",
+        "assets._id": ObjectId("61e6d6a8200ed2b42e942a95")
+    },
+    {
+        $pull: {
+            "assets.$.images": {"publicId": "image2"}
+        }
+    },
+    {
+        new: true // Return the modified document
+    }
+)
+
+db.organization.find().pretty()
+
+
 
 
 

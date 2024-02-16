@@ -82,3 +82,29 @@ console.log(skipIndexMultiplying(arr));
 
 
 //aggreagete use - first name match and last name won't match
+const arr = [1, 2, 3, 4, 5, 6];
+const arrIndex = arr.findIndex(num => num === 2);
+
+if (arrIndex !== -1) {
+    arr.splice(arrIndex, 1);
+}
+
+console.log(arr); // Output: [1, 3, 4, 5, 6]
+
+const images = [
+    {
+
+        publicId: "gbsd6vjvkczrufdr6wfw",
+        assetImageType: "assetImages",
+        createdAt: "2024-02-16T04:36:46.265Z"
+    },
+    {
+
+        publicId: "zjr02ogbcxarzcfzsqh2",
+        assetImageType: "assetImages",
+        createdAt: "2024-02-16T04:36:46.265Z"
+    }
+]
+
+const result = images.filter((image => image.publicId !== 'zjr02ogbcxarzcfzsqh2'))
+console.log(result)
