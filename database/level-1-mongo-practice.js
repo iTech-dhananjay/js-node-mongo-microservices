@@ -199,14 +199,3 @@ db.organization.updateOne(
 )
 
 db.organization.find().pretty()
-
-
-
-
-
-
-
-
-  
-   
-   
