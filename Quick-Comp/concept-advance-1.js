@@ -23,7 +23,7 @@ console.log(typeof null);             // Output: object
 
 // Additional unique questions
 console.log(0.1 + 0.2 === 0.3);       // Output: false
-console.log(9999999999999999);        // Output: 10000000000000000 (Precision issue) [  16-digit ]
+console.log(9999999999999999);        // Output: 10000000000000000 (Precision issue) [  17-digit ] 
 console.log(1 + '2' + '2');           // Output: 122 (String concatenation)
 console.log('A' - 'B' + '2');         // Output: NaN2 (Subtraction of non-numeric strings)
 console.log('A' - 'B' + 2);           // Output: NaN (Subtraction of non-numeric strings)
