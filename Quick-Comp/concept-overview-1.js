@@ -28,6 +28,7 @@
   17. Promise
   18. Async/Await
   19. Closures
+  20. Shallow Copy vs Deep copy
 
 */
 
@@ -1132,3 +1133,60 @@ function outer() {
 outer();
 
 console.log(a++);  // 20,31 -> 30,31 - > 10
+
+
+
+// <<<<<<<<<<<<<------------------------------------------------ 20. [[ Shallow Copy vs Deep copy ]] --------------------------------------------------------->>>>>>>>>>>
+/*
+    =>  There are two ways to clone an object in Javascript:
+    =>  Shallow copy: means that only the first level of the object is copied. Deeper levels are referenced.
+    =>  Deep copy: means that all levels of the object are copied. This is a true copy of the object.
+
+    **  After updating a property in the first level of the cloned objects, the original property is not updated.
+    **  After updating a property in a deeper level, the original property is also updated. This happens because, in this case, deeper levels are referenced, not copied.
+
+*/
+
+const obj = 
+    { 
+    name: 'Version 1', 
+    additionalInfo: { version: 1 } 
+   };
+
+const shallowCopy1 = { ...obj };
+
+shallowCopy1.name = 'Version 2';
+shallowCopy1.additionalInfo.version = 2;
+
+const shallowCopy2 = Object.assign({}, obj)
+shallowCopy2.name = 'Version 2';
+shallowCopy2.additionalInfo.version = 2;
+
+
+console.log(obj);          // { name: 'Version 1', additionalInfo: { version: 2 } }
+console.log(shallowCopy1); // { name: 'Version 2', additionalInfo: { version: 2 } }
+console.log(shallowCopy2); // { name: 'Version 2', additionalInfo: { version: 2 } }
+
+
+/*
+    =>  Deep copy  : A deep copy can be achieved using JSON.parse() + JSON.stringify():
+    **  After updating a property in the first level of the cloned objects, the original property is not updated.
+    **  After updating a property in a deeper level, the original property is neither updated. This happens because, in this case, deeper levels are also copied.
+
+    Performance
+       For obvious reasons, shallow copies are a lot faster than deep copies. But this doesn’t mean that you should always use a shallow copy, 
+        because sometimes you will also need a copy of the nested objects. So, which option should I use?
+        If the depth of your object is equal to one, use a shallow copy.
+        If the depth of your object is bigger than one, use a deep copy. 
+
+
+*/
+const objs = { name: 'Version 1', additionalInfo: { version: 1 } };
+
+const deepCopy = JSON.parse(JSON.stringify(objs));
+
+deepCopy.name = 'Version 2';
+deepCopy.additionalInfo.version = 2;
+
+console.log(objs); // { name: 'Version 1', additionalInfo: { version: 1 } }
+console.log(deepCopy); // { name: 'Version 2', additionalInfo: { version: 2 } }
