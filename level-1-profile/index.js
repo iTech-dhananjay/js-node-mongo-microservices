@@ -64,3 +64,20 @@ Here's how the loop works:
 - `result[4] = 120 / 5 = 24`  (Product of all elements except `5`)
 
 The `result` array will be `[120, 60, 40, 30, 24]`.*/
+
+
+const obj1 = [
+    '65c0733598fa8dc6df45be49',
+    '65c0735098fa8dc6df45be51',
+    '65c0735698fa8dc6df45be55',
+    '65d596bdf24e665d875ba1c1',
+];
+
+const obj2 = [
+    '65c0733598fa8dc6df45be49',
+    '65c0735098fa8dc6df45be51',
+];
+
+const filter = obj1.filter(obj => !obj2.includes(obj));
+
+console.log(filter); // ['65c0735698fa8dc6df45be55', '65d596bdf24e665d875ba1c1']
