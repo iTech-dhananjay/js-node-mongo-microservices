@@ -1,34 +1,29 @@
 // // <<<<<<<<<<<<<<<-----------------------------------------------  [[ MongoDB Aggregation ]] ------------------------------------------------>>>>>>>>>>>
 
 /*
-The MongoDB aggregation pipeline consists of several stages that allow you to process and transform documents as they pass through each stage. There are seven primary stages in the aggregation pipeline:
+The MongoDB aggregation pipeline consists of several stages that allow you to process and transform documents as they pass through each stage.
+There are seven primary stages in the aggregation pipeline:
 
-1. **$match**: Filters the documents to pass only those that match the specified conditions.
-
-2. **$project**: Reshapes documents, includes, excludes, or renames fields, and computes new fields.
-
-3. **$group**: Groups documents by a specified key and performs aggregation operations on grouped data.
-
-4. **$sort**: Sorts documents based on specified criteria.
-
-5. **$skip**: Skips a specified number of documents.
-
-6. **$limit**: Limits the number of documents passed to the next stage.
-
-7. **$unwind**: Deconstructs an array field from the input documents and outputs one document for each element.
+1. $match:   Filters the documents to pass only those that match the specified conditions.
+2. $project: Reshapes documents, includes, excludes, or renames fields, and computes new fields.
+3. $group:   Groups documents by a specified key and performs aggregation operations on grouped data.
+4. $sort:    Sorts documents based on specified criteria.
+5. $skip:    Skips a specified number of documents.
+6. $limit:   Limits the number of documents passed to the next stage.
+7. $unwind:  Deconstructs an array field from the input documents and outputs one document for each element.
 
 **/
 
 
-// Q. =>  SELECT * FROM `posts` RIGHT JOIN users ON users.id=posts.user_id ORDER BY posts.id DESC GROUP BY posts.user_id
-/*Different Types of SQL JOINs
-Here are the different types of the JOINs in SQL:
+/*
+Different Types of SQL JOINs => Here are the different types of the JOINs in SQL:
+ 1. - (INNER) JOIN: Returns records that have matching values in both tables
+ 2. - LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+ 3. - RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+ 4. - FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+*/
 
-(INNER) JOIN: Returns records that have matching values in both tables
-LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
-RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
-FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table*/
-
+// Q-1 =>  SELECT * FROM `posts` RIGHT JOIN users ON users.id=posts.user_id ORDER BY posts.id DESC GROUP BY posts.user_id
 
 // Create users
 db.users.insertMany([
@@ -96,6 +91,7 @@ db.users.aggregate([
     },
 
 ]).pretty()
+
 /*
  Output : -
 
@@ -139,6 +135,7 @@ db.users.aggregate([
 * */
 
 
+// Q-2 => What course is offered by the University of South Asia with a level other than "Excellent"?
 db.users.insertMany([
     {_id: 1, firstName: "Dhananjay", lastName: "Kumar"},
     {_id: 2, firstName: "Rohit", lastName: "Kumar"},
@@ -149,51 +146,6 @@ db.users.insertMany([
     {_id: 7, firstName: "Abhishek", lastName: "Singh"},
 ]);
 
-
-db.users.aggregate([
-    {
-        $group: {
-            _id: "$firstName",
-            lastNames: {$addToSet: "$lastName"},
-            count: {$sum: 1}
-        }
-    },
-    {
-        $match: {
-            $expr: {
-                $gt: [{$size: "$lastNames"}, 1]
-            }
-        }
-    },
-    {
-        $project: {
-            firstName: "$_id",
-            lastNames: 1,
-            count: 1,
-            _id: 0
-        }
-    }
-]);
-
-/*
-Output:
-
-{
-	"acknowledged" : true,
-	"insertedIds" : [
-		1,
-		2,
-		3,
-		4,
-		5,
-		6,
-		7
-	]
-}
-{ "lastNames" : [ "Singh", "Doe" ], "count" : 2, "firstName" : "John" }
-{ "lastNames" : [ "Kumar", "Singh" ], "count" : 2, "firstName" : "Abhishek" }
-
-* */
 
 db.courses.insert([
     {
@@ -221,5 +173,5 @@ db.courses.aggregate([
         }
     }
 ]).pretty()
-// db.employees.find({dept: 'Sales'});
+
 
