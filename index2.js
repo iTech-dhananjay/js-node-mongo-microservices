@@ -55,24 +55,25 @@
 //     });
 
 
-const arr = [1, 2, 3, 4, 5];
+// const arr = [1, 2, 3, 4, 5];
+//
+// function skipIndexMultiplying(arr) {
+//     const result = [];
+//     let totalProduct = 1;
+//
+//     // Calculate the total product of all elements in the array
+//     for (let num of arr) {
+//         totalProduct *= num;
+//     }
+//
+//     // Calculate the result array
+//     for (let num of arr) {
+//         // Divide the total product by the current element to get the product of all other elements
+//         result.push(totalProduct / num);
+//     }
+//
+//     return result;
+// }
+//
+// console.log(skipIndexMultiplying(arr));
 
-function skipIndexMultiplying(arr) {
-    const result = [];
-    let totalProduct = 1;
-
-    // Calculate the total product of all elements in the array
-    for (let num of arr) {
-        totalProduct *= num;
-    }
-
-    // Calculate the result array
-    for (let num of arr) {
-        // Divide the total product by the current element to get the product of all other elements
-        result.push(totalProduct / num);
-    }
-
-    return result;
-}
-
-console.log(skipIndexMultiplying(arr));

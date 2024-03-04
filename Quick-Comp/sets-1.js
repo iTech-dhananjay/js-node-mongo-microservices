@@ -1,6 +1,5 @@
 //Find the triplet sum equal to 9 from an array with On^2 time complexity.
 
-
 function findTriplets(arr) {
     const result = [];
 
@@ -36,5 +35,3 @@ function findTriplets(arr) {
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, -1];
 const triplets = findTriplets(array);
 console.log("Triplets with sum equal to 9:", triplets);
-
-
