@@ -150,3 +150,59 @@ db.students3.updateMany(
 );
 
 db.students3.find().pretty();
+let assetList = [
+    {
+        "_id": "65e5a1b8f63199fc53bee954",
+        "uniqueAssetId": "Oracle-ASSET46271",
+        "draftStatus": "UNPUBLISHED",
+        "status": "Active",
+        "createdAt": "2024-03-04T10:26:00.372Z",
+        "assetName": "true",
+        "assetLocation": "Default value"
+    },
+    {
+        "_id": "65e5a1cff63199fc53bee965",
+        "uniqueAssetId": "Oracle-ASSET19754-1",
+        "draftStatus": "PUBLISHED",
+        "status": "Active",
+        "createdAt": "2024-03-04T10:26:23.162Z",
+        "assetName": "true",
+        "assetLocation": "Default value"
+    },
+    {
+        "_id": "65e5a1cff63199fc53bee968",
+        "uniqueAssetId": "Oracle-ASSET19754-2",
+        "draftStatus": "PUBLISHED",
+        "status": "Active",
+        "createdAt": "2024-03-04T10:26:23.168Z",
+        "assetName": "true",
+        "assetLocation": "Default value"
+    },
+    {
+        "_id": "65e5a1cff63199fc53bee96b",
+        "uniqueAssetId": "Oracle-ASSET19754-3",
+        "draftStatus": "PUBLISHED",
+        "status": "Active",
+        "createdAt": "2024-03-04T10:26:23.173Z",
+        "assetName": "true",
+        "assetLocation": "Default value"
+    },
+    {
+        "_id": "65e5a1cff63199fc53bee96e",
+        "uniqueAssetId": "Oracle-ASSET19754-4",
+        "draftStatus": "PUBLISHED",
+        "status": "Active",
+        "createdAt": "2024-03-04T10:26:23.177Z",
+        "assetName": "true",
+        "assetLocation": "Default value"
+    },
+    {
+        "_id": "65e5a1cff63199fc53bee971",
+        "uniqueAssetId": "Oracle-ASSET19754-5",
+        "draftStatus": "PUBLISHED",
+        "status": "Active",
+        "createdAt": "2024-03-04T10:26:23.182Z",
+        "assetName": "true",
+        "assetLocation": "Default value"
+    }
+]
