@@ -18,27 +18,6 @@ function skipIndexMultiplying(arr) {
 
 console.log(skipIndexMultiplying(arr));
 
-const arr = [1, 2, 3, 4, 5];
-
-function skipIndexMultiplying(arr) {
-    const result = [];
-    let totalProduct = 1;
-
-    // Calculate the total product of all elements in the array
-    for (let num of arr) {
-        totalProduct *= num;
-    }
-
-    // Calculate the result array
-    for (let num of arr) {
-        // Divide the total product by the current element to get the product of all other elements
-        result.push(totalProduct / num);
-    }
-
-    return result;
-}
-
-console.log(skipIndexMultiplying(arr));
 
 /*
 Here's how the loop works:
@@ -81,3 +60,18 @@ const obj2 = [
 const filter = obj1.filter(obj => !obj2.includes(obj));
 
 console.log(filter); // ['65c0735698fa8dc6df45be55', '65d596bdf24e665d875ba1c1']
+
+
+////////////
+const test = {
+    name: 'Dhananjay',
+    id: 1,
+    account: [] 
+};
+
+const account = [1, 2];
+const accountVerify = 'Yes'
+test.account = account;
+test.accountVerify = accountVerify
+
+console.log(test);
