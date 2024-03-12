@@ -66,7 +66,7 @@ console.log(filter); // ['65c0735698fa8dc6df45be55', '65d596bdf24e665d875ba1c1']
 const test = {
     name: 'Dhananjay',
     id: 1,
-    account: [] 
+    account: []
 };
 
 const account = [1, 2];
@@ -77,26 +77,27 @@ test.accountVerify = accountVerify
 console.log(test);
 
 
-
 // finding next greater elemetn
 function nextGreaterElement(arr) {
     const result = [];
-  
+
     for (let i = 0; i < arr.length; i++) {
-      let nextGreater = -1;
-      for (let j = i + 1; j < arr.length; j++) {
-        if (arr[j] > arr[i]) {
-          nextGreater = arr[j];
-          break;
+        let nextGreater = -1;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] > arr[i]) {
+                nextGreater = arr[j];
+                break;
+            }
         }
-      }
-      result.push(nextGreater);
+        result.push(nextGreater);
     }
-  
+
     return result;
-  }
-  
-  // Example usage:
-  const ar = [4, 5, 2, 25, 10];
-  const nextGreater = nextGreaterElement(ar);
-  console.log(nextGreater); // Output: [5, 25, 25, -1, -1]
+}
+
+// Example usage:
+const ar = [4, 5, 2, 25, 10];
+const nextGreater = nextGreaterElement(ar);
+console.log(nextGreater); // Output: [5, 25, 25, -1, -1]
+
+
