@@ -35,3 +35,27 @@ function findTriplets(arr) {
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, -1];
 const triplets = findTriplets(array);
 console.log("Triplets with sum equal to 9:", triplets);
+//----------------------------------------------------------------
+
+// Function to calculate the sum of squares of digits of a number
+function sumSquares(num) {
+    let sum = 0;
+    while (num !== 0) { // Continue until all digits are processed
+        sum += (num % 10) ** 2; // Add the square of the last digit to the sum
+        num = Math.floor(num / 10); // Remove the last digit
+    }
+    return sum; // Return the calculated sum
+}
+
+// Function to check if a number is a happy number
+function isHappy(num) {
+    const seen = new Set(); // Set to keep track of numbers encountered
+    while (num !== 1 && !seen.has(num)) { // Continue until we find 1 (happy number) or a cycle is detected
+        seen.add(num); // Add the current number to the set
+        num = sumSquares(num); // Calculate the sum of squares of digits using the sumSquares function
+    }
+    return num === 1; // Return true if the number is 1 (happy number), false otherwise
+}
+
+// Test the isHappy function
+console.log(isHappy(19)); // true

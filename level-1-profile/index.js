@@ -75,3 +75,28 @@ test.account = account;
 test.accountVerify = accountVerify
 
 console.log(test);
+
+
+
+// finding next greater elemetn
+function nextGreaterElement(arr) {
+    const result = [];
+  
+    for (let i = 0; i < arr.length; i++) {
+      let nextGreater = -1;
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[j] > arr[i]) {
+          nextGreater = arr[j];
+          break;
+        }
+      }
+      result.push(nextGreater);
+    }
+  
+    return result;
+  }
+  
+  // Example usage:
+  const ar = [4, 5, 2, 25, 10];
+  const nextGreater = nextGreaterElement(ar);
+  console.log(nextGreater); // Output: [5, 25, 25, -1, -1]
