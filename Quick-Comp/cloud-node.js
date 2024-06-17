@@ -1,4 +1,4 @@
-//Round robin algorithm
+//Round-robin algorithm
 
 /*
     - NGINX is a powerful web server and uses a non-threaded, event-driven architecture.
