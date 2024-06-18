@@ -211,4 +211,6 @@ console.log(nthLargestNumber(numbers, n));
 // console.log(parsedData); // { name: 'John', age: 30 }
 //
 //
-
+/*
+I had an issue where every time I opened a new project, it would attach as a new window instead of a tab, which was quite irritating. I resolved this by navigating to System Settings on my Mac, then selecting Desktop & Dock -> Windows -> and choosing 'Prefer tabs when opening documents' under the Windows setting.
+* */

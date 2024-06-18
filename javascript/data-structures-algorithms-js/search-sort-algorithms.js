@@ -39,6 +39,30 @@ console.log(randomInt(5, 10));
 
 
 // <<<<<<<<<<<<<<<---------------------------------------------- 1. [[   Binary Search   ]] ---------------------------------------------------------->>>>>>>>>>>
+
+/*
+### Binary Search Process
+
+1. **Initialization**:
+   - `left = 0` (starting index of the array)
+   - `right = arr.length - 1 = 5` (ending index of the array)
+
+2. **First Iteration**:
+   - Calculate `mid = Math.floor((left + right) / 2) = Math.floor((0 + 5) / 2) = 2`.
+   - Check `arr[mid] = arr[2] = 5`.
+   - Since `5` is greater than `3`, update `right = mid - 1 = 2 - 1 = 1`.
+
+3. **Second Iteration**:
+   - Calculate `mid = Math.floor((left + right) / 2) = Math.floor((0 + 1) / 2) = 0`.
+   - Check `arr[mid] = arr[0] = 1`.
+   - Since `1` is less than `3`, update `left = mid + 1 = 0 + 1 = 1`.
+
+4. **Third Iteration**:
+   - Calculate `mid = Math.floor((left + right) / 2) = Math.floor((1 + 1) / 2) = 1`.
+   - Check `arr[mid] = arr[1] = 3`.
+   - Since `3` is equal to the target `3`, return `Match found at index 1`.
+
+*/
 // Only we can apply on sorted array
 function binarySearch(nums, target) {
     let left = 0;
