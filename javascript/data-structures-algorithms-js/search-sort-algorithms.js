@@ -19,6 +19,9 @@ O(n^2), O(2^n) and O(n!) - Horrible/Worst
   8. Custom Sort
 */
 
+console.log(Math.ceil(1.2)) //2 - The Math.ceil() static method always rounds up and returns the smallest integer greater than or equal to a given number.
+console.log(Math.floor(1.2)) //1
+
 
 let num = Math.floor(Math.random() * 10000000000000000);
 console.log(num);
@@ -26,12 +29,6 @@ const randomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-    /*
-    Math.random(): Generates a random decimal between 0 and 1.
-    (max - min + 1): Computes the range of possible values. : Computes the range of possible values. Adding 1 ensures that the upper bound is inclusive in the range. For example, if min is 5 and max is 10, the range is 6 (10 - 5 + 1).
-    Math.floor(...): Rounds down to the nearest whole number.
-    + min: Shifts the range to start from min.
-     */
 };
 
 
