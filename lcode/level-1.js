@@ -275,6 +275,44 @@ console.log(longestCommonPrefix(['flower', 'flow', 'flight']));
      - if  '(', '{', '[' open bracket then we push into stack
      - if it's is closed bracket pop the element from the stack and compare it
 
+   Let's review the iteration steps for the string `[{()}()]` carefully:
+
+1. **Iteration 1: `[`**
+   - **Stack:** `[`
+   - **Explanation:** Push `[` onto the stack because it's an opening bracket.
+
+2. **Iteration 2: `{`**
+   - **Stack:** `[{`
+   - **Explanation:** Push `{` onto the stack because it's an opening bracket.
+
+3. **Iteration 3: `(`**
+   - **Stack:** `[({`
+   - **Explanation:** Push `(` onto the stack because it's an opening bracket.
+
+4. **Iteration 4: `)`**
+   - **Stack:** `[{`
+   - **Explanation:** Check `)` against the top of the stack (`(`). They match as a pair, so pop `(` from the stack.
+
+5. **Iteration 5: `}`**
+   - **Stack:** `[`
+   - **Explanation:** Check `}` against the top of the stack (`{`). They match as a pair, so pop `{` from the stack.
+
+6. **Iteration 6: `(`**
+   - **Stack:** `[(`
+   - **Explanation:** Push `(` onto the stack because it's an opening bracket.
+
+7. **Iteration 7: `)`**
+   - **Stack:** `[`
+   - **Explanation:** Check `)` against the top of the stack (`(`). They match as a pair, so pop `(` from the stack.
+
+8. **Iteration 8: `]`**
+   - **Stack:** `[]`
+   - **Explanation:** Check `]` against the top of the stack (`[`). They match as a pair, so pop `[` from the stack.
+
+9. **End of Iterations**
+   - **Stack:** `[]`
+   - **Explanation:** After processing all characters, the stack is empty, which means all opening brackets had corresponding and correctly ordered closing brackets.
+
 */
 
 /**
@@ -282,27 +320,30 @@ console.log(longestCommonPrefix(['flower', 'flow', 'flight']));
  * @return {boolean}
  */
 
-var isValid = function (s) {
-    let stack = [];
+const valid = (item) => {
+    const stack = [];
 
-    for (let i = 0; i < s.length; i++) {
+    for (let i = 0; i < item.length; i++) {
+        let char = item[i];
         let top = stack[stack.length - 1];
 
-        if (s[i] == '(' || s[i] == '{' || s[i] == '[') {
-            stack.push(s[i]);
+        if (char === '(' || char === '{' || char === '[') {
+            stack.push(char);
         } else if (
-            (s[i] == ')' && top == '(') ||
-            (s[i] == '}' && top == '{') ||
-            (s[i] == ']' && top == '[')
+            (char === ')' && top === '(') ||
+            (char === '}' && top === '{') ||
+            (char === ']' && top === '[')
         ) {
             stack.pop();
-        } else return false;
+        } else {
+            return false;
+        }
     }
     return stack.length === 0;
 };
 
-console.log(isValid('()[]{}'));
-
+const item = '()[]{}';
+console.log(valid(item));
 // <<<<<<<<<<<<<<<--------------------------------------------- 21. [[  Merge Two Sorted Lists ]] ---------------------------------------------------->>>>>>>>>>>
 /**  [[https://www.youtube.com/watch?v=W0Mwqk-uPsk&t=237s]]
  *   Definition for singly-linked list.
