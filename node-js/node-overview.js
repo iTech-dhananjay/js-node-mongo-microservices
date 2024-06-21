@@ -4,7 +4,7 @@
   ->  It is a NoSQL, cross-platform, document-oriented database that provides high performance, high availability, and easy scalability.
 
     $$$$$$$$ MongoDB 
-    1.  Data Strucure  :  Data is stored and represented in JSON (Javascript Object Notation) like documents. 
+    1.  Data Structure  :  Data is stored and represented in JSON (Javascript Object Notation) like documents.
     2.  Schema         :  MongoDB stores data in collections with no enforced schema. In other words, incoming data can have a pre-defined structure &
                            it can adhere to it, however, different documents in the same collection can have different structures if required.
     3.  Performance    :  MongoDB is optimized for write performance ( means writing speed performance of MongoDB database is far greater than MySQL database).   
@@ -15,7 +15,7 @@
 
 
     $$$$$$$$ MySql
-    1.  Data Strucure  :  Every record is stored as a table-cell structure with rows and column 
+    1.  Data Structure  :  Every record is stored as a table-cell structure with rows and column
     2.  Schema         :  MySQL requires a schema definition for the tables in the databases. 
                            Therefore, the schema cannot be altered. Only inputs that conform to the given schema are accepted.
     3.  Performance    :  MySQL is optimized for high-performance joins across multiple tables 
@@ -58,7 +58,7 @@ const newTodo = await pool.query(
   Javascript is the synchronous single-threaded language but with the help of event-loop and promises, JavaScript is used to do asynchronous programming.
  ==> Promise
  1. Async/Await is a way of writing promises that allows us to write asynchronous code in a synchronous way. Let's have a look.
- 2. The event loop allows Node JS to perform non-blocking I/O operations — despite the fact that JavaScript is single-threaded 
+ 2. The event loop allows Node.js to perform non-blocking I/O operations — despite the fact that JavaScript is single-threaded
 
 */
 
@@ -171,7 +171,7 @@ Q2.  What is REPL in Node.js?
        - READ : Reads user's input, parse the input into javascript data-structures & stores in memory
        - Eval : Takes and evaluates the data structure
        - Print: Prints the results
-       - Loop : Loops the above command untils user presses ctrl+c twice
+       - Loop : Loops the above command until user presses ctrl+c twice
 
 */
 
