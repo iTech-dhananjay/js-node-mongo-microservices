@@ -11,6 +11,7 @@
   9.  Sum  & Multiply of Array element
   10. Swap two numbers with temp
   11. Flatten the  Array without predefined function
+  12. Count the Occurrences of Each Character
    
 */
 
@@ -426,6 +427,31 @@ function customFlat(arr, depth = 1) {
 
 console.log(customFlat(arr, 2)); //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 console.log(customFlat(arr)); //[1, 2, 3, 4, 5, 6, [7, 8], 9, 10, 11, 12];
+
+
+// <<<<<<<<<<<<<<<------------------------------------------- 12. [[  Count the Occurrences of Each Character   ]] ------------------------------------------------>>>>>>>
+let form = 'aaabbccddddde';
+
+const countForm = (form) => {
+    let hash = {};
+    for (let char of form) {
+        if (!hash[char]) {
+            hash[char] = 0;
+        }
+        hash[char]++;
+    }
+
+    let result = '';
+    for (let char in hash) {
+        result += char + hash[char]; //Concatenate each character and its count to the result string
+    }
+
+    return result;
+}
+
+console.log(countForm(form)); //a3b2c2d5e1
+
+
 
 // <<<<<<<<<<<<<<<-----------------------------------------------------   [[ Explian Call Apply and Bind ]] -------------------------------------------------------->>>>>>>
 var person = {
