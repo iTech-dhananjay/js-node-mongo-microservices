@@ -25,20 +25,20 @@ Different Types of SQL JOINs => Here are the different types of the JOINs in SQL
 
 // Q-1 =>  SELECT * FROM `posts` RIGHT JOIN users ON users.id=posts.user_id ORDER BY posts.id DESC GROUP BY posts.user_id
 
-// Create users
+// Inserting into the users collection
 db.users.insertMany([
-    {_id: 1, name: "User1"},
-    {_id: 2, name: "User2"},
-    {_id: 3, name: "User3"},
+    { id: 1, name: "User1" },
+    { id: 2, name: "User2" },
+    { id: 3, name: "User3" }
 ]);
 
-// Create posts with isPublished and category fields
+// Inserting into the posts collection
 db.posts.insertMany([
-    {_id: 101, userId: 1, title: "Post1", category: "Technology"},
-    {_id: 102, userId: 1, title: "Post2", category: "Science"},
-    {_id: 103, userId: 2, title: "Post3", category: "Science"},
-    {_id: 104, userId: 2, title: "Post4", category: "Technology"},
+    { id: 101, user_id: 1, content: "Post by User1", created_at: new Date("2024-07-01T12:00:00Z") },
+    { id: 102, user_id: 2, content: "Post by User2", created_at: new Date("2024-07-02T12:00:00Z") },
+    { id: 103, user_id: 1, content: "Another post by User1", created_at: new Date("2024-07-03T12:00:00Z") }
 ]);
+
 
 
 db.posts.updateMany({}, {$set: {isPublished: false}});
@@ -47,50 +47,34 @@ db.posts.updateMany({}, {$set: {isPublished: false}});
 db.posts.updateMany({_id: {$in: [101, 103]}}, {$set: {isPublished: true}});
 
 
-db.users.aggregate([
+db.posts.aggregate([
     {
         $lookup: {
-            from: "posts",
-            localField: "_id",
-            foreignField: "userId",
-            as: "result"
+            from: "users",
+            localField: "user_id",
+            foreignField: "id",
+            as: "user_info"
         }
     },
     {
-        $unwind: "$result"
+        $unwind: "$user_info"
     },
     {
-        $match: {
-            "result.isPublished": true
-        }
-    },
-    {
-        $sort: {"result._id": -1}
+        $sort: { id: -1 }
     },
     {
         $group: {
-            _id: "$_id",
-            name: {$first: "$name"},
-            posts: {$push: "$result"}
-
+            _id: "$user_id",
+            post: { $first: "$$ROOT" }
         }
     },
     {
-        $project: {
-            _id: 1,
-            name: 1,
-            published_posts: "$posts",
-            category: "$posts.category", // Include the category field in the projection
-        },
-    },
-    {
-        $skip: 0, // Skip the first document
-    },
-    {
-        $limit: 2, // Limit the result to 2 documents
-    },
+        $replaceRoot: { newRoot: "$post" }
+    }
+]);
 
-]).pretty()
+
+
 
 /*
  Output : -

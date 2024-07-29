@@ -214,3 +214,39 @@ console.log(nthLargestNumber(numbers, n));
 /*
 I had an issue where every time I opened a new project, it would attach as a new window instead of a tab, which was quite irritating. I resolved this by navigating to System Settings on my Mac, then selecting Desktop & Dock -> Windows -> and choosing 'Prefer tabs when opening documents' under the Windows setting.
 * */
+
+const arr = [1, 3, 5, 6, 8, 9];
+const target = 7;
+
+const searchIndexInsert = (arr, target) => {
+    for (let i = 0; i <= arr.length - 1; i++) {
+        if (arr[i] == target) {
+            return i;
+        } else if (target < arr[i]) {
+            return i;
+        }
+    }
+    return arr.length;
+}
+
+console.log(searchIndexInsert(arr, target));
+
+
+const arr = [1, 0, 4, 0, 5, 0, 6];
+
+const zerosToMove = (arr) => {
+    let nonZeroes = [];
+    let zeroes = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === 0) {
+            zeroes.push(arr[i]);
+        } else {
+            nonZeroes.push(arr[i]);
+        }
+    }
+
+    return nonZeroes.concat(zeroes);
+};
+
+console.log(zerosToMove(arr)); // Output: [1, 4, 5, 6, 0, 0, 0]

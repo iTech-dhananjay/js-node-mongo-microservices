@@ -444,7 +444,7 @@ var rotate = function (nums, k) {
 
 // <<<<<<<<<<<--------------------------------------- 189. [[ Remove Duplicates from Sorted Array   ]] -------------------------------------------->>>>>>>>>>>
 
-// splice will not modify arr and remove element form specific position  nums.splice(i, 1); i -> position and 1 -> one element should be deleted
+// splice will modify arr and remove element form specific position  nums.splice(i, 1); i -> position and 1 -> one element should be deleted
 function removeDuplicates(nums) {
     // Check if the array is empty or has only one element
     if (nums.length <= 1) {

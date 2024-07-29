@@ -443,7 +443,7 @@ const countForm = (form) => {
 
     let result = '';
     for (let char in hash) {
-        result += char + hash[char]; //Concatenate each character and its count to the result string
+        result += char + hash[char]; // console.log(char,'char') a b c d e ||  console.log(hash[char],'hash[char') 32251
     }
 
     return result;
